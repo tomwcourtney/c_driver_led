@@ -56,7 +56,7 @@ CPPUTEST_USE_EXTENSIONS = Y
 # containing directory
 INCLUDE_DIRS += $(CPPUTEST_HOME)/include
 INCLUDE_DIRS += $(CPPUTEST_HOME)/include/Platforms/Gcc
-INCLUDE_DIRS += ../c_driver_logger/inc
+INCLUDE_DIRS += ../c_driver_led/inc
 
 
 # INCLUDE_DIRS += tests/exploding-fakes
