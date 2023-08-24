@@ -4,19 +4,10 @@
 // led set on
 // led set off
 // led get state
-
+#include "../../src/led.h"
 #include <stdint.h>
 
 #define MAX_LEDS 64
-
-typedef enum 
-{
-    LED_STATE_UNDEFINED = -1,
-    LED_STATE_ON,
-    LED_STATE_OFF
-} led_state_t;
-
-
 
 void led_spy_init(void);
 
