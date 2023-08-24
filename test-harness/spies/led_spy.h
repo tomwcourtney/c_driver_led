@@ -7,6 +7,8 @@
 
 #include <stdint.h>
 
+#define MAX_LEDS 64
+
 typedef enum 
 {
     LED_STATE_UNDEFINED = -1,

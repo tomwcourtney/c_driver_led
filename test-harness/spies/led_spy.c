@@ -2,20 +2,32 @@
 
 #include <stdbool.h>
 
-led_state_t led_state = LED_STATE_UNDEFINED;
+led_state_t led_states[MAX_LEDS] = {0};
 
 void led_spy_init(void)
 {
-    led_state = LED_STATE_UNDEFINED;
+    for (int i = 0; i < MAX_LEDS; i++)
+    {
+        led_states[i] = LED_STATE_UNDEFINED;
+    }
 }
 
 led_state_t led_spy_get_state(uint32_t id)
 {
-    return led_state;
+    if (id >= MAX_LEDS)
+    {
+        return LED_STATE_UNDEFINED;
+    }
+    return led_states[id];
 }
 
 led_state_t led_spy_set_state(uint32_t id, led_state_t state)
 {
-    led_state = state;
-    return led_state;
+    if (id >= MAX_LEDS)
+    {
+        return LED_STATE_UNDEFINED;
+    }
+
+    led_states[id] = state;
+    return led_states[id];
 }
