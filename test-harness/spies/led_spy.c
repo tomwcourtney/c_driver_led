@@ -3,10 +3,6 @@
 
 led_state_t led_states[MAX_LEDS] = {0};
 
-struct pins_t{
-    uint32_t pin;
-};
-
 void led_spy_init(void)
 {
     for (int i = 0; i < MAX_LEDS; i++)
@@ -35,7 +31,7 @@ led_state_t led_spy_set_state(uint32_t id, led_state_t state)
     return led_states[id];
 }
 
-void write_led(pins_t, led_state_t)
+void write_led(pins_t pin, led_state_t state)
 {
     return;
-}
+} 
