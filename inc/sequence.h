@@ -19,7 +19,7 @@
  */
 typedef struct{
     uint32_t id;
-    uint8_t sequence[32];
+    uint8_t sequence[50];
     uint8_t length;
     uint8_t period;
 }sequence_t;

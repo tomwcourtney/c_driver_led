@@ -9,6 +9,7 @@ static uint32_t count = 0;
 
 void led_init(uint32_t callback_frequency)
 {
+    sequence_init();
     memset(&led, -1, sizeof(led_t));
     count = 0;
     return;
