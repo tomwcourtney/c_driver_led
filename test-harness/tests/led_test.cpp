@@ -25,6 +25,9 @@ TEST_GROUP(LEDTest)
     #define ARE_N_SEQUENCES_REGISTERED(num)\
         LONGS_EQUAL(num, sequence_get_count());
 
+    #define DOES_LED_HAVE_SEQUENCE(led_id, sequence_id)\
+        LONGS_EQUAL(led_get_sequence(led_id), sequence_id)
+
     led_status_t define_and_register_led(uint32_t id)
     {
         // Make a new LED
@@ -36,6 +39,21 @@ TEST_GROUP(LEDTest)
     
         // Register the LED with the module
         return led_register(new_led);
+    }
+
+    sequence_status_t define_and_register_sequence(uint32_t id)
+    {
+        sequence_t sequence = {
+            .id = id,
+            .length = 2,
+            .period = 1
+        };
+
+        uint8_t arr[] = {0,1};
+
+        memcpy(sequence.sequence, arr, sequence.length);
+
+        return sequence_register(sequence);
     }
 
 };
@@ -151,19 +169,81 @@ TEST(LEDTest, disabled_led_state_can_be_reenabled)
     IS_LED_ON(led_id);
 }
 
-// Sequence can be defined 
+// Sequence: Register one sequence
 TEST(LEDTest, sequence_can_be_defined)
 {
-    // define a sequence 
-    // uint32_t length = 2;
-    // uint32_t sequence_array[] = {0, 1};
-    // uint32_t sequence_period = 10;
-    // led_register_sequence(sequence_period, sequence_array, length);
+    uint32_t sequence_id = 0;
 
-
-    // Check that the sequence is defined 
+    define_and_register_sequence(sequence_id);
+    
+    ARE_N_SEQUENCES_REGISTERED(1);
 }
-/* MANY
 
-*/
+
+// Sequences can be assigned to leds 
+TEST(LEDTest, sequences_can_be_assigned_to_leds)
+{
+    uint32_t sequence_id = 0;
+    uint32_t led_id = 0;
+
+    // Define LED and sequence
+    define_and_register_sequence(sequence_id);
+    define_and_register_led(led_id);
+    
+    // Assign sequence to LED
+    led_assign_sequence(led_id,sequence_id);
+
+    // Check if the sequence has been assigned correctly 
+    DOES_LED_HAVE_SEQUENCE(led_id, sequence_id);
+}
+
+// Cannot assign a non-existant sequence to an led 
+TEST(LEDTest, cannot_assign_nonexistant_sequence_to_led)
+{
+    uint32_t sequence_id = 0;
+    uint32_t led_id = 0;
+
+    // Define LED
+    define_and_register_led(led_id);
+    
+    // Assign sequence to LED and check if sequence was assigned
+    LONGS_EQUAL(LED_ERR,led_assign_sequence(led_id,sequence_id));
+}
+
+// cannot assign a sequence to a non existant led 
+TEST(LEDTest, cannot_assign_sequence_to_non_existant_led)
+{
+    uint32_t sequence_id = 0;
+    uint32_t led_id = 0;
+
+    // Define sequence
+    define_and_register_sequence(sequence_id);
+    
+    // Assign sequence to LED and check if sequence was assigned
+    LONGS_EQUAL(LED_ERR,led_assign_sequence(led_id,sequence_id));
+}
+
+// When Sequence start is called the first bit of sequence is not written to LED
+TEST(LEDTest, sequence_start_doesnt_change_led_state)
+{
+    uint32_t sequence_id = 0;
+    uint32_t led_id = 0;
+
+    define_and_register_sequence(sequence_id);
+    define_and_register_led(led_id);
+
+    led_assign_sequence(led_id, sequence_id);
+    
+    led_enable(led_id);
+
+    IS_LED_UNDEFINED(led_id);
+}
+
+// sequence is assigned to LED, LED state is as it should be according to the sequence for every time step induced by the timer interrupt
+
+
+/********/
+/* MANY */
+/********/
+
 
