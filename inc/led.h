@@ -147,7 +147,15 @@ led_status_t led_start_sequence(uint32_t led_id);
  * @param led_id - The led to start running the sequence of.
  * @return bool - returns the led 
  */
-bool led_check_sequence_enabled(led_id);
+bool led_is_enabled(uint32_t led_id);
+
+/**
+ * @brief Is called whenever you want to update the state of your LEDs
+ * according to their sequence. Will update all LEDs.
+ */
+void led_timer_step();
+
+
 /* INTERFACE 
 
    led_start_sequence() //Starts the current sequence that the leds are configured for 

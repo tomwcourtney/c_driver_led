@@ -11,7 +11,7 @@ TEST_GROUP(LEDTest)
 {
     void setup()
     {
-        led_init(10);
+        led_init(1);
         led_spy_init();
     }
 
@@ -46,7 +46,7 @@ TEST_GROUP(LEDTest)
         sequence_t sequence = {
             .id = id,
             .length = 2,
-            .period = 1
+            .period = 10
         };
 
         uint8_t arr[] = {0,1};
@@ -240,8 +240,26 @@ TEST(LEDTest, sequence_start_doesnt_change_led_state)
 }
 
 // sequence is assigned to LED, LED state is as it should be according to the sequence for every time step induced by the timer interrupt
+TEST(LEDTest, led_state_changes_according_to_registered_sequence_when_led_enabled_and_updated)
+{
+    uint32_t sequence_id = 0;
+    uint32_t led_id = 0;
 
+    define_and_register_sequence(sequence_id);
+    define_and_register_led(led_id);
 
+    led_assign_sequence(led_id, sequence_id);
+    
+    led_enable(led_id);
+
+    led_timer_step();
+    
+    IS_LED_OFF(led_id);
+
+    led_timer_step();
+
+    IS_LED_ON(led_id);
+}
 /********/
 /* MANY */
 /********/

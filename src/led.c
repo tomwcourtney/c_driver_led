@@ -112,3 +112,14 @@ bool led_exists(uint32_t led_id)
     }
     return false; 
 }
+
+void led_timer_step()
+{
+    // If the LED is enabled increment sequence counter
+    if(led.enabled)
+    {
+        return;
+    }
+
+    return;
+}
