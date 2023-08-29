@@ -65,3 +65,50 @@ void led_enable(uint32_t id)
 {
     led.enabled = true; 
 }
+
+
+led_status_t led_assign_sequence(uint32_t led_id, uint32_t sequence_id)
+{
+    // Check if LED exists
+    if(!led_exists(led_id))
+    {
+        return LED_ERR;
+    }
+
+    // Check if sequence exists
+    if(!sequence_exists(sequence_id))
+    {
+        return LED_ERR;
+    }
+
+    // Assign sequence to LED
+    if(led_id == led.id)
+    {
+        led.sequence_id = sequence_id;
+    }
+
+    return LED_OK;
+}
+
+uint32_t led_get_sequence(uint32_t led_id)
+{
+    if(led_id == led.id)
+    {
+        return led.sequence_id;
+    }
+    return -1; 
+}
+
+led_status_t led_start_sequence(uint32_t led_id)
+{
+    return LED_OK;
+}
+
+bool led_exists(uint32_t led_id)
+{
+    if(led.id == led_id)
+    {
+        return true;
+    }
+    return false; 
+}

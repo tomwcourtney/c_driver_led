@@ -15,14 +15,15 @@
 /**
  * @brief Holds state information for an led's configuration.
  * 
- * @param id        - A unique identifier for an led. 
- * @param enabled   - True if led is in use, false otherwise.
- * @param sequence  - A pointer to a sequence object that defines the flash pattern of the led.
- * @param pinout    - A pinout object that defines connection of the led to the microcontroller.
+ * @param id            - A unique identifier for an led. 
+ * @param enabled       - True if led is in use, false otherwise.
+ * @param sequence_id   - A pointer to a sequence object that defines the flash pattern of the led.
+ * @param pinout        - A pinout object that defines connection of the led to the microcontroller.
  */
 typedef struct {
     uint32_t id;
     bool enabled;
+    uint32_t sequence_id;
     pins_t pinout;
 } led_t;
 
@@ -106,10 +107,48 @@ void led_disable(uint32_t id);
 */
 void led_enable(uint32_t id);
 
+/**
+ * @brief Assigns a sequence to an LED
+ *
+ * @param [IN] led_id - the id of the led to be assigned to 
+ * @param [IN] sequence_id - the id of the sequence to be assinged to the led 
+ * 
+ * @return led_status_t - err if the led or sequence doesn't exist.
+*/
+led_status_t led_assign_sequence(uint32_t led_id, uint32_t sequence_id);
+
+/**
+ * @brief Returns the current sequence assinged to that led, returns -1 if there is no sequence assigned 
+ *
+ * @param [IN] led_id - the ID of the led to check 
+ * 
+ * @return uint32_t - the ID of the assigned sequence. -1 if no sequence assigned.
+*/
+uint32_t led_get_sequence(uint32_t led_id);
+
+/**
+ * @brief Checks if a led is registered.
+ * 
+ * @return bool - Returns true if led exists.
+ */
+bool led_exists(uint32_t led_id);
+
+/**
+ * @brief Turns on the sequence enable boolean for the selected LED.
+ * 
+ * @param led_id - The led to start running the sequence of.
+ * @return led_status_t - Err if the LED isn't registered.
+ */
+led_status_t led_start_sequence(uint32_t led_id);
+
+/**
+ * @brief Turns on the sequence enable boolean for the selected LED.
+ * 
+ * @param led_id - The led to start running the sequence of.
+ * @return bool - returns the led 
+ */
+bool led_check_sequence_enabled(led_id);
 /* INTERFACE 
-   led_register_led(led_id)
-   led_register_sequence(sequence_array, sequence_period, length)
-   led_set_sequence(led_id,sequence_id)
 
    led_start_sequence() //Starts the current sequence that the leds are configured for 
    led_stop_sequence()  //Stops the current sequence that the leds are configured for 

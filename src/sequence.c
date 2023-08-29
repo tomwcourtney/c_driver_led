@@ -19,8 +19,18 @@ uint32_t sequence_get_count()
 
 sequence_status_t sequence_register(sequence_t sequence)
 {
+    // can you do this? how does compiler differentiate between the identifiers
     sequence = sequence;
     count++;
 
     return SEQUENCE_OK;
+}
+
+bool sequence_exists(uint32_t sequence_id)
+{
+    if(sequence.id == sequence_id)
+    {
+        return true;
+    }
+    return false; 
 }
