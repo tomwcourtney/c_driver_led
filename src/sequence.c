@@ -1,5 +1,6 @@
 #include "sequence.h"
 #include <string.h>
+#include <stdio.h>
 
 sequence_t sequence = {-1};
 
@@ -17,10 +18,9 @@ uint32_t sequence_get_count()
     return count;
 }
 
-sequence_status_t sequence_register(sequence_t sequence)
+sequence_status_t sequence_register(sequence_t _sequence)
 {
-    // can you do this? how does compiler differentiate between the identifiers
-    sequence = sequence;
+    sequence = _sequence;
     count++;
 
     return SEQUENCE_OK;
@@ -34,3 +34,8 @@ bool sequence_exists(uint32_t sequence_id)
     }
     return false; 
 }
+
+ sequence_t * sequence_get_from_id(uint32_t sequence_id)
+ {
+    return &sequence;
+ }

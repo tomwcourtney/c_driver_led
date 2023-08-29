@@ -17,14 +17,19 @@
  * 
  * @param id            - A unique identifier for an led. 
  * @param enabled       - True if led is in use, false otherwise.
- * @param sequence_id   - A pointer to a sequence object that defines the flash pattern of the led.
  * @param pinout        - A pinout object that defines connection of the led to the microcontroller.
+ * @param sequence_id   - A pointer to a sequence object that defines the flash pattern of the led.
+ * @param sequence_idx  - Maintains the position in the assigned sequence that the LED is up to
+ * @param timer_count   - Maintains the acrued time since the last sequence index increment
  */
 typedef struct {
     uint32_t id;
     bool enabled;
-    uint32_t sequence_id;
     pins_t pinout;
+    uint32_t sequence_id;
+    uint8_t sequence_idx;
+    uint32_t timer_count; 
+
 } led_t;
 
 /** 
@@ -45,7 +50,9 @@ typedef enum{
 }led_status_t;
 
 
-typedef void (*write_pin)(pins_t, led_state_t);
+// typedef void (*write_pin)(pins_t, led_state_t);
+
+void write(pins_t, led_state_t);
 
 /**
  * @brief The inialisation for the led driver, sets the 'write_fcn' that the driver uses to contorl the leds and the callback 

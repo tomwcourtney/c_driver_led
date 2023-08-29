@@ -1,17 +1,17 @@
 #include "led.h"
 #include <string.h>
-
-write_pin write(pins_t, led_state_t);
+#include <stdio.h>
 
 led_t led = {-1};
 
 static uint32_t count = 0;
-
-void led_init(uint32_t callback_frequency)
+static uint32_t timer_period = 0;
+void led_init(uint32_t _timer_period)
 {
     sequence_init();
     memset(&led, -1, sizeof(led_t));
     count = 0;
+    timer_period = _timer_period;
     return;
 }
 
@@ -29,7 +29,7 @@ void led_on(uint32_t id)
     
     if(led.enabled)
     {
-        user_write_pin(led.pinout, LED_ON);
+        write(led.pinout, LED_ON);
     }
 }
 
@@ -40,7 +40,7 @@ void led_off(uint32_t id)
         return;
     }
     
-    user_write_pin(led.pinout, LED_OFF);
+    write(led.pinout, LED_OFF);
 }
 
 led_status_t led_register(led_t led_obj)
@@ -115,9 +115,35 @@ bool led_exists(uint32_t led_id)
 
 void led_timer_step()
 {
-    // If the LED is enabled increment sequence counter
+    uint32_t sequence_id = led_get_sequence(led.id);
+    
+    if (!sequence_exists(sequence_id))
+    {
+        return;
+    }
+
+    sequence_t * sequence = sequence_get_from_id(sequence_id);
+    
+    float thresh = sequence->period/sequence->length;
+    
+    led.timer_count += timer_period;
+    
+    if (led.timer_count >= thresh)
+    {
+        led.sequence_idx += 1; 
+
+        if(led.sequence_idx > (sequence->length-1))
+        {
+            led.sequence_idx = 0;
+        }
+                   
+        led.timer_count = led.timer_count - thresh;
+    }
+
+    
     if(led.enabled)
     {
+        write(led.pinout, sequence->sequence[led.sequence_idx]);
         return;
     }
 

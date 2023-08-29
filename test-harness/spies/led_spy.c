@@ -1,6 +1,6 @@
 #include "led_spy.h"
 #include <stdbool.h>
-
+#include <stdio.h>
 led_state_t led_states[MAX_LEDS] = {0};
 
 void led_spy_init(void)
@@ -22,6 +22,7 @@ led_state_t led_spy_get_state(uint32_t id)
 
 led_state_t led_spy_set_state(uint32_t id, led_state_t state)
 {
+    
     if (id >= MAX_LEDS)
     {
         return LED_UNDEFINED;
@@ -30,8 +31,3 @@ led_state_t led_spy_set_state(uint32_t id, led_state_t state)
     led_states[id] = state;
     return led_states[id];
 }
-
-void write_led(pins_t pin, led_state_t state)
-{
-    return;
-} 

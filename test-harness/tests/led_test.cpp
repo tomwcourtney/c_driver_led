@@ -49,11 +49,19 @@ TEST_GROUP(LEDTest)
             .period = 10
         };
 
-        uint8_t arr[] = {0,1};
+        uint8_t arr[] = {LED_OFF, LED_ON};
 
         memcpy(sequence.sequence, arr, sequence.length);
 
         return sequence_register(sequence);
+    }
+
+    void step_n_times(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            led_timer_step();
+        }
     }
 
 };
@@ -252,14 +260,15 @@ TEST(LEDTest, led_state_changes_according_to_registered_sequence_when_led_enable
     
     led_enable(led_id);
 
-    led_timer_step();
+    step_n_times(1);
     
     IS_LED_OFF(led_id);
 
-    led_timer_step();
+    step_n_times(5);
 
     IS_LED_ON(led_id);
 }
+
 /********/
 /* MANY */
 /********/

@@ -61,5 +61,13 @@ uint32_t sequence_get_count();
  */
 bool sequence_exists(uint32_t sequence_id);
 
+/**
+ * @brief Returns the sequence if registed based off the inputted id
+ * 
+ * @param sequence_id - index of the sequence in the list of sequences.
+ * 
+ * @return sequence_t * - Returns pointer to object found. Else return NULL.
+ */
+ sequence_t * sequence_get_from_id(uint32_t sequence_id);
 
 #endif
