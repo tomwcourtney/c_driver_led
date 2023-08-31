@@ -253,20 +253,73 @@ TEST(LEDTest, led_state_changes_according_to_registered_sequence_when_led_enable
     uint32_t sequence_id = 0;
     uint32_t led_id = 0;
 
-    define_and_register_sequence(sequence_id);
+    //define_and_register_sequence(sequence_id);
+    sequence_t sequence = {
+        .id = sequence_id,
+        .length = 2,
+        .period = 100
+    };
+    uint8_t arr[] = {LED_OFF, LED_ON};
+    memcpy(sequence.sequence, arr, sequence.length);
+    sequence_register(sequence);
+
     define_and_register_led(led_id);
 
     led_assign_sequence(led_id, sequence_id);
     
+    uint32_t thresh = 700 / 2;
+
     led_enable(led_id);
 
     step_n_times(1);
     
     IS_LED_OFF(led_id);
 
-    step_n_times(5);
+    step_n_times(thresh + 1);
 
     IS_LED_ON(led_id);
+}
+
+// test to make sure turning off an unregistered LED does not change its state
+TEST(LEDTest, turn_off_led_with_no_registered_leds_doesnt_change_state)
+{
+    led_off(0);
+
+    IS_LED_UNDEFINED(0);
+}
+
+// make sure getting the sequence of an unregistered LED returns error code
+TEST(LEDTest, get_led_sequence_of_nonregistered_led_returns_error)
+{
+    // NOTE led_get_sequence prototype returns uint32_t, but the "error" conditions returns -1 (signed). this is sus
+    LONGS_EQUAL((uint32_t)(-1), led_get_sequence(0));
+}
+
+// make sure calling the timer callback doesn't change the state of LEDs with an unregistered sequence
+TEST(LEDTest, timer_step_on_led_with_non_existent_sequence_doesnt_touch_led_state)
+{
+    uint32_t led_id = 0;
+    define_and_register_led(led_id);
+    led_enable(led_id);
+
+    step_n_times(1000);
+
+    IS_LED_UNDEFINED(led_id);
+}
+
+// make sure disabled LED states aren't touched by the timer callback
+TEST(LEDTest, timer_step_on_disabled_led_doesnt_touch_led_state)
+{
+    uint32_t led_id = 0;
+    uint32_t sequence_id = 0;
+    define_and_register_led(led_id);
+    define_and_register_sequence(sequence_id);
+    led_assign_sequence(led_id, sequence_id);
+    led_disable(led_id);
+
+    step_n_times(1000);
+
+    IS_LED_UNDEFINED(led_id);
 }
 
 /********/

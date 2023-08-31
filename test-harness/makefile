@@ -1,8 +1,10 @@
 #Set this to @ to keep the makefile quiet
-SILENCE = @
+#SILENCE = @
 
 #---- Outputs ----#
 COMPONENT_NAME = your
+
+CPPUTEST_USE_GCOV = Y
 
 #--- Inputs ----#
 PROJECT_HOME_DIR = .
@@ -126,12 +128,16 @@ CPPUTEST_CXXFLAGS += --std=c++11
 CPPUTEST_CXXFLAGS += -Wno-c++98-compat-pedantic
 CPPUTEST_CXXFLAGS += -Wno-c++98-compat
 
+# gcov flags
+#CPPUTEST_CFLAGS += -fprofile-arcs -ftest-coverage asdasdsadsa
+
 # Coloroze output
 CPPUTEST_EXE_FLAGS += -c
 
 # --- LD_LIBRARIES -- Additional needed libraries can be added here.
 # commented out example specifies math library
-#LD_LIBRARIES += -lm
+# gcov linker flags
+#LD_LIBRARIES += -L$(CPPUTEST_HOME)/lib -lgcov --coverage
 
 # Look at $(CPPUTEST_HOME)/build/MakefileWorker.mk for more controls
 
