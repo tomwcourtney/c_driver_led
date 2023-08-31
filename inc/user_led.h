@@ -3,8 +3,6 @@
 
 #include <stdint.h>
 
-#include "main.h"
-
 
 /**
  * @brief user defined structure which contains hardware specific pin information needed to toggle the pin
@@ -16,8 +14,7 @@
 */
 // Need this forward declaration because there are function definitions in this file that use the structure but it will not be defined yet.
 typedef struct{
-    GPIO_TypeDef * port;
-    uint16_t pin;
+    uint32_t pin;
 }pins_t;
 
 #endif

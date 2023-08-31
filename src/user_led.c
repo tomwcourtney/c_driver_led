@@ -7,5 +7,5 @@
 
 void write(pins_t pins, led_state_t state)
 {
-    HAL_GPIO_WritePin(pins.port, pins.pin, state);
+    led_spy_set_state(pins.pin, state);
 }
