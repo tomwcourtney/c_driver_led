@@ -27,6 +27,7 @@ endif
 # production code C and CPP files.
 #
 SRC_DIRS += ../src
+SRC_DIRS += ../user_code
 # SRC_DIRS += spies
 
 
@@ -59,6 +60,7 @@ CPPUTEST_USE_EXTENSIONS = Y
 INCLUDE_DIRS += $(CPPUTEST_HOME)/include
 INCLUDE_DIRS += $(CPPUTEST_HOME)/include/Platforms/Gcc
 INCLUDE_DIRS += ../inc
+INCLUDE_DIRS += ../user_code
 
 
 # INCLUDE_DIRS += tests/exploding-fakes
