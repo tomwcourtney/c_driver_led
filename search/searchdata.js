@@ -1,10 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "lsu",
+  0: "lmsu",
   1: "ls",
   2: "ls",
   3: "lsu",
-  4: "ls"
+  4: "ls",
+  5: "m"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "enums"
+  4: "enums",
+  5: "defines"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Classes",
   2: "Files",
   3: "Functions",
-  4: "Enumerations"
+  4: "Enumerations",
+  5: "Macros"
 };
 

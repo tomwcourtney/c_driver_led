@@ -75,6 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">sequence.h File Reference</div></div>
@@ -91,13 +92,18 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsequence__t.html">sequence_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that stores sequences.  <a href="structsequence__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a6f1542da1910029eef71bd43c81e7542" id="r_a6f1542da1910029eef71bd43c81e7542"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sequence_8h.html#a6f1542da1910029eef71bd43c81e7542">MAX_SEQUENCE</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:a6f1542da1910029eef71bd43c81e7542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that stores sequences.  <br /></td></tr>
+<tr class="separator:a6f1542da1910029eef71bd43c81e7542"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a4c5ca111d68d7b6b781788ba16ce1063" id="r_a4c5ca111d68d7b6b781788ba16ce1063"><td class="memItemLeft" align="right" valign="top"><a id="a4c5ca111d68d7b6b781788ba16ce1063" name="a4c5ca111d68d7b6b781788ba16ce1063"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sequence_8h.html#a4c5ca111d68d7b6b781788ba16ce1063">sequence_status_t</a> { <b>SEQUENCE_OK</b>
-, <b>SEQUENCE_ERROR</b>
+, <b>SEQUENCE_ERROR</b> = -1
  }</td></tr>
 <tr class="memdesc:a4c5ca111d68d7b6b781788ba16ce1063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sequence status variables. <br /></td></tr>
 <tr class="separator:a4c5ca111d68d7b6b781788ba16ce1063"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,9 +114,9 @@ Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sequence_init</b> ()</td></tr>
 <tr class="memdesc:a6d7855f3f055f2e40a5294a402b24b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initalises the sequece's giving you the ability to register and assign sequences. <br /></td></tr>
 <tr class="separator:a6d7855f3f055f2e40a5294a402b24b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61e24a0ee251261c26a51444962c888" id="r_ae61e24a0ee251261c26a51444962c888"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sequence_8h.html#a4c5ca111d68d7b6b781788ba16ce1063">sequence_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sequence_8h.html#ae61e24a0ee251261c26a51444962c888">sequence_register</a> (<a class="el" href="structsequence__t.html">sequence_t</a> sequence)</td></tr>
-<tr class="memdesc:ae61e24a0ee251261c26a51444962c888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a sequence to the module's state; an array of sequences.  <br /></td></tr>
-<tr class="separator:ae61e24a0ee251261c26a51444962c888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac707fa4d2e2f6edd4c48c41ffd7dae49" id="r_ac707fa4d2e2f6edd4c48c41ffd7dae49"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sequence_8h.html#ac707fa4d2e2f6edd4c48c41ffd7dae49">sequence_register</a> (<a class="el" href="structsequence__t.html">sequence_t</a> sequence)</td></tr>
+<tr class="memdesc:ac707fa4d2e2f6edd4c48c41ffd7dae49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a sequence to the module's state; an array of sequences.  <br /></td></tr>
+<tr class="separator:ac707fa4d2e2f6edd4c48c41ffd7dae49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28cef93b5fed90f404b29c45631df7ba" id="r_a28cef93b5fed90f404b29c45631df7ba"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sequence_8h.html#a28cef93b5fed90f404b29c45631df7ba">sequence_get_count</a> ()</td></tr>
 <tr class="memdesc:a28cef93b5fed90f404b29c45631df7ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current number of registered sequences.  <br /></td></tr>
 <tr class="separator:a28cef93b5fed90f404b29c45631df7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,7 +132,37 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sequence_init</b> ()<
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2023-08-28</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a6f1542da1910029eef71bd43c81e7542" name="a6f1542da1910029eef71bd43c81e7542"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1542da1910029eef71bd43c81e7542">&#9670;&#160;</a></span>MAX_SEQUENCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SEQUENCE&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Struct that stores sequences. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>param </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>param </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="ad6a9e3a050f2993d3669497d0c2eb9cf" name="ad6a9e3a050f2993d3669497d0c2eb9cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad6a9e3a050f2993d3669497d0c2eb9cf">&#9670;&#160;</a></span>sequence_exists()</h2>
 
@@ -191,18 +227,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sequence_init</b> ()<
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structsequence__t.html" title="Struct that stores sequences.">sequence_t</a> * - Returns pointer to object found. Else return NULL. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structsequence__t.html">sequence_t</a> * - Returns pointer to object found. Else return NULL. </dd></dl>
 
 </div>
 </div>
-<a id="ae61e24a0ee251261c26a51444962c888" name="ae61e24a0ee251261c26a51444962c888"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae61e24a0ee251261c26a51444962c888">&#9670;&#160;</a></span>sequence_register()</h2>
+<a id="ac707fa4d2e2f6edd4c48c41ffd7dae49" name="ac707fa4d2e2f6edd4c48c41ffd7dae49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac707fa4d2e2f6edd4c48c41ffd7dae49">&#9670;&#160;</a></span>sequence_register()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="sequence_8h.html#a4c5ca111d68d7b6b781788ba16ce1063">sequence_status_t</a> sequence_register </td>
+          <td class="memname">int32_t sequence_register </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structsequence__t.html">sequence_t</a>&#160;</td>
           <td class="paramname"><em>sequence</em></td><td>)</td>
@@ -218,7 +254,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sequence_init</b> ()<
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>sequence_status_t - error if object could not be registered. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int32_t - If successfully registered returns the ID of the sequence. If error returns -1 (SEQUENCE_ERROR). </dd></dl>
 
 </div>
 </div>
