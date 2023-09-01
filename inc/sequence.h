@@ -16,13 +16,18 @@
 
 /**
  * @brief Struct that stores sequences 
- * 
+ * @param
+ * @param
+ * @param
+ * @param
  */
+
+#define MAX_SEQUENCE 100
+
 typedef struct{
-    uint32_t id;
-    uint8_t sequence[50];
+    uint8_t sequence[MAX_SEQUENCE];
     uint8_t length;
-    uint8_t period;
+    uint32_t period;
 }sequence_t;
 
 /**
@@ -31,7 +36,7 @@ typedef struct{
  */
 typedef enum{
     SEQUENCE_OK,
-    SEQUENCE_ERROR
+    SEQUENCE_ERROR = -1
 }sequence_status_t;
 
 /**
@@ -43,9 +48,10 @@ void sequence_init();
  * @brief Registers a sequence to the module's state; an array of sequences.
  *
  * @param sequence - A sequence object to store in the module state.
- * @return sequence_status_t - error if object could not be registered.
+ * @return int32_t - If successfully registered returns the ID of the sequence. If error
+ * returns -1 (SEQUENCE_ERROR).
  */
-sequence_status_t sequence_register(sequence_t sequence);
+int32_t sequence_register(sequence_t sequence);
 
 /**
  * @brief Returns the current number of registered sequences 

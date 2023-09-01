@@ -6,6 +6,9 @@ led_t led = {-1};
 
 static uint32_t count = 0;
 static uint32_t timer_period = 0;
+
+
+
 void led_init(uint32_t _timer_period)
 {
     sequence_init();
@@ -87,10 +90,13 @@ led_status_t led_assign_sequence(uint32_t led_id, uint32_t sequence_id)
         led.sequence_id = sequence_id;
     }
 
+    led.sequence_idx = 0;
+    led.timer_count = 0;
+
     return LED_OK;
 }
 
-uint32_t led_get_sequence(uint32_t led_id)
+uint32_t led_get_sequence_id(uint32_t led_id)
 {
     if(led_id == led.id)
     {
@@ -115,7 +121,7 @@ bool led_exists(uint32_t led_id)
 
 void led_timer_step()
 {
-    uint32_t sequence_id = led_get_sequence(led.id);
+    uint32_t sequence_id = led_get_sequence_id(led.sequence_id);
     
     if (!sequence_exists(sequence_id))
     {
@@ -148,4 +154,29 @@ void led_timer_step()
     }
 
     return;
+}
+
+void led_turn_on(uint32_t led_id)
+{
+    // Set the sequence to "on sequence"
+    sequence_t sequence =
+    {
+        .length = 1,
+        .period = 1,
+        .sequence = {LED_ON}
+    };
+
+    led_assign_sequence(led_id, sequence_register(sequence)); 
+}
+
+void led_turn_off(uint32_t led_id)
+{
+    // Set the sequence to "on sequence"
+    sequence_t sequence =
+    {
+        .length = 1,
+        .period = 1,
+        .sequence = {LED_OFF}
+    };
+    led_assign_sequence(led_id, sequence_register(sequence)); 
 }

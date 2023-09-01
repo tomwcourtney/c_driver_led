@@ -132,7 +132,7 @@ led_status_t led_assign_sequence(uint32_t led_id, uint32_t sequence_id);
  * 
  * @return uint32_t - the ID of the assigned sequence. -1 if no sequence assigned.
 */
-uint32_t led_get_sequence(uint32_t led_id);
+uint32_t led_get_sequence_id(uint32_t led_id);
 
 /**
  * @brief Checks if a led is registered.
@@ -162,6 +162,22 @@ bool led_is_enabled(uint32_t led_id);
  * according to their sequence. Will update all LEDs.
  */
 void led_timer_step();
+
+/**
+ * @brief Turns on the specified LED
+ * 
+ * @param led_id - unique identifier of the target led.
+ */
+void led_turn_on(uint32_t led_id);
+
+/**
+ * @brief Turns off the specified LED
+ * 
+ * @param led_id - unique identifier of the target led.
+ */
+void led_turn_off(uint32_t led_id);
+
+
 
 
 /* INTERFACE 

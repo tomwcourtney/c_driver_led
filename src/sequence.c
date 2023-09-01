@@ -2,13 +2,13 @@
 #include <string.h>
 #include <stdio.h>
 
-sequence_t sequence = {-1};
+sequence_t sequence = {0};
 
 static uint32_t count = 0;
 
 void sequence_init()
 {
-    memset(&sequence, -1, sizeof(sequence_t));
+    memset(&sequence, 0, sizeof(sequence_t));
     count = 0;
     return;
 }
@@ -18,17 +18,17 @@ uint32_t sequence_get_count()
     return count;
 }
 
-sequence_status_t sequence_register(sequence_t _sequence)
+int32_t sequence_register(sequence_t _sequence)
 {
     sequence = _sequence;
     count++;
 
-    return SEQUENCE_OK;
+    return count;
 }
 
 bool sequence_exists(uint32_t sequence_id)
 {
-    if(sequence.id == sequence_id)
+    if(sequence_id < count)
     {
         return true;
     }

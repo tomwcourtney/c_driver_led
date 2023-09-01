@@ -1,7 +1,9 @@
 #include "led_spy.h"
 #include <stdbool.h>
 #include <stdio.h>
+
 led_state_t led_states[MAX_LEDS] = {0};
+
 
 void led_spy_init(void)
 {
