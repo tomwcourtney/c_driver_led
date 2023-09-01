@@ -146,7 +146,6 @@ TEST(LEDTest, turn_off_led)
     IS_LED_OFF(led_id);
 }
 
-
 // Disabled led's state cannot be chagned 
 TEST(LEDTest, disabled_led_state_cannot_be_changed)
 {
@@ -186,7 +185,6 @@ TEST(LEDTest, sequence_can_be_defined)
     
     ARE_N_SEQUENCES_REGISTERED(1);
 }
-
 
 // Sequences can be assigned to leds 
 TEST(LEDTest, sequences_can_be_assigned_to_leds)
@@ -322,6 +320,13 @@ TEST(LEDTest, timer_step_on_disabled_led_doesnt_touch_led_state)
     IS_LED_UNDEFINED(led_id);
 }
 
+// TEST(LEDTest, user_turn_on_led_interface_and_led_turns_on){
+
+// }
+
+// TEST(LEDTest, user_turn_on_led_interface_and_led_turns_on){
+    
+// }
 /********/
 /* MANY */
 /********/
