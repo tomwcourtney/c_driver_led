@@ -121,7 +121,8 @@ bool led_exists(uint32_t led_id)
 
 void led_timer_step()
 {
-    uint32_t sequence_id = led_get_sequence_id(led.sequence_id);
+    // uint32_t sequence_id = led_get_sequence_id(led.id);
+    uint32_t sequence_id = led.sequence_id;
     
     if (!sequence_exists(sequence_id))
     {

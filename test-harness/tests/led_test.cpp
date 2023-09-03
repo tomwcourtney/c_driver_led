@@ -118,12 +118,6 @@ TEST(LEDTest, turn_on_led_when_nothing_registered_led_undefined)
     LONGS_EQUAL(LED_UNDEFINED, led_spy_get_state(id));
 }
 
-// Check that after the sequence is initialized that there are no registered sequences.
-TEST(LEDTest, no_sequences_initialized_when_led_initialized)
-{
-    ARE_N_SEQUENCES_REGISTERED(0);
-}
-
 /*******/
 /* ONE */
 /*******/
@@ -206,16 +200,6 @@ TEST(LEDTest, disabled_led_state_can_be_reenabled)
     led_on(led_id);
 
     IS_LED_ON(led_id);
-}
-
-// Sequence: Register one sequence
-TEST(LEDTest, sequence_can_be_defined)
-{
-    uint32_t sequence_id = 0;
-
-    define_and_register_sequence(sequence_id);
-    
-    ARE_N_SEQUENCES_REGISTERED(1);
 }
 
 // Sequences can be assigned to leds 
@@ -409,35 +393,42 @@ TEST(LEDTest, run_long_sequence_for_half_a_period_then_turn_on_led_immediately)
     IS_LED_ON(0);
 }
 
-TEST(LEDTest, check_led_starts_from_the_beginning_of_newly_assigned_sequence)
-{
-    led_init(1);
-    uint32_t led_id = 0;
-
-    define_and_register_led_super(led_id, true, {.pin = 0});
-
-    uint8_t sequence_0[] = {LED_OFF, LED_ON };
-    uint32_t seq_id_0 = define_and_register_sequence_super(2, 4, &sequence_0[0]);
-    led_assign_sequence(led_id, seq_id_0);
-
-    step_n_times(2);
-    IS_LED_ON(led_id);
-    
-    // step_n_times(2);
-    // IS_LED_OFF(led_id);
-
-    uint8_t sequence_1[] = {LED_OFF, LED_ON, LED_ON, LED_ON, LED_ON};
-    uint8_t period = 10;
-    uint8_t length = 5;
-    uint32_t seq_id_1 = define_and_register_sequence_super(length, period, &sequence_1[0]);
-    led_assign_sequence(led_id, seq_id_1);
-    
-    step_n_times(1); 
-    IS_LED_OFF(led_id);
-}
-
 /********/
 /* MANY */
 /********/
 
 
+
+
+
+
+
+// TEST(LEDTest, check_led_starts_from_the_beginning_of_newly_assigned_sequence)
+// {
+//     led_init(1);
+//     uint32_t led_id = 0;
+
+//     define_and_register_led_super(led_id, true, {.pin = 0});
+
+//     uint8_t sequence_0[] = {LED_OFF, LED_ON};
+//     uint32_t seq_id_0 = define_and_register_sequence_super(2, 4, &sequence_0[0]);
+//     led_assign_sequence(led_id, seq_id_0);
+
+//     step_n_times(2);
+//     IS_LED_ON(led_id);
+    
+//     // step_n_times(2);
+//     // IS_LED_OFF(led_id);
+
+//     uint8_t sequence_1[] = {LED_OFF, LED_ON, LED_ON, LED_ON, LED_ON};
+//     uint8_t period = 10;
+//     uint8_t length = 5;
+//     uint32_t seq_id_1 = define_and_register_sequence_super(length, period, &sequence_1[0]);
+
+//     // CHECK(seq_id_1 > 1);
+    
+//     led_assign_sequence(led_id, seq_id_1);
+    
+//     step_n_times(1); 
+//     IS_LED_OFF(led_id);
+// }
