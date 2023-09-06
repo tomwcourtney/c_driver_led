@@ -89,9 +89,9 @@ void led_off(uint32_t id);
  * 
  * @param [IN] led_obj - a structure of type led_t that has the configurations for the LED
  * 
- * @return Error if failed to register.
+ * @return Error if failed to register, led ID otherwise
  */
-led_status_t led_register(led_t led_obj);
+uint32_t led_register(led_t led_obj);
 
 /**
  * @brief User defined function that turns led's on and off 

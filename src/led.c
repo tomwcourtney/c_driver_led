@@ -46,7 +46,7 @@ void led_off(uint32_t id)
     write(led.pinout, LED_OFF);
 }
 
-led_status_t led_register(led_t led_obj)
+uint32_t led_register(led_t led_obj)
 {
     if (led.id == led_obj.id)
     {
@@ -54,9 +54,8 @@ led_status_t led_register(led_t led_obj)
     }
 
     led = led_obj;
-    count++;
 
-    return LED_OK;
+    return count++;
 }
 
 void led_disable(uint32_t id)
