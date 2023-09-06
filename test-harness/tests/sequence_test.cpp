@@ -70,6 +70,20 @@ TEST(SEQTest, no_sequences_initialized_when_led_initialized)
     ARE_N_SEQUENCES_REGISTERED(0);
 }
 
+// make sure you can't get a sequence that doesn't exist
+TEST(SEQTest, get_sequence_for_nonexistent_sequence_returns_null)
+{
+    sequence_t * test_seq = sequence_get_from_id(2);
+
+    POINTERS_EQUAL(NULL, test_seq);
+}
+
+// sequence exists is false when sequence doesnt exist
+TEST(SEQTest, sequence_doesnt_exist_when_not_registered)
+{
+    CHECK_FALSE(sequence_exists(0));
+}
+
 /*******/
 /* ONE */
 /*******/
@@ -77,11 +91,10 @@ TEST(SEQTest, no_sequences_initialized_when_led_initialized)
 // Sequence: Register one sequence
 TEST(SEQTest, sequence_can_be_defined)
 {
-    uint32_t sequence_id = 0;
-
-    define_and_register_sequence(sequence_id);
+    uint32_t sequence_id = define_and_register_sequence(123);
     
     ARE_N_SEQUENCES_REGISTERED(1);
+    CHECK(sequence_exists(sequence_id));
 }
 
 TEST(SEQTest, check_that_registered_sequence_matches_what_we_defined)
@@ -106,21 +119,6 @@ TEST(SEQTest, check_that_registered_sequence_matches_what_we_defined)
 
    
 }
-
-// check we cannot overflow max sequence length 
-/*
-TEST(SEQTest, check_that_overflowing_sequence_buffer_does_not_cause_errors)
-{
-    // Define and register sequence
-    uint8_t length = 3;
-    uint16_t period = 1000;
-    uint8_t arr[] = {LED_OFF, LED_ON, LED_OFF};
-    uint32_t id = define_and_register_sequence_super(length, period, &arr[0]);
-}
-
-
-*/
-
 
 
 /********/
@@ -161,4 +159,19 @@ TEST(SEQTest, register_two_sequences)
     CHECK(arr_1[3] == seq_obj_1->sequence[3]);
 
     ARE_N_SEQUENCES_REGISTERED(2);
+}
+
+// make sure you can't register a sequence when sequence array is full
+TEST(SEQTest, register_max_sequences_plus_one_gives_error)
+{
+    uint8_t length = 3;
+    uint16_t period = 100;
+    uint8_t arr[] = {LED_OFF, LED_ON, LED_OFF};
+
+    for (int i = 0; i < MAX_SEQUENCES; i++)
+    {
+        define_and_register_sequence_super(length, period, arr);
+    }
+
+    CHECK(-1 == define_and_register_sequence_super(length, period, arr));
 }

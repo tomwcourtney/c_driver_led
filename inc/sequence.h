@@ -14,6 +14,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define MAX_SEQUENCES 64
+
 /**
  * @brief Struct that stores sequences 
  * @param
