@@ -24,7 +24,7 @@
  * @param timer_count   - Maintains the acrued time since the last sequence index increment
  */
 typedef struct {
-    uint32_t id;
+    int32_t id;
     bool enabled;
     pins_t pinout;
     uint32_t sequence_id;
@@ -75,14 +75,14 @@ uint32_t led_get_count();
  *
  * @param [IN] id - ID of LED to be turned on
 */
-void led_on(uint32_t id);
+void led_on(int32_t id);
 
 /**
  * @brief turn off selected LED
  *
  * @param [IN] id - ID of LED to be turned off
 */
-void led_off(uint32_t id);
+void led_off(int32_t id);
 
 /**
  * @brief Register an LED and its configurations with the LED module.
@@ -91,7 +91,7 @@ void led_off(uint32_t id);
  * 
  * @return Error if failed to register, led ID otherwise
  */
-uint32_t led_register(led_t led_obj);
+int32_t led_register(led_t led_obj);
 
 /**
  * @brief User defined function that turns led's on and off 
@@ -106,14 +106,14 @@ void user_write_pin(pins_t pins, led_state_t state);
  *
  * @param [IN] id - ID of LED to be disabled 
 */
-void led_disable(uint32_t id);
+void led_disable(int32_t id);
 
 /**
  * @brief enable selected LED
  *
  * @param [IN] id - ID of LED to be disabled 
 */
-void led_enable(uint32_t id);
+void led_enable(int32_t id);
 
 /**
  * @brief Assigns a sequence to an LED
@@ -123,7 +123,7 @@ void led_enable(uint32_t id);
  * 
  * @return led_status_t - err if the led or sequence doesn't exist.
 */
-led_status_t led_assign_sequence(uint32_t led_id, uint32_t sequence_id);
+led_status_t led_assign_sequence(int32_t led_id, int32_t sequence_id);
 
 /**
  * @brief Returns the current sequence assinged to that led, returns -1 if there is no sequence assigned 
@@ -132,14 +132,14 @@ led_status_t led_assign_sequence(uint32_t led_id, uint32_t sequence_id);
  * 
  * @return uint32_t - the ID of the assigned sequence. -1 if no sequence assigned.
 */
-uint32_t led_get_sequence_id(uint32_t led_id);
+int32_t led_get_sequence_id(int32_t led_id);
 
 /**
  * @brief Checks if a led is registered.
  * 
  * @return bool - Returns true if led exists.
  */
-bool led_exists(uint32_t led_id);
+bool led_exists(int32_t led_id);
 
 /**
  * @brief Turns on the sequence enable boolean for the selected LED.
@@ -147,7 +147,7 @@ bool led_exists(uint32_t led_id);
  * @param led_id - The led to start running the sequence of.
  * @return led_status_t - Err if the LED isn't registered.
  */
-led_status_t led_start_sequence(uint32_t led_id);
+led_status_t led_start_sequence(int32_t led_id);
 
 /**
  * @brief Turns on the sequence enable boolean for the selected LED.
@@ -155,7 +155,7 @@ led_status_t led_start_sequence(uint32_t led_id);
  * @param led_id - The led to start running the sequence of.
  * @return bool - returns the led 
  */
-bool led_is_enabled(uint32_t led_id);
+bool led_is_enabled(int32_t led_id);
 
 /**
  * @brief Is called whenever you want to update the state of your LEDs
@@ -168,14 +168,14 @@ void led_timer_step();
  * 
  * @param led_id - unique identifier of the target led.
  */
-void led_turn_on(uint32_t led_id);
+void led_turn_on(int32_t led_id);
 
 /**
  * @brief Turns off the specified LED
  * 
  * @param led_id - unique identifier of the target led.
  */
-void led_turn_off(uint32_t led_id);
+void led_turn_off(int32_t led_id);
 
 
 

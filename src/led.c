@@ -23,7 +23,7 @@ uint32_t led_get_count()
     return count;
 }
 
-void led_on(uint32_t id)
+void led_on(int32_t id)
 {
     if (count <= 0)
     {
@@ -36,7 +36,7 @@ void led_on(uint32_t id)
     }
 }
 
-void led_off(uint32_t id)
+void led_off(int32_t id)
 {
     if (count <= 0)
     {
@@ -46,8 +46,9 @@ void led_off(uint32_t id)
     write(led.pinout, LED_OFF);
 }
 
-uint32_t led_register(led_t led_obj)
+int32_t led_register(led_t led_obj)
 {
+    led_obj.id = count;
     if (led.id == led_obj.id)
     {
         return LED_ERR;
@@ -58,18 +59,18 @@ uint32_t led_register(led_t led_obj)
     return count++;
 }
 
-void led_disable(uint32_t id)
+void led_disable(int32_t id)
 {
     led.enabled = false; 
 }
 
-void led_enable(uint32_t id)
+void led_enable(int32_t id)
 {
     led.enabled = true; 
 }
 
 
-led_status_t led_assign_sequence(uint32_t led_id, uint32_t sequence_id)
+led_status_t led_assign_sequence(int32_t led_id, int32_t sequence_id)
 {
     // Check if LED exists
     if(!led_exists(led_id))
@@ -95,7 +96,7 @@ led_status_t led_assign_sequence(uint32_t led_id, uint32_t sequence_id)
     return LED_OK;
 }
 
-uint32_t led_get_sequence_id(uint32_t led_id)
+int32_t led_get_sequence_id(int32_t led_id)
 {
     if(led_id == led.id)
     {
@@ -104,12 +105,12 @@ uint32_t led_get_sequence_id(uint32_t led_id)
     return -1; 
 }
 
-led_status_t led_start_sequence(uint32_t led_id)
+led_status_t led_start_sequence(int32_t led_id)
 {
     return LED_OK;
 }
 
-bool led_exists(uint32_t led_id)
+bool led_exists(int32_t led_id)
 {
     if(led.id == led_id)
     {
@@ -156,7 +157,7 @@ void led_timer_step()
     return;
 }
 
-void led_turn_on(uint32_t led_id)
+void led_turn_on(int32_t led_id)
 {
     // Set the sequence to "on sequence"
     sequence_t sequence =
@@ -169,7 +170,7 @@ void led_turn_on(uint32_t led_id)
     led_assign_sequence(led_id, sequence_register(sequence)); 
 }
 
-void led_turn_off(uint32_t led_id)
+void led_turn_off(int32_t led_id)
 {
     // Set the sequence to "on sequence"
     sequence_t sequence =
