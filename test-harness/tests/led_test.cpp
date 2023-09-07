@@ -6,7 +6,6 @@ extern "C"
     #include "../spies/led_spy.h"
 }
 
-
 TEST_GROUP(LEDTest) 
 {
     void setup()
@@ -37,6 +36,7 @@ TEST_GROUP(LEDTest)
             .sequence_id = -1,
             .sequence_idx = 0,
             .timer_count = 0,
+            .sequence_initialized = false
         };
     
         // Register the LED with the module
@@ -52,6 +52,7 @@ TEST_GROUP(LEDTest)
             .sequence_id = -1,
             .sequence_idx = 0,
             .timer_count = 0,
+            .sequence_initialized = false
         };
         
         // Register the LED with the module
@@ -96,12 +97,11 @@ TEST_GROUP(LEDTest)
     {
         for (int i = 0; i < n; i++)
         {
-            led_timer_step();
+            led_update_state();
         }
     }
 
 };
-
 
 /********/
 /* ZERO */
@@ -302,7 +302,7 @@ TEST(LEDTest, turn_on_led_and_led_turns_on_when_time_steps){
     int32_t led_id = define_and_register_led();
     led_turn_on(led_id);
 
-    led_timer_step();
+    led_update_state();
     
     IS_LED_ON(led_id);
 }
@@ -312,7 +312,7 @@ TEST(LEDTest, user_turn_off_led_interface_and_led_turns_off){
     int32_t led_id = define_and_register_led();
     led_turn_off(led_id);
 
-    led_timer_step();
+    led_update_state();
 
     IS_LED_OFF(led_id);
 }
@@ -351,14 +351,32 @@ TEST(LEDTest, run_long_sequence_for_half_a_period_then_turn_on_led_immediately)
     IS_LED_ON(led_id);
 }
 
-
 // make sure getting sequence id for an led that hasn't been assigned a sequence returns -1
+TEST(LEDTest, check_the_sequenceid_of_an_led_that_is_not_assigned)
+{
+    // Register LED
+    uint32_t led_id = define_and_register_led_super(true, {.pin = 0});
+    
+    // Retrieve LED object
+    led_t * led = led_get_from_id(led_id);
+    
+    // Check sequenceid is -1
+    CHECK(led->sequence_id==-1);
+}
 
-// range check/led_exists check on led_disable/enable
+TEST(LEDTest, cannot_interact_with_led_that_is_out_of_bounds)
+{
+    // Init Led 
+    led_init(1);
+    uint32_t led_id_ofb = LEDS_MAX+10;
+    // // Try and turn onclwe
+    led_on(led_id_ofb);
+    led_off(led_id_ofb);
 
-// range check/led_exists check on led_turn_on/off
+    led_disable(led_id_ofb);
+    led_enable(led_id_ofb);
 
-// make sure passing negative IDs to functions that take an ID fails properly (led and sequence)
+}
 
 /********/
 /* MANY */
@@ -417,14 +435,13 @@ TEST(LEDTest, two_led_can_be_turned_on)
     led_turn_on(led_1_id);
 
     // Step to turn on
-    led_timer_step();
+    led_update_state();
 
     // Check they are both on 
     IS_LED_ON(led_0_id);
     IS_LED_ON(led_1_id);
     
 }
-
 
 TEST(LEDTest, two_led_can_be_turned_on_then_off)
 {
@@ -437,14 +454,14 @@ TEST(LEDTest, two_led_can_be_turned_on_then_off)
     led_turn_on(led_1_id);
 
     // Step to turn on
-    led_timer_step();
+    led_update_state();
 
     // Turn them both off 
     led_turn_off(led_0_id);
     led_turn_off(led_1_id);
 
     // Step to turn on
-    led_timer_step();
+    led_update_state();
 
     // Check they are both on 
     IS_LED_OFF(led_0_id);
@@ -460,7 +477,6 @@ TEST(LEDTest, get_led_that_doesnt_exist_returns_null)
     POINTERS_EQUAL(NULL, led);
 }
 
-
 TEST(LEDTest, check_registered_led_values_are_expected)
 {
     uint32_t led_id = define_and_register_led_super(true, {.pin = 0});
@@ -473,11 +489,6 @@ TEST(LEDTest, check_registered_led_values_are_expected)
     LONGS_EQUAL(0,led_obj->timer_count);
 }
 
-
-// Define an LED
-// Step
-// Define a second LED and check values match expected
-
 TEST(LEDTest, register_one_led_then_another)
 {
     led_init(1);
@@ -486,7 +497,7 @@ TEST(LEDTest, register_one_led_then_another)
 
     led_turn_on(led_0_id);
 
-    led_timer_step();
+    led_update_state();
     int32_t led_1_id = define_and_register_led_super(true, {.pin = 1});
 
     // Check Sequnce is expected
@@ -508,7 +519,7 @@ TEST(LEDTest, register_two_leds_turn_one_on)
 
     led_turn_on(led_0_id);
 
-    led_timer_step();
+    led_update_state();
 
     LONGS_EQUAL(1, led_get_sequence_id(led_0_id));
     LONGS_EQUAL(-1, led_get_sequence_id(led_1_id));
@@ -600,19 +611,104 @@ TEST(LEDTest, two_leds_with_different_sequences_follow_their_respective_sequence
     IS_LED_OFF(user_pin_1);
 }
 
+// make sure you can't register > LED_MAX leds
+TEST(LEDTest, cannot_register_too_many_leds)
+{
+    for (int i = 0; i < LEDS_MAX; i++)
+    {
+        define_and_register_led_super(true, {.pin = 0});
+    }
+
+    int32_t bad_led = define_and_register_led_super(true, {.pin = 0});
+
+    LONGS_EQUAL(-1, bad_led);
+}
+
+
+
+// Add tests into led_turn_on and off, currently every time you turn an led on it creates
+// a new sequence and assignes it. This will cause issues i think 
+TEST(LEDTest, each_call_to_led_turn_on_doesnt_register_new_sequence)
+{
+    int32_t led = define_and_register_led_super(true, {.pin = 0});
+
+    uint32_t sequence_count = sequence_get_count();
+
+    led_turn_on(led);
+
+    uint32_t new_sequence_count = sequence_get_count();
+
+    LONGS_EQUAL(sequence_count, new_sequence_count);
+}
+
+// bounds check on led_get_sequence_id - e.g. led_get_sequence_id(LED_MAX+1) should return -1, not memory error
+TEST(LEDTest, led_get_sequence_out_of_bounds_returns_error)
+{
+    int32_t bad_seq_id = led_get_sequence_id(LEDS_MAX);
+    
+    LONGS_EQUAL(-1, bad_seq_id);
+}
+
+
+
+
 /********/
 /* TODO */
 /********/
 
 // TODO make it so that after an LED timer step, the state is in the first position
+    // You could use a flag to check if it's the first time the LED has run a new sequence
+    // Comments have been left to implement this in
+        // led_assign_sequence - x
+        // led_t definition - x
+        // led_update_state - x
+        // Test helper functions - 
+TEST(LEDTest, sequence_idx_is_zero_after_first_step_when_sequence_length_and_sequence_period_are_the_same)
+{
+    led_init(1);
 
-// check pin independence
-// e.g. we currently check led ID with IS_LED_ON etc. but what is actually turned on
-// is pin. try changing pin assignments in above test and see fails
+    uint32_t user_pin = 0;
 
-// make sure you can't register > LED_MAX leds
+    int32_t led_id = define_and_register_led_super(true, {.pin = user_pin});
+
+    uint8_t sequence[] = {LED_OFF, LED_ON};
+    int32_t seq_id = define_and_register_sequence_super(2, 2, sequence);
+    led_assign_sequence(led_id, seq_id);
+
+    led_update_state();
+
+    IS_LED_OFF(user_pin);
+
+    led_update_state();
+    
+    IS_LED_ON(user_pin);
+}
 
 // TODO add offset field to sequence (esp. when registering it) so that you can use the same
 // sequence array but have it start at a different point
-// Add tests into led_turn_on and off, currently every time you turn an led on it creates
-// a new sequence and assignes it. This will cause issues i think 
+
+TEST(LEDTest, sequence_offset_can_be_assinged_using_led_offset_sequence_offset)
+{
+    // Register an LED 
+    led_init(1);
+    uint32_t pin = 0;
+    int32_t led_id = define_and_register_led_super(true, {.pin = pin});
+
+    // Assign a Sequence 
+    uint8_t sequence_0[] = {LED_OFF,LED_OFF, LED_ON, LED_ON};
+    int32_t seq_id = define_and_register_sequence_super(4, 4, sequence_0);
+    led_assign_sequence(led_id, seq_id);
+    
+    // Apply offset to the sequence 
+    led_offset_sequence(led_id, 2);
+
+    // // Check sequence offset
+    // led_t * led = led_get_from_id(led_id);
+
+    // CHECK(led->sequence_idx = 2);
+    
+    // Test the offset is functioning 
+    led_update_state();
+    IS_LED_ON(pin);
+
+}

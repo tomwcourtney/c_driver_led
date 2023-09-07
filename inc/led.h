@@ -23,15 +23,17 @@
  * @param sequence_id   - A pointer to a sequence object that defines the flash pattern of the led.
  * @param sequence_idx  - Maintains the position in the assigned sequence that the LED is up to
  * @param timer_count   - Maintains the acrued time since the last sequence index increment
+ * @param sequence_initialized - if true then the led has been set to the first state in the sequence.
  */
+
 typedef struct {
     bool enabled;
     pins_t pinout;
     int32_t sequence_id;
     uint8_t sequence_idx;
     uint32_t timer_count; 
-
-} led_t;
+    bool sequence_initialized;
+}led_t;
 
 /** 
  * @brief Definitions of enums for the on and off states of an LED.
@@ -50,15 +52,14 @@ typedef enum{
     LED_ERR
 }led_status_t;
 
-
-// typedef void (*write_pin)(pins_t, led_state_t);
-
+/* User defined hardware layer function that changes the LED state on the target device */
 void write(pins_t, led_state_t);
 
 /**
- * @brief The inialisation for the led driver, sets the 'write_fcn' that the driver uses to contorl the leds and the callback 
- * frequency that led_update will be called 
- * @param [IN] callback_frequency - How often the led_update function will be called 
+ * @brief The inialisation for the led driver. Initialization the state of all of the LEDs in the LED array and creates
+ * some special sequences like on and off.
+ * 
+ * @param [IN] callback_frequency - How often the led_update function will be called in milliseconds.
 */
 void led_init(uint32_t callback_frequency);
 
@@ -150,18 +151,10 @@ bool led_exists(int32_t led_id);
 led_status_t led_start_sequence(int32_t led_id);
 
 /**
- * @brief Turns on the sequence enable boolean for the selected LED.
- * 
- * @param led_id - The led to start running the sequence of.
- * @return bool - returns the led 
- */
-bool led_is_enabled(int32_t led_id);
-
-/**
  * @brief Is called whenever you want to update the state of your LEDs
  * according to their sequence. Will update all LEDs.
  */
-void led_timer_step();
+void led_update_state();
 
 /**
  * @brief Turns on the specified LED
@@ -186,17 +179,13 @@ void led_turn_off(int32_t led_id);
  */
  led_t * led_get_from_id(uint32_t led_id);
 
+/**
+ * @brief Allows the user offset patterns on the fly, works by chaing the current sequence index
+ * at the inputed value 
+ * @param led_id - unique identifier of the target led.
+ * @param seq_offset - amout to offset the sequence_idx in the led's structure
+ */
+void led_offset_sequence(uint32_t led_id, uint8_t seq_offset);
 
-/* INTERFACE 
-
-   led_start_sequence() //Starts the current sequence that the leds are configured for 
-   led_stop_sequence()  //Stops the current sequence that the leds are configured for 
-   
-   led_on(led_id)
-   led_off(led_id)
-   
-   led_all_on()
-   led_all_off()
-*/
 
 #endif
