@@ -29,7 +29,7 @@ int32_t sequence_register(sequence_t _sequence)
     {
         return -1;
     }
-    
+
     sequences[count] = _sequence;
 
     // we increment in the return statement because we want to return the value of count BEFORE incrementing

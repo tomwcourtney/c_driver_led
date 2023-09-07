@@ -75,7 +75,8 @@ TEST(LEDSpyTest, led_turned_off_then_on)
     LONGS_EQUAL(LED_ON, led_spy_get_state(0));
 }
 
-/* MANY
+/* 
+MANY
 */
 
 // LED spy initialised, two LEDs are undefined
@@ -84,7 +85,7 @@ TEST(LEDSpyTest, init_and_two_leds_undefined)
     LONGS_EQUAL(LED_UNDEFINED, led_spy_get_state(0));
     LONGS_EQUAL(LED_UNDEFINED, led_spy_get_state(1));
 }
-
+ 
 // turn on LED 0, LED 0 is on, led 1 is undefined
 TEST(LEDSpyTest, turn_on_led_0_led_0_on_led_1_undefined)
 {
@@ -105,6 +106,7 @@ TEST(LEDSpyTest, turn_on_led_0_turn_off_led_1_led_0_on_led_1_off)
 // don't allow setting state of LEDs outside of LED_MAX. if the state of a LED outside the range is queried, it should reutrn undefined
 TEST(LEDSpyTest, dont_allow_setting_invalid_leds)
 {
-    led_spy_set_state(MAX_LEDS, LED_ON);
-    LONGS_EQUAL(LED_UNDEFINED, led_spy_get_state(MAX_LEDS));
+    led_spy_set_state(LEDS_MAX, LED_ON);
+    LONGS_EQUAL(LED_UNDEFINED, led_spy_get_state(LEDS_MAX));
 }
+

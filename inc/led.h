@@ -13,10 +13,11 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define LEDS_MAX 64
+
 /**
  * @brief Holds state information for an led's configuration.
  * 
- * @param id            - A unique identifier for an led. 
  * @param enabled       - True if led is in use, false otherwise.
  * @param pinout        - A pinout object that defines connection of the led to the microcontroller.
  * @param sequence_id   - A pointer to a sequence object that defines the flash pattern of the led.
@@ -24,10 +25,9 @@
  * @param timer_count   - Maintains the acrued time since the last sequence index increment
  */
 typedef struct {
-    int32_t id;
     bool enabled;
     pins_t pinout;
-    uint32_t sequence_id;
+    int32_t sequence_id;
     uint8_t sequence_idx;
     uint32_t timer_count; 
 
@@ -177,7 +177,14 @@ void led_turn_on(int32_t led_id);
  */
 void led_turn_off(int32_t led_id);
 
-
+/**
+ * @brief Returns the led if registed based off the inputted id
+ * 
+ * @param sequence_id - index of the led in the list of sequences.
+ * 
+ * @return led_t * - Returns pointer to object found. Else return NULL.
+ */
+ led_t * led_get_from_id(uint32_t led_id);
 
 
 /* INTERFACE 

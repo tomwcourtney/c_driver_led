@@ -9,8 +9,6 @@
 
 #define DRIVER_TEST
 
-#define MAX_LEDS 64
-
 #define IS_LED_ON(id)\
         LONGS_EQUAL(LED_ON, led_spy_get_state(id));
 
@@ -24,8 +22,8 @@
 
 void led_spy_init(void);
 
-led_state_t led_spy_get_state(uint32_t id);
-led_state_t led_spy_set_state(uint32_t id, led_state_t);
+led_state_t led_spy_get_state(int32_t id);
+led_state_t led_spy_set_state(int32_t id, led_state_t);
 
 
 #endif
