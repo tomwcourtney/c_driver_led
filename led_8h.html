@@ -75,6 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">led.h File Reference</div></div>
@@ -95,6 +96,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structled__t.html">led_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds state information for an led's configuration.  <a href="structled__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ad2134d836ee72e40a6a5dd58735a3129" id="r_ad2134d836ee72e40a6a5dd58735a3129"><td class="memItemLeft" align="right" valign="top"><a id="ad2134d836ee72e40a6a5dd58735a3129" name="ad2134d836ee72e40a6a5dd58735a3129"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEDS_MAX</b>&#160;&#160;&#160;64</td></tr>
+<tr class="separator:ad2134d836ee72e40a6a5dd58735a3129"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -121,55 +128,58 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (pins_t, <a
 <tr class="memitem:af456aaf486c661c605662966e1ca2585" id="r_af456aaf486c661c605662966e1ca2585"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#af456aaf486c661c605662966e1ca2585">led_get_count</a> ()</td></tr>
 <tr class="memdesc:af456aaf486c661c605662966e1ca2585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of registered LEDs in the led module.  <br /></td></tr>
 <tr class="separator:af456aaf486c661c605662966e1ca2585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a470542bff03a5b24b0ee42932c648588" id="r_a470542bff03a5b24b0ee42932c648588"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a470542bff03a5b24b0ee42932c648588">led_on</a> (uint32_t id)</td></tr>
-<tr class="memdesc:a470542bff03a5b24b0ee42932c648588"><td class="mdescLeft">&#160;</td><td class="mdescRight">turn on selected LED  <br /></td></tr>
-<tr class="separator:a470542bff03a5b24b0ee42932c648588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64374ea0748f0fd626ac822a1f6a4a2d" id="r_a64374ea0748f0fd626ac822a1f6a4a2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a64374ea0748f0fd626ac822a1f6a4a2d">led_off</a> (uint32_t id)</td></tr>
-<tr class="memdesc:a64374ea0748f0fd626ac822a1f6a4a2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">turn off selected LED  <br /></td></tr>
-<tr class="separator:a64374ea0748f0fd626ac822a1f6a4a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e81abe102868708eaab8321ff438e17" id="r_a2e81abe102868708eaab8321ff438e17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a2e81abe102868708eaab8321ff438e17">led_register</a> (<a class="el" href="structled__t.html">led_t</a> led_obj)</td></tr>
-<tr class="memdesc:a2e81abe102868708eaab8321ff438e17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an LED and its configurations with the LED module.  <br /></td></tr>
-<tr class="separator:a2e81abe102868708eaab8321ff438e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2987ac4b1391f4076e6c387a224148d1" id="r_a2987ac4b1391f4076e6c387a224148d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a2987ac4b1391f4076e6c387a224148d1">led_on</a> (int32_t id)</td></tr>
+<tr class="memdesc:a2987ac4b1391f4076e6c387a224148d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">turn on selected LED  <br /></td></tr>
+<tr class="separator:a2987ac4b1391f4076e6c387a224148d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da22daf58ff12a7b2ab602ef92abb6f" id="r_a3da22daf58ff12a7b2ab602ef92abb6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a3da22daf58ff12a7b2ab602ef92abb6f">led_off</a> (int32_t id)</td></tr>
+<tr class="memdesc:a3da22daf58ff12a7b2ab602ef92abb6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">turn off selected LED  <br /></td></tr>
+<tr class="separator:a3da22daf58ff12a7b2ab602ef92abb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbde99d730b3fe0a042e6db4eb16a15" id="r_a1cbde99d730b3fe0a042e6db4eb16a15"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a1cbde99d730b3fe0a042e6db4eb16a15">led_register</a> (<a class="el" href="structled__t.html">led_t</a> led_obj)</td></tr>
+<tr class="memdesc:a1cbde99d730b3fe0a042e6db4eb16a15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an LED and its configurations with the LED module.  <br /></td></tr>
+<tr class="separator:a1cbde99d730b3fe0a042e6db4eb16a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c003b778ea55286c8cff27fe5d8c5cb" id="r_a8c003b778ea55286c8cff27fe5d8c5cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a8c003b778ea55286c8cff27fe5d8c5cb">user_write_pin</a> (pins_t pins, <a class="el" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a> state)</td></tr>
 <tr class="memdesc:a8c003b778ea55286c8cff27fe5d8c5cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">User defined function that turns led's on and off.  <br /></td></tr>
 <tr class="separator:a8c003b778ea55286c8cff27fe5d8c5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1afda74334b098738f86521f5762b47" id="r_ae1afda74334b098738f86521f5762b47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#ae1afda74334b098738f86521f5762b47">led_disable</a> (uint32_t id)</td></tr>
-<tr class="memdesc:ae1afda74334b098738f86521f5762b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable selected LED  <br /></td></tr>
-<tr class="separator:ae1afda74334b098738f86521f5762b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad77615d0e381304bad2f6b6c77147187" id="r_ad77615d0e381304bad2f6b6c77147187"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#ad77615d0e381304bad2f6b6c77147187">led_enable</a> (uint32_t id)</td></tr>
-<tr class="memdesc:ad77615d0e381304bad2f6b6c77147187"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable selected LED  <br /></td></tr>
-<tr class="separator:ad77615d0e381304bad2f6b6c77147187"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b90c98add90e3f3c4258886c68f7c12" id="r_a6b90c98add90e3f3c4258886c68f7c12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a6b90c98add90e3f3c4258886c68f7c12">led_assign_sequence</a> (uint32_t led_id, uint32_t sequence_id)</td></tr>
-<tr class="memdesc:a6b90c98add90e3f3c4258886c68f7c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a sequence to an LED.  <br /></td></tr>
-<tr class="separator:a6b90c98add90e3f3c4258886c68f7c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad281ddcf765b1e81b6b8c2b63c545879" id="r_ad281ddcf765b1e81b6b8c2b63c545879"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#ad281ddcf765b1e81b6b8c2b63c545879">led_get_sequence_id</a> (uint32_t led_id)</td></tr>
-<tr class="memdesc:ad281ddcf765b1e81b6b8c2b63c545879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current sequence assinged to that led, returns -1 if there is no sequence assigned.  <br /></td></tr>
-<tr class="separator:ad281ddcf765b1e81b6b8c2b63c545879"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa925cb5f002db0b4a0b5c818733965fe" id="r_aa925cb5f002db0b4a0b5c818733965fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#aa925cb5f002db0b4a0b5c818733965fe">led_exists</a> (uint32_t led_id)</td></tr>
-<tr class="memdesc:aa925cb5f002db0b4a0b5c818733965fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a led is registered.  <br /></td></tr>
-<tr class="separator:aa925cb5f002db0b4a0b5c818733965fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94be1ed73cc3cedafe2cb26ea007e812" id="r_a94be1ed73cc3cedafe2cb26ea007e812"><td class="memItemLeft" align="right" valign="top"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a94be1ed73cc3cedafe2cb26ea007e812">led_start_sequence</a> (uint32_t led_id)</td></tr>
-<tr class="memdesc:a94be1ed73cc3cedafe2cb26ea007e812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the sequence enable boolean for the selected LED.  <br /></td></tr>
-<tr class="separator:a94be1ed73cc3cedafe2cb26ea007e812"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70aa87359554b4c89d3ea646b148d9ff" id="r_a70aa87359554b4c89d3ea646b148d9ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a70aa87359554b4c89d3ea646b148d9ff">led_is_enabled</a> (uint32_t led_id)</td></tr>
-<tr class="memdesc:a70aa87359554b4c89d3ea646b148d9ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the sequence enable boolean for the selected LED.  <br /></td></tr>
-<tr class="separator:a70aa87359554b4c89d3ea646b148d9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58d994e36b92421566586124d60495c1" id="r_a58d994e36b92421566586124d60495c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a58d994e36b92421566586124d60495c1">led_disable</a> (int32_t id)</td></tr>
+<tr class="memdesc:a58d994e36b92421566586124d60495c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable selected LED  <br /></td></tr>
+<tr class="separator:a58d994e36b92421566586124d60495c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3300378517672fc0d7bedefb69c7aecd" id="r_a3300378517672fc0d7bedefb69c7aecd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a3300378517672fc0d7bedefb69c7aecd">led_enable</a> (int32_t id)</td></tr>
+<tr class="memdesc:a3300378517672fc0d7bedefb69c7aecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable selected LED  <br /></td></tr>
+<tr class="separator:a3300378517672fc0d7bedefb69c7aecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588928123a9cf832103de96c0ad19c02" id="r_a588928123a9cf832103de96c0ad19c02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a588928123a9cf832103de96c0ad19c02">led_assign_sequence</a> (int32_t led_id, int32_t sequence_id)</td></tr>
+<tr class="memdesc:a588928123a9cf832103de96c0ad19c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a sequence to an LED.  <br /></td></tr>
+<tr class="separator:a588928123a9cf832103de96c0ad19c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae7b6b6a2e95ad600933fffd41bc2d24" id="r_aae7b6b6a2e95ad600933fffd41bc2d24"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#aae7b6b6a2e95ad600933fffd41bc2d24">led_get_sequence_id</a> (int32_t led_id)</td></tr>
+<tr class="memdesc:aae7b6b6a2e95ad600933fffd41bc2d24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current sequence assinged to that led, returns -1 if there is no sequence assigned.  <br /></td></tr>
+<tr class="separator:aae7b6b6a2e95ad600933fffd41bc2d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe48918d79650d43d8395de52724f773" id="r_afe48918d79650d43d8395de52724f773"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#afe48918d79650d43d8395de52724f773">led_exists</a> (int32_t led_id)</td></tr>
+<tr class="memdesc:afe48918d79650d43d8395de52724f773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a led is registered.  <br /></td></tr>
+<tr class="separator:afe48918d79650d43d8395de52724f773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83efb1dd3d750cf02d599dd6551ec580" id="r_a83efb1dd3d750cf02d599dd6551ec580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a83efb1dd3d750cf02d599dd6551ec580">led_start_sequence</a> (int32_t led_id)</td></tr>
+<tr class="memdesc:a83efb1dd3d750cf02d599dd6551ec580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the sequence enable boolean for the selected LED.  <br /></td></tr>
+<tr class="separator:a83efb1dd3d750cf02d599dd6551ec580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3372bb824abf247764d880ee6c6d3acf" id="r_a3372bb824abf247764d880ee6c6d3acf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a3372bb824abf247764d880ee6c6d3acf">led_is_enabled</a> (int32_t led_id)</td></tr>
+<tr class="memdesc:a3372bb824abf247764d880ee6c6d3acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the sequence enable boolean for the selected LED.  <br /></td></tr>
+<tr class="separator:a3372bb824abf247764d880ee6c6d3acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a488f8258ca53df121124d540e09229a7" id="r_a488f8258ca53df121124d540e09229a7"><td class="memItemLeft" align="right" valign="top"><a id="a488f8258ca53df121124d540e09229a7" name="a488f8258ca53df121124d540e09229a7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()</td></tr>
 <tr class="memdesc:a488f8258ca53df121124d540e09229a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called whenever you want to update the state of your LEDs according to their sequence. Will update all LEDs. <br /></td></tr>
 <tr class="separator:a488f8258ca53df121124d540e09229a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a566b6c2f5ef059c430de93a3ba37472b" id="r_a566b6c2f5ef059c430de93a3ba37472b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a566b6c2f5ef059c430de93a3ba37472b">led_turn_on</a> (uint32_t led_id)</td></tr>
-<tr class="memdesc:a566b6c2f5ef059c430de93a3ba37472b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the specified LED.  <br /></td></tr>
-<tr class="separator:a566b6c2f5ef059c430de93a3ba37472b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71ddcb18252ff85ae0553f0ac73c5c20" id="r_a71ddcb18252ff85ae0553f0ac73c5c20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a71ddcb18252ff85ae0553f0ac73c5c20">led_turn_off</a> (uint32_t led_id)</td></tr>
-<tr class="memdesc:a71ddcb18252ff85ae0553f0ac73c5c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns off the specified LED.  <br /></td></tr>
-<tr class="separator:a71ddcb18252ff85ae0553f0ac73c5c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec5c595e6eda725b02ea14fbcfadba37" id="r_aec5c595e6eda725b02ea14fbcfadba37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#aec5c595e6eda725b02ea14fbcfadba37">led_turn_on</a> (int32_t led_id)</td></tr>
+<tr class="memdesc:aec5c595e6eda725b02ea14fbcfadba37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the specified LED.  <br /></td></tr>
+<tr class="separator:aec5c595e6eda725b02ea14fbcfadba37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a536150fa12d88e5e141f66b7144bc3e7" id="r_a536150fa12d88e5e141f66b7144bc3e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a536150fa12d88e5e141f66b7144bc3e7">led_turn_off</a> (int32_t led_id)</td></tr>
+<tr class="memdesc:a536150fa12d88e5e141f66b7144bc3e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns off the specified LED.  <br /></td></tr>
+<tr class="separator:a536150fa12d88e5e141f66b7144bc3e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa50ef204a55d812ce2da542276c3de" id="r_a9aa50ef204a55d812ce2da542276c3de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structled__t.html">led_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a9aa50ef204a55d812ce2da542276c3de">led_get_from_id</a> (uint32_t led_id)</td></tr>
+<tr class="memdesc:a9aa50ef204a55d812ce2da542276c3de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the led if registed based off the inputted id.  <br /></td></tr>
+<tr class="separator:a9aa50ef204a55d812ce2da542276c3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a6b90c98add90e3f3c4258886c68f7c12" name="a6b90c98add90e3f3c4258886c68f7c12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b90c98add90e3f3c4258886c68f7c12">&#9670;&#160;</a></span>led_assign_sequence()</h2>
+<a id="a588928123a9cf832103de96c0ad19c02" name="a588928123a9cf832103de96c0ad19c02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a588928123a9cf832103de96c0ad19c02">&#9670;&#160;</a></span>led_assign_sequence()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,13 +187,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> led_assign_sequence </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>led_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>sequence_id</em>&#160;</td>
         </tr>
         <tr>
@@ -206,8 +216,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="ae1afda74334b098738f86521f5762b47" name="ae1afda74334b098738f86521f5762b47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1afda74334b098738f86521f5762b47">&#9670;&#160;</a></span>led_disable()</h2>
+<a id="a58d994e36b92421566586124d60495c1" name="a58d994e36b92421566586124d60495c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58d994e36b92421566586124d60495c1">&#9670;&#160;</a></span>led_disable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,7 +225,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname">void led_disable </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -232,8 +242,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="ad77615d0e381304bad2f6b6c77147187" name="ad77615d0e381304bad2f6b6c77147187"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad77615d0e381304bad2f6b6c77147187">&#9670;&#160;</a></span>led_enable()</h2>
+<a id="a3300378517672fc0d7bedefb69c7aecd" name="a3300378517672fc0d7bedefb69c7aecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3300378517672fc0d7bedefb69c7aecd">&#9670;&#160;</a></span>led_enable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +251,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname">void led_enable </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -258,8 +268,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="aa925cb5f002db0b4a0b5c818733965fe" name="aa925cb5f002db0b4a0b5c818733965fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa925cb5f002db0b4a0b5c818733965fe">&#9670;&#160;</a></span>led_exists()</h2>
+<a id="afe48918d79650d43d8395de52724f773" name="afe48918d79650d43d8395de52724f773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe48918d79650d43d8395de52724f773">&#9670;&#160;</a></span>led_exists()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -267,7 +277,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname">bool led_exists </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>led_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -299,16 +309,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="ad281ddcf765b1e81b6b8c2b63c545879" name="ad281ddcf765b1e81b6b8c2b63c545879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad281ddcf765b1e81b6b8c2b63c545879">&#9670;&#160;</a></span>led_get_sequence_id()</h2>
+<a id="a9aa50ef204a55d812ce2da542276c3de" name="a9aa50ef204a55d812ce2da542276c3de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aa50ef204a55d812ce2da542276c3de">&#9670;&#160;</a></span>led_get_from_id()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t led_get_sequence_id </td>
+          <td class="memname"><a class="el" href="structled__t.html">led_t</a> * led_get_from_id </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>led_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the led if registed based off the inputted id. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sequence_id</td><td>- index of the led in the list of sequences.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structled__t.html" title="Holds state information for an led&#39;s configuration.">led_t</a> * - Returns pointer to object found. Else return NULL. </dd></dl>
+
+</div>
+</div>
+<a id="aae7b6b6a2e95ad600933fffd41bc2d24" name="aae7b6b6a2e95ad600933fffd41bc2d24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae7b6b6a2e95ad600933fffd41bc2d24">&#9670;&#160;</a></span>led_get_sequence_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t led_get_sequence_id </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>led_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -352,8 +389,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="a70aa87359554b4c89d3ea646b148d9ff" name="a70aa87359554b4c89d3ea646b148d9ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70aa87359554b4c89d3ea646b148d9ff">&#9670;&#160;</a></span>led_is_enabled()</h2>
+<a id="a3372bb824abf247764d880ee6c6d3acf" name="a3372bb824abf247764d880ee6c6d3acf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3372bb824abf247764d880ee6c6d3acf">&#9670;&#160;</a></span>led_is_enabled()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -361,7 +398,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname">bool led_is_enabled </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>led_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -379,8 +416,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="a64374ea0748f0fd626ac822a1f6a4a2d" name="a64374ea0748f0fd626ac822a1f6a4a2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64374ea0748f0fd626ac822a1f6a4a2d">&#9670;&#160;</a></span>led_off()</h2>
+<a id="a3da22daf58ff12a7b2ab602ef92abb6f" name="a3da22daf58ff12a7b2ab602ef92abb6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da22daf58ff12a7b2ab602ef92abb6f">&#9670;&#160;</a></span>led_off()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -388,7 +425,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname">void led_off </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -405,8 +442,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="a470542bff03a5b24b0ee42932c648588" name="a470542bff03a5b24b0ee42932c648588"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a470542bff03a5b24b0ee42932c648588">&#9670;&#160;</a></span>led_on()</h2>
+<a id="a2987ac4b1391f4076e6c387a224148d1" name="a2987ac4b1391f4076e6c387a224148d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2987ac4b1391f4076e6c387a224148d1">&#9670;&#160;</a></span>led_on()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -414,7 +451,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname">void led_on </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -431,14 +468,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="a2e81abe102868708eaab8321ff438e17" name="a2e81abe102868708eaab8321ff438e17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e81abe102868708eaab8321ff438e17">&#9670;&#160;</a></span>led_register()</h2>
+<a id="a1cbde99d730b3fe0a042e6db4eb16a15" name="a1cbde99d730b3fe0a042e6db4eb16a15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cbde99d730b3fe0a042e6db4eb16a15">&#9670;&#160;</a></span>led_register()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> led_register </td>
+          <td class="memname">int32_t led_register </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structled__t.html">led_t</a>&#160;</td>
           <td class="paramname"><em>led_obj</em></td><td>)</td>
@@ -454,12 +491,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Error if failed to register. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Error if failed to register, led ID otherwise </dd></dl>
 
 </div>
 </div>
-<a id="a94be1ed73cc3cedafe2cb26ea007e812" name="a94be1ed73cc3cedafe2cb26ea007e812"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94be1ed73cc3cedafe2cb26ea007e812">&#9670;&#160;</a></span>led_start_sequence()</h2>
+<a id="a83efb1dd3d750cf02d599dd6551ec580" name="a83efb1dd3d750cf02d599dd6551ec580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83efb1dd3d750cf02d599dd6551ec580">&#9670;&#160;</a></span>led_start_sequence()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -467,7 +504,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> led_start_sequence </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>led_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -485,8 +522,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="a71ddcb18252ff85ae0553f0ac73c5c20" name="a71ddcb18252ff85ae0553f0ac73c5c20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71ddcb18252ff85ae0553f0ac73c5c20">&#9670;&#160;</a></span>led_turn_off()</h2>
+<a id="a536150fa12d88e5e141f66b7144bc3e7" name="a536150fa12d88e5e141f66b7144bc3e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a536150fa12d88e5e141f66b7144bc3e7">&#9670;&#160;</a></span>led_turn_off()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -494,7 +531,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname">void led_turn_off </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>led_id</em></td><td>)</td>
           <td></td>
         </tr>
@@ -511,8 +548,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 
 </div>
 </div>
-<a id="a566b6c2f5ef059c430de93a3ba37472b" name="a566b6c2f5ef059c430de93a3ba37472b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a566b6c2f5ef059c430de93a3ba37472b">&#9670;&#160;</a></span>led_turn_on()</h2>
+<a id="aec5c595e6eda725b02ea14fbcfadba37" name="aec5c595e6eda725b02ea14fbcfadba37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec5c595e6eda725b02ea14fbcfadba37">&#9670;&#160;</a></span>led_turn_on()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -520,7 +557,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
         <tr>
           <td class="memname">void led_turn_on </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>led_id</em></td><td>)</td>
           <td></td>
         </tr>
