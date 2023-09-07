@@ -98,6 +98,9 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>sequence_idx</b></
 <tr class="memitem:a42f616ea66b0f8822178699d74236dda" id="r_a42f616ea66b0f8822178699d74236dda"><td class="memItemLeft" align="right" valign="top"><a id="a42f616ea66b0f8822178699d74236dda" name="a42f616ea66b0f8822178699d74236dda"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>timer_count</b></td></tr>
 <tr class="separator:a42f616ea66b0f8822178699d74236dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af713564547354c0447d0c9ce63d3e392" id="r_af713564547354c0447d0c9ce63d3e392"><td class="memItemLeft" align="right" valign="top"><a id="af713564547354c0447d0c9ce63d3e392" name="af713564547354c0447d0c9ce63d3e392"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>sequence_initialized</b></td></tr>
+<tr class="separator:af713564547354c0447d0c9ce63d3e392"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Holds state information for an led's configuration. </p>
@@ -108,6 +111,7 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>timer_count</b></
     <tr><td class="paramname">sequence_id</td><td>- A pointer to a sequence object that defines the flash pattern of the led. </td></tr>
     <tr><td class="paramname">sequence_idx</td><td>- Maintains the position in the assigned sequence that the LED is up to </td></tr>
     <tr><td class="paramname">timer_count</td><td>- Maintains the acrued time since the last sequence index increment </td></tr>
+    <tr><td class="paramname">sequence_initialized</td><td>- if true then the led has been set to the first state in the sequence. </td></tr>
   </table>
   </dd>
 </dl>

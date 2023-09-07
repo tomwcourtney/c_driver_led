@@ -93,106 +93,92 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define LEDS_MAX 64</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structled__t.html">   27</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">bool</span> enabled;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    pins_t pinout;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    int32_t sequence_id;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    uint8_t sequence_idx;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    uint32_t timer_count; </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>} <a class="code hl_struct" href="structled__t.html">led_t</a>;</div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structled__t.html">   29</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">bool</span> enabled;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    pins_t pinout;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    int32_t sequence_id;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    uint8_t sequence_idx;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uint32_t timer_count; </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">bool</span> sequence_initialized;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}<a class="code hl_struct" href="structled__t.html">led_t</a>;</div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">   39</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    LED_UNDEFINED,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    LED_ON,</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    LED_OFF</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}<a class="code hl_enumeration" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">   41</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span>{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    LED_UNDEFINED,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    LED_ON,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    LED_OFF</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}<a class="code hl_enumeration" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a>;</div>
 </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="foldopen" id="foldopen00048" data-start="{" data-end="};">
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">   48</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span>{</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    LED_OK,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    LED_ERR</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}<a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="};">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">   50</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    LED_OK,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    LED_ERR</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}<a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>;</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// typedef void (*write_pin)(pins_t, led_state_t);</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">/* User defined hardware layer function that changes the LED state on the target device */</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">void</span> write(pins_t, <a class="code hl_enumeration" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a>);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="led_8h.html#a73c2588e019a49106d5efe9148594f00">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a73c2588e019a49106d5efe9148594f00">led_init</a>(uint32_t callback_frequency);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="led_8h.html#af456aaf486c661c605662966e1ca2585">   71</a></span>uint32_t <a class="code hl_function" href="led_8h.html#af456aaf486c661c605662966e1ca2585">led_get_count</a>();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="led_8h.html#a2987ac4b1391f4076e6c387a224148d1">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a2987ac4b1391f4076e6c387a224148d1">led_on</a>(int32_t <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="led_8h.html#a3da22daf58ff12a7b2ab602ef92abb6f">   85</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a3da22daf58ff12a7b2ab602ef92abb6f">led_off</a>(int32_t <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="led_8h.html#a1cbde99d730b3fe0a042e6db4eb16a15">   94</a></span>int32_t <a class="code hl_function" href="led_8h.html#a1cbde99d730b3fe0a042e6db4eb16a15">led_register</a>(<a class="code hl_struct" href="structled__t.html">led_t</a> led_obj);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="led_8h.html#a8c003b778ea55286c8cff27fe5d8c5cb">  102</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a8c003b778ea55286c8cff27fe5d8c5cb">user_write_pin</a>(pins_t pins, <a class="code hl_enumeration" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a> state);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="led_8h.html#a58d994e36b92421566586124d60495c1">  109</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a58d994e36b92421566586124d60495c1">led_disable</a>(int32_t <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="led_8h.html#a3300378517672fc0d7bedefb69c7aecd">  116</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a3300378517672fc0d7bedefb69c7aecd">led_enable</a>(int32_t <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="led_8h.html#a588928123a9cf832103de96c0ad19c02">  126</a></span><a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> <a class="code hl_function" href="led_8h.html#a588928123a9cf832103de96c0ad19c02">led_assign_sequence</a>(int32_t led_id, int32_t sequence_id);</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="led_8h.html#aae7b6b6a2e95ad600933fffd41bc2d24">  135</a></span>int32_t <a class="code hl_function" href="led_8h.html#aae7b6b6a2e95ad600933fffd41bc2d24">led_get_sequence_id</a>(int32_t led_id);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="led_8h.html#afe48918d79650d43d8395de52724f773">  142</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="led_8h.html#afe48918d79650d43d8395de52724f773">led_exists</a>(int32_t led_id);</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="led_8h.html#a83efb1dd3d750cf02d599dd6551ec580">  150</a></span><a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> <a class="code hl_function" href="led_8h.html#a83efb1dd3d750cf02d599dd6551ec580">led_start_sequence</a>(int32_t led_id);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="led_8h.html#a3372bb824abf247764d880ee6c6d3acf">  158</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="led_8h.html#a3372bb824abf247764d880ee6c6d3acf">led_is_enabled</a>(int32_t led_id);</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="led_8h.html#a488f8258ca53df121124d540e09229a7">  164</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a488f8258ca53df121124d540e09229a7">led_timer_step</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="led_8h.html#a73c2588e019a49106d5efe9148594f00">   64</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a73c2588e019a49106d5efe9148594f00">led_init</a>(uint32_t callback_frequency);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="led_8h.html#af456aaf486c661c605662966e1ca2585">   72</a></span>uint32_t <a class="code hl_function" href="led_8h.html#af456aaf486c661c605662966e1ca2585">led_get_count</a>();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="led_8h.html#a2987ac4b1391f4076e6c387a224148d1">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a2987ac4b1391f4076e6c387a224148d1">led_on</a>(int32_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="led_8h.html#a3da22daf58ff12a7b2ab602ef92abb6f">   86</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a3da22daf58ff12a7b2ab602ef92abb6f">led_off</a>(int32_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="led_8h.html#a1cbde99d730b3fe0a042e6db4eb16a15">   95</a></span>int32_t <a class="code hl_function" href="led_8h.html#a1cbde99d730b3fe0a042e6db4eb16a15">led_register</a>(<a class="code hl_struct" href="structled__t.html">led_t</a> led_obj);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="led_8h.html#a8c003b778ea55286c8cff27fe5d8c5cb">  103</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a8c003b778ea55286c8cff27fe5d8c5cb">user_write_pin</a>(pins_t pins, <a class="code hl_enumeration" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a> state);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="led_8h.html#a58d994e36b92421566586124d60495c1">  110</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a58d994e36b92421566586124d60495c1">led_disable</a>(int32_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="led_8h.html#a3300378517672fc0d7bedefb69c7aecd">  117</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a3300378517672fc0d7bedefb69c7aecd">led_enable</a>(int32_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="led_8h.html#a588928123a9cf832103de96c0ad19c02">  127</a></span><a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> <a class="code hl_function" href="led_8h.html#a588928123a9cf832103de96c0ad19c02">led_assign_sequence</a>(int32_t led_id, int32_t sequence_id);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="led_8h.html#aae7b6b6a2e95ad600933fffd41bc2d24">  136</a></span>int32_t <a class="code hl_function" href="led_8h.html#aae7b6b6a2e95ad600933fffd41bc2d24">led_get_sequence_id</a>(int32_t led_id);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="led_8h.html#afe48918d79650d43d8395de52724f773">  143</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="led_8h.html#afe48918d79650d43d8395de52724f773">led_exists</a>(int32_t led_id);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="led_8h.html#a83efb1dd3d750cf02d599dd6551ec580">  151</a></span><a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> <a class="code hl_function" href="led_8h.html#a83efb1dd3d750cf02d599dd6551ec580">led_start_sequence</a>(int32_t led_id);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="led_8h.html#aca9e700c5385b18d371063d95f588b20">  157</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#aca9e700c5385b18d371063d95f588b20">led_update_state</a>();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="led_8h.html#aec5c595e6eda725b02ea14fbcfadba37">  164</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#aec5c595e6eda725b02ea14fbcfadba37">led_turn_on</a>(int32_t led_id);</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="led_8h.html#aec5c595e6eda725b02ea14fbcfadba37">  171</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#aec5c595e6eda725b02ea14fbcfadba37">led_turn_on</a>(int32_t led_id);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="led_8h.html#a536150fa12d88e5e141f66b7144bc3e7">  171</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a536150fa12d88e5e141f66b7144bc3e7">led_turn_off</a>(int32_t led_id);</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="led_8h.html#a536150fa12d88e5e141f66b7144bc3e7">  178</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#a536150fa12d88e5e141f66b7144bc3e7">led_turn_off</a>(int32_t led_id);</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="led_8h.html#a9aa50ef204a55d812ce2da542276c3de">  187</a></span> <a class="code hl_struct" href="structled__t.html">led_t</a> * <a class="code hl_function" href="led_8h.html#a9aa50ef204a55d812ce2da542276c3de">led_get_from_id</a>(uint32_t led_id);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="led_8h.html#a9aa50ef204a55d812ce2da542276c3de">  180</a></span> <a class="code hl_struct" href="structled__t.html">led_t</a> * <a class="code hl_function" href="led_8h.html#a9aa50ef204a55d812ce2da542276c3de">led_get_from_id</a>(uint32_t led_id);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="led_8h.html#aace5e4105fbdf1201cd9cb714459485e">  188</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="led_8h.html#aace5e4105fbdf1201cd9cb714459485e">led_offset_sequence</a>(uint32_t led_id, uint8_t seq_offset);</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">/* INTERFACE </span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment"></span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">   led_start_sequence() //Starts the current sequence that the leds are configured for </span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">   led_stop_sequence()  //Stops the current sequence that the leds are configured for </span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">   </span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">   led_on(led_id)</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">   led_off(led_id)</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">   </span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">   led_all_on()</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">   led_all_off()</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aled_8h_html_a1cbde99d730b3fe0a042e6db4eb16a15"><div class="ttname"><a href="led_8h.html#a1cbde99d730b3fe0a042e6db4eb16a15">led_register</a></div><div class="ttdeci">int32_t led_register(led_t led_obj)</div><div class="ttdoc">Register an LED and its configurations with the LED module.</div></div>
-<div class="ttc" id="aled_8h_html_a25dc233a9dc8904b8ce586b61edc282d"><div class="ttname"><a href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a></div><div class="ttdeci">led_state_t</div><div class="ttdoc">Definitions of enums for the on and off states of an LED.</div><div class="ttdef"><b>Definition</b> led.h:39</div></div>
+<div class="ttc" id="aled_8h_html_a25dc233a9dc8904b8ce586b61edc282d"><div class="ttname"><a href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a></div><div class="ttdeci">led_state_t</div><div class="ttdoc">Definitions of enums for the on and off states of an LED.</div><div class="ttdef"><b>Definition</b> led.h:41</div></div>
 <div class="ttc" id="aled_8h_html_a2987ac4b1391f4076e6c387a224148d1"><div class="ttname"><a href="led_8h.html#a2987ac4b1391f4076e6c387a224148d1">led_on</a></div><div class="ttdeci">void led_on(int32_t id)</div><div class="ttdoc">turn on selected LED</div></div>
 <div class="ttc" id="aled_8h_html_a3300378517672fc0d7bedefb69c7aecd"><div class="ttname"><a href="led_8h.html#a3300378517672fc0d7bedefb69c7aecd">led_enable</a></div><div class="ttdeci">void led_enable(int32_t id)</div><div class="ttdoc">enable selected LED</div></div>
-<div class="ttc" id="aled_8h_html_a3372bb824abf247764d880ee6c6d3acf"><div class="ttname"><a href="led_8h.html#a3372bb824abf247764d880ee6c6d3acf">led_is_enabled</a></div><div class="ttdeci">bool led_is_enabled(int32_t led_id)</div><div class="ttdoc">Turns on the sequence enable boolean for the selected LED.</div></div>
 <div class="ttc" id="aled_8h_html_a3da22daf58ff12a7b2ab602ef92abb6f"><div class="ttname"><a href="led_8h.html#a3da22daf58ff12a7b2ab602ef92abb6f">led_off</a></div><div class="ttdeci">void led_off(int32_t id)</div><div class="ttdoc">turn off selected LED</div></div>
-<div class="ttc" id="aled_8h_html_a488f8258ca53df121124d540e09229a7"><div class="ttname"><a href="led_8h.html#a488f8258ca53df121124d540e09229a7">led_timer_step</a></div><div class="ttdeci">void led_timer_step()</div><div class="ttdoc">Is called whenever you want to update the state of your LEDs according to their sequence....</div></div>
 <div class="ttc" id="aled_8h_html_a536150fa12d88e5e141f66b7144bc3e7"><div class="ttname"><a href="led_8h.html#a536150fa12d88e5e141f66b7144bc3e7">led_turn_off</a></div><div class="ttdeci">void led_turn_off(int32_t led_id)</div><div class="ttdoc">Turns off the specified LED.</div></div>
 <div class="ttc" id="aled_8h_html_a588928123a9cf832103de96c0ad19c02"><div class="ttname"><a href="led_8h.html#a588928123a9cf832103de96c0ad19c02">led_assign_sequence</a></div><div class="ttdeci">led_status_t led_assign_sequence(int32_t led_id, int32_t sequence_id)</div><div class="ttdoc">Assigns a sequence to an LED.</div></div>
 <div class="ttc" id="aled_8h_html_a58d994e36b92421566586124d60495c1"><div class="ttname"><a href="led_8h.html#a58d994e36b92421566586124d60495c1">led_disable</a></div><div class="ttdeci">void led_disable(int32_t id)</div><div class="ttdoc">disable selected LED</div></div>
-<div class="ttc" id="aled_8h_html_a73c2588e019a49106d5efe9148594f00"><div class="ttname"><a href="led_8h.html#a73c2588e019a49106d5efe9148594f00">led_init</a></div><div class="ttdeci">void led_init(uint32_t callback_frequency)</div><div class="ttdoc">The inialisation for the led driver, sets the 'write_fcn' that the driver uses to contorl the leds an...</div></div>
+<div class="ttc" id="aled_8h_html_a73c2588e019a49106d5efe9148594f00"><div class="ttname"><a href="led_8h.html#a73c2588e019a49106d5efe9148594f00">led_init</a></div><div class="ttdeci">void led_init(uint32_t callback_frequency)</div><div class="ttdoc">The inialisation for the led driver. Initialization the state of all of the LEDs in the LED array and...</div></div>
 <div class="ttc" id="aled_8h_html_a83efb1dd3d750cf02d599dd6551ec580"><div class="ttname"><a href="led_8h.html#a83efb1dd3d750cf02d599dd6551ec580">led_start_sequence</a></div><div class="ttdeci">led_status_t led_start_sequence(int32_t led_id)</div><div class="ttdoc">Turns on the sequence enable boolean for the selected LED.</div></div>
 <div class="ttc" id="aled_8h_html_a8c003b778ea55286c8cff27fe5d8c5cb"><div class="ttname"><a href="led_8h.html#a8c003b778ea55286c8cff27fe5d8c5cb">user_write_pin</a></div><div class="ttdeci">void user_write_pin(pins_t pins, led_state_t state)</div><div class="ttdoc">User defined function that turns led's on and off.</div></div>
 <div class="ttc" id="aled_8h_html_a9aa50ef204a55d812ce2da542276c3de"><div class="ttname"><a href="led_8h.html#a9aa50ef204a55d812ce2da542276c3de">led_get_from_id</a></div><div class="ttdeci">led_t * led_get_from_id(uint32_t led_id)</div><div class="ttdoc">Returns the led if registed based off the inputted id.</div></div>
+<div class="ttc" id="aled_8h_html_aace5e4105fbdf1201cd9cb714459485e"><div class="ttname"><a href="led_8h.html#aace5e4105fbdf1201cd9cb714459485e">led_offset_sequence</a></div><div class="ttdeci">void led_offset_sequence(uint32_t led_id, uint8_t seq_offset)</div><div class="ttdoc">Allows the user offset patterns on the fly, works by chaing the current sequence index at the inputed...</div></div>
 <div class="ttc" id="aled_8h_html_aae7b6b6a2e95ad600933fffd41bc2d24"><div class="ttname"><a href="led_8h.html#aae7b6b6a2e95ad600933fffd41bc2d24">led_get_sequence_id</a></div><div class="ttdeci">int32_t led_get_sequence_id(int32_t led_id)</div><div class="ttdoc">Returns the current sequence assinged to that led, returns -1 if there is no sequence assigned.</div></div>
-<div class="ttc" id="aled_8h_html_acefcb61df68bbf1e3b464156b1b8c333"><div class="ttname"><a href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a></div><div class="ttdeci">led_status_t</div><div class="ttdoc">For describing execution status of function.</div><div class="ttdef"><b>Definition</b> led.h:48</div></div>
+<div class="ttc" id="aled_8h_html_aca9e700c5385b18d371063d95f588b20"><div class="ttname"><a href="led_8h.html#aca9e700c5385b18d371063d95f588b20">led_update_state</a></div><div class="ttdeci">void led_update_state()</div><div class="ttdoc">Is called whenever you want to update the state of your LEDs according to their sequence....</div></div>
+<div class="ttc" id="aled_8h_html_acefcb61df68bbf1e3b464156b1b8c333"><div class="ttname"><a href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a></div><div class="ttdeci">led_status_t</div><div class="ttdoc">For describing execution status of function.</div><div class="ttdef"><b>Definition</b> led.h:50</div></div>
 <div class="ttc" id="aled_8h_html_aec5c595e6eda725b02ea14fbcfadba37"><div class="ttname"><a href="led_8h.html#aec5c595e6eda725b02ea14fbcfadba37">led_turn_on</a></div><div class="ttdeci">void led_turn_on(int32_t led_id)</div><div class="ttdoc">Turns on the specified LED.</div></div>
 <div class="ttc" id="aled_8h_html_af456aaf486c661c605662966e1ca2585"><div class="ttname"><a href="led_8h.html#af456aaf486c661c605662966e1ca2585">led_get_count</a></div><div class="ttdeci">uint32_t led_get_count()</div><div class="ttdoc">Return the number of registered LEDs in the led module.</div></div>
 <div class="ttc" id="aled_8h_html_afe48918d79650d43d8395de52724f773"><div class="ttname"><a href="led_8h.html#afe48918d79650d43d8395de52724f773">led_exists</a></div><div class="ttdeci">bool led_exists(int32_t led_id)</div><div class="ttdoc">Checks if a led is registered.</div></div>
 <div class="ttc" id="asequence_8h_html"><div class="ttname"><a href="sequence_8h.html">sequence.h</a></div><div class="ttdoc">Module for storing sequence information for a flashing LED.</div></div>
-<div class="ttc" id="astructled__t_html"><div class="ttname"><a href="structled__t.html">led_t</a></div><div class="ttdoc">Holds state information for an led's configuration.</div><div class="ttdef"><b>Definition</b> led.h:27</div></div>
+<div class="ttc" id="astructled__t_html"><div class="ttname"><a href="structled__t.html">led_t</a></div><div class="ttdoc">Holds state information for an led's configuration.</div><div class="ttdef"><b>Definition</b> led.h:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

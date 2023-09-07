@@ -123,7 +123,7 @@ Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (pins_t, <a class="el" href="led_8h.html#a25dc233a9dc8904b8ce586b61edc282d">led_state_t</a>)</td></tr>
 <tr class="separator:ab55dee7dba8cc49bb0905d10b33d3da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73c2588e019a49106d5efe9148594f00" id="r_a73c2588e019a49106d5efe9148594f00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a73c2588e019a49106d5efe9148594f00">led_init</a> (uint32_t callback_frequency)</td></tr>
-<tr class="memdesc:a73c2588e019a49106d5efe9148594f00"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inialisation for the led driver, sets the 'write_fcn' that the driver uses to contorl the leds and the callback frequency that led_update will be called.  <br /></td></tr>
+<tr class="memdesc:a73c2588e019a49106d5efe9148594f00"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inialisation for the led driver. Initialization the state of all of the LEDs in the LED array and creates some special sequences like on and off.  <br /></td></tr>
 <tr class="separator:a73c2588e019a49106d5efe9148594f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af456aaf486c661c605662966e1ca2585" id="r_af456aaf486c661c605662966e1ca2585"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#af456aaf486c661c605662966e1ca2585">led_get_count</a> ()</td></tr>
 <tr class="memdesc:af456aaf486c661c605662966e1ca2585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of registered LEDs in the led module.  <br /></td></tr>
@@ -158,13 +158,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (pins_t, <a
 <tr class="memitem:a83efb1dd3d750cf02d599dd6551ec580" id="r_a83efb1dd3d750cf02d599dd6551ec580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a83efb1dd3d750cf02d599dd6551ec580">led_start_sequence</a> (int32_t led_id)</td></tr>
 <tr class="memdesc:a83efb1dd3d750cf02d599dd6551ec580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the sequence enable boolean for the selected LED.  <br /></td></tr>
 <tr class="separator:a83efb1dd3d750cf02d599dd6551ec580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3372bb824abf247764d880ee6c6d3acf" id="r_a3372bb824abf247764d880ee6c6d3acf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a3372bb824abf247764d880ee6c6d3acf">led_is_enabled</a> (int32_t led_id)</td></tr>
-<tr class="memdesc:a3372bb824abf247764d880ee6c6d3acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the sequence enable boolean for the selected LED.  <br /></td></tr>
-<tr class="separator:a3372bb824abf247764d880ee6c6d3acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a488f8258ca53df121124d540e09229a7" id="r_a488f8258ca53df121124d540e09229a7"><td class="memItemLeft" align="right" valign="top"><a id="a488f8258ca53df121124d540e09229a7" name="a488f8258ca53df121124d540e09229a7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()</td></tr>
-<tr class="memdesc:a488f8258ca53df121124d540e09229a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called whenever you want to update the state of your LEDs according to their sequence. Will update all LEDs. <br /></td></tr>
-<tr class="separator:a488f8258ca53df121124d540e09229a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca9e700c5385b18d371063d95f588b20" id="r_aca9e700c5385b18d371063d95f588b20"><td class="memItemLeft" align="right" valign="top"><a id="aca9e700c5385b18d371063d95f588b20" name="aca9e700c5385b18d371063d95f588b20"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> ()</td></tr>
+<tr class="memdesc:aca9e700c5385b18d371063d95f588b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called whenever you want to update the state of your LEDs according to their sequence. Will update all LEDs. <br /></td></tr>
+<tr class="separator:aca9e700c5385b18d371063d95f588b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec5c595e6eda725b02ea14fbcfadba37" id="r_aec5c595e6eda725b02ea14fbcfadba37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#aec5c595e6eda725b02ea14fbcfadba37">led_turn_on</a> (int32_t led_id)</td></tr>
 <tr class="memdesc:aec5c595e6eda725b02ea14fbcfadba37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the specified LED.  <br /></td></tr>
 <tr class="separator:aec5c595e6eda725b02ea14fbcfadba37"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,6 +171,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 <tr class="memitem:a9aa50ef204a55d812ce2da542276c3de" id="r_a9aa50ef204a55d812ce2da542276c3de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structled__t.html">led_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a9aa50ef204a55d812ce2da542276c3de">led_get_from_id</a> (uint32_t led_id)</td></tr>
 <tr class="memdesc:a9aa50ef204a55d812ce2da542276c3de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the led if registed based off the inputted id.  <br /></td></tr>
 <tr class="separator:a9aa50ef204a55d812ce2da542276c3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aace5e4105fbdf1201cd9cb714459485e" id="r_aace5e4105fbdf1201cd9cb714459485e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#aace5e4105fbdf1201cd9cb714459485e">led_offset_sequence</a> (uint32_t led_id, uint8_t seq_offset)</td></tr>
+<tr class="memdesc:aace5e4105fbdf1201cd9cb714459485e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows the user offset patterns on the fly, works by chaing the current sequence index at the inputed value.  <br /></td></tr>
+<tr class="separator:aace5e4105fbdf1201cd9cb714459485e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs. </p>
@@ -379,40 +379,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
       </table>
 </div><div class="memdoc">
 
-<p>The inialisation for the led driver, sets the 'write_fcn' that the driver uses to contorl the leds and the callback frequency that led_update will be called. </p>
+<p>The inialisation for the led driver. Initialization the state of all of the LEDs in the LED array and creates some special sequences like on and off. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>callback_frequency - How often the led_update function will be called </td></tr>
+    <tr><td class="paramname">[IN]</td><td>callback_frequency - How often the led_update function will be called in milliseconds. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a3372bb824abf247764d880ee6c6d3acf" name="a3372bb824abf247764d880ee6c6d3acf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3372bb824abf247764d880ee6c6d3acf">&#9670;&#160;</a></span>led_is_enabled()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool led_is_enabled </td>
-          <td>(</td>
-          <td class="paramtype">int32_t&#160;</td>
-          <td class="paramname"><em>led_id</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Turns on the sequence enable boolean for the selected LED. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">led_id</td><td>- The led to start running the sequence of. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>bool - returns the led </dd></dl>
 
 </div>
 </div>
@@ -436,6 +409,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_timer_step</b> ()
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">[IN]</td><td>id - ID of LED to be turned off </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aace5e4105fbdf1201cd9cb714459485e" name="aace5e4105fbdf1201cd9cb714459485e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aace5e4105fbdf1201cd9cb714459485e">&#9670;&#160;</a></span>led_offset_sequence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void led_offset_sequence </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>led_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>seq_offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allows the user offset patterns on the fly, works by chaing the current sequence index at the inputed value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">led_id</td><td>- unique identifier of the target led. </td></tr>
+    <tr><td class="paramname">seq_offset</td><td>- amout to offset the sequence_idx in the led's structure </td></tr>
   </table>
   </dd>
 </dl>
