@@ -684,9 +684,7 @@ TEST(LEDTest, sequence_idx_is_zero_after_first_step_when_sequence_length_and_seq
     IS_LED_ON(user_pin);
 }
 
-// TODO add offset field to sequence (esp. when registering it) so that you can use the same
 // sequence array but have it start at a different point
-
 TEST(LEDTest, sequence_offset_can_be_assinged_using_led_offset_sequence_offset)
 {
     // Register an LED 
