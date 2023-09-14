@@ -232,7 +232,7 @@ void led_print(int32_t id)
             "pinout: ..\n"
             "sequence_id: %d\n"
             "sequence_idx: %d\n"
-            "timer_count: %d\n", id, leds[id].enabled, leds[id].sequence_id, leds[id].sequence_idx, leds[id].timer_count);
+            "timer_count: %d\n", (int)id, leds[id].enabled, (int)leds[id].sequence_id, leds[id].sequence_idx, (int)leds[id].timer_count);
 }
 
 led_t * led_get_from_id(uint32_t led_id)
