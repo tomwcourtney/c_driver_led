@@ -4,6 +4,7 @@ extern "C"
 {
     #include "../../inc/led.h"
     #include "../spies/led_spy.h"
+    #include <string.h>
 }
 
 TEST_GROUP(LEDTest) 

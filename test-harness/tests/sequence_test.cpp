@@ -5,6 +5,8 @@ extern "C"
 {
     #include "../../inc/sequence.h"
     #include "../../inc/led.h"
+    #include <string.h>
+
 }
 
 
