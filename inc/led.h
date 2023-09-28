@@ -59,7 +59,7 @@ void write(pins_t, led_state_t);
  * @brief The inialisation for the led driver. Initialization the state of all of the LEDs in the LED array and creates
  * some special sequences like on and off.
  * 
- * @param [IN] callback_frequency - How often the led_update function will be called in milliseconds.
+ * @param [in] callback_frequency - How often the led_update function will be called in milliseconds.
 */
 void led_init(uint32_t callback_frequency);
 
@@ -74,21 +74,21 @@ uint32_t led_get_count();
 /**
  * @brief turn on selected LED
  *
- * @param [IN] id - ID of LED to be turned on
+ * @param [in] id - ID of LED to be turned on
 */
 void led_on(int32_t id);
 
 /**
  * @brief turn off selected LED
  *
- * @param [IN] id - ID of LED to be turned off
+ * @param [in] id - ID of LED to be turned off
 */
 void led_off(int32_t id);
 
 /**
  * @brief Register an LED and its configurations with the LED module.
  * 
- * @param [IN] led_obj - a structure of type led_t that has the configurations for the LED
+ * @param [in] led_obj - a structure of type led_t that has the configurations for the LED
  * 
  * @return Error if failed to register, led ID otherwise
  */
@@ -97,30 +97,30 @@ int32_t led_register(led_t led_obj);
 /**
  * @brief User defined function that turns led's on and off 
  * 
- * @param [IN] pins - The pin to be written to 
- * @param [IN] state - The state to be written to the input pin 
+ * @param [in] pins - The pin to be written to 
+ * @param [in] state - The state to be written to the input pin 
  */
 void user_write_pin(pins_t pins, led_state_t state);
 
 /**
  * @brief disable selected LED
  *
- * @param [IN] id - ID of LED to be disabled 
+ * @param [in] id - ID of LED to be disabled 
 */
 void led_disable(int32_t id);
 
 /**
  * @brief enable selected LED
  *
- * @param [IN] id - ID of LED to be disabled 
+ * @param [in] id - ID of LED to be disabled 
 */
 void led_enable(int32_t id);
 
 /**
  * @brief Assigns a sequence to an LED
  *
- * @param [IN] led_id - the id of the led to be assigned to 
- * @param [IN] sequence_id - the id of the sequence to be assinged to the led 
+ * @param [in] led_id - the id of the led to be assigned to 
+ * @param [in] sequence_id - the id of the sequence to be assinged to the led 
  * 
  * @return led_status_t - err if the led or sequence doesn't exist.
 */
@@ -129,7 +129,7 @@ led_status_t led_assign_sequence(int32_t led_id, int32_t sequence_id);
 /**
  * @brief Returns the current sequence assinged to that led, returns -1 if there is no sequence assigned 
  *
- * @param [IN] led_id - the ID of the led to check 
+ * @param [in] led_id - the ID of the led to check 
  * 
  * @return uint32_t - the ID of the assigned sequence. -1 if no sequence assigned.
 */

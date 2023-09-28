@@ -14,6 +14,7 @@ TEST_GROUP(LEDRGBTest)
 {
     void setup()
     {
+        rgb_led_init();
         led_spy_init();
         led_init(1);
         sequence_init();
@@ -160,8 +161,17 @@ TEST(LEDRGBTest, after_init_rgb_driver_has_no_leds_inited)
     ARE_N_RGB_LEDS_REGISTERED(0);
 }
 
+// Turning on an rgb LED that isn't registered does not turn on that LED
+TEST(LEDRGBTest, turning_on_an_rgb_led_that_isnt_registered_doesnt_turn_on_that_led)
+{
+    // Turn led on white 
+    int32_t id = 0;
+    rgb_led_on(id, WHITE);
+    // Check Turned off still
+    LONGS_EQUAL(LED_UNDEFINED, led_spy_get_state(id));
+    
+}
 /* TODO 
-*   - turning on an rgb LED that isn't registered does not turn on that LED
 */ 
 
 
@@ -169,13 +179,34 @@ TEST(LEDRGBTest, after_init_rgb_driver_has_no_leds_inited)
 /* ONE */
 /*******/
 
+// Registering an RGB led then 3 leds are registered and 1 rgb led
+TEST(LEDRGBTest, registering_an_rgb_led_registers_3_leds_and_1_rgb_led)
+{
+    // Registering the RGB led 
+    led_t new_led = {
+            .enabled = true,
+            .pinout = {.pin = 0},
+            .sequence_id = -1,
+            .sequence_idx = 0,
+            .timer_count = 0,
+            .sequence_initialized = false
+        };
+    rgb_led_register({.pin = 0}, {.pin = 1}, {.pin = 2}, new_led);
+    // Checking that 3 Leds where registered 
+    ARE_N_LEDS_REGISTERED(3);
+    // Checking that 1 RGB led was registered 
+    ARE_N_RGB_LEDS_REGISTERED(1);
+}
+
+
 /* TODO
-* - Registering an RGB led then 3 leds are registered 
+* -
 * - Turn an RGB LED on WHITE turns all leds on to full 255
 * - Turn an RGB LED on BLUE turns only the blue led on to 255
 * - Turn an RGB LED on RED turns only the red led on to 255
 * - Turn an RGB LED on GREEN turns only the green led on to 255
-*
+* - Turing RGB LED off turns all values to 0 
+* - 
 */
 
 /********/
@@ -183,3 +214,7 @@ TEST(LEDRGBTest, after_init_rgb_driver_has_no_leds_inited)
 /********/
 
 
+/* TODO
+* - Resitering an RGB led when ther is MAX_LEDS -2 already registed returns error and does not register led's
+*
+*/
