@@ -74,6 +74,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">rgb_led.h File Reference</div></div>
 </div><!--header-->
@@ -82,9 +84,23 @@ $(function() {
 <p>A wrapper around the <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a> that allows the definition and use of RGB leds.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="led_8h_source.html">led.h</a>&quot;</code><br />
 </div>
 <p><a href="rgb__led_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrgb__led__t.html">rgb_led_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds state information for an rgb led's configuration.  <a href="structrgb__led__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aa911d6e38da21ffa8223c6a8675fdf9c" id="r_aa911d6e38da21ffa8223c6a8675fdf9c"><td class="memItemLeft" align="right" valign="top"><a id="aa911d6e38da21ffa8223c6a8675fdf9c" name="aa911d6e38da21ffa8223c6a8675fdf9c"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#aa911d6e38da21ffa8223c6a8675fdf9c">rgb_colour_t</a> { <b>WHITE</b> = 0xFFFFFF
+ }</td></tr>
+<tr class="memdesc:aa911d6e38da21ffa8223c6a8675fdf9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Predefined hexidecimal colour codes. <br /></td></tr>
+<tr class="separator:aa911d6e38da21ffa8223c6a8675fdf9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a459915cec820b4de5e39f135cfff4ef9" id="r_a459915cec820b4de5e39f135cfff4ef9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a459915cec820b4de5e39f135cfff4ef9">rgb_led_init</a> ()</td></tr>
@@ -93,6 +109,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a33ca876e28ad2368303fb4ee0f3d2a17" id="r_a33ca876e28ad2368303fb4ee0f3d2a17"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a33ca876e28ad2368303fb4ee0f3d2a17">rgb_led_get_count</a> ()</td></tr>
 <tr class="memdesc:a33ca876e28ad2368303fb4ee0f3d2a17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of registered RGB LEDs in the rgb_led module.  <br /></td></tr>
 <tr class="separator:a33ca876e28ad2368303fb4ee0f3d2a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9b17473c4e6779069233ad154527c47" id="r_ab9b17473c4e6779069233ad154527c47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#ab9b17473c4e6779069233ad154527c47">rgb_led_on</a> (int32_t id, int32_t colourCode)</td></tr>
+<tr class="memdesc:ab9b17473c4e6779069233ad154527c47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the RGB led to the colour specified.  <br /></td></tr>
+<tr class="separator:ab9b17473c4e6779069233ad154527c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8041bd0f704a2e1c31c3ceaac021472c" id="r_a8041bd0f704a2e1c31c3ceaac021472c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a8041bd0f704a2e1c31c3ceaac021472c">rgb_led_register</a> (pins_t red_pin, pins_t green_pin, pins_t blue_pin, <a class="el" href="structled__t.html">led_t</a> led_obj)</td></tr>
+<tr class="memdesc:a8041bd0f704a2e1c31c3ceaac021472c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registeres a new RGB led inside of <a class="el" href="rgb__led_8h.html" title="A wrapper around the led.h that allows the definition and use of RGB leds.">rgb_led.h</a>, this in turn registeres 3 LEDS in <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a>,.  <br /></td></tr>
+<tr class="separator:a8041bd0f704a2e1c31c3ceaac021472c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A wrapper around the <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a> that allows the definition and use of RGB leds. </p>
@@ -134,6 +156,95 @@ Functions</h2></td></tr>
 
 <p>The inialisation for the rgb led wrapper. Initialization the state of all of the LEDs in the LED array and creates some special sequences like white, red, blue and green ect... </p>
 <dl class="section note"><dt>Note</dt><dd>The led_init from <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a> will need to be called also before registering any rgb leds </dd></dl>
+
+</div>
+</div>
+<a id="ab9b17473c4e6779069233ad154527c47" name="ab9b17473c4e6779069233ad154527c47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9b17473c4e6779069233ad154527c47">&#9670;&#160;</a></span>rgb_led_on()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rgb_led_on </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>colourCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Changes the RGB led to the colour specified. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>- the rgb led id </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">colourCode</td><td>- Hexidecimal colour code or a predefined code defined in rgb_colour_t </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8041bd0f704a2e1c31c3ceaac021472c" name="a8041bd0f704a2e1c31c3ceaac021472c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8041bd0f704a2e1c31c3ceaac021472c">&#9670;&#160;</a></span>rgb_led_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t rgb_led_register </td>
+          <td>(</td>
+          <td class="paramtype">pins_t&#160;</td>
+          <td class="paramname"><em>red_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pins_t&#160;</td>
+          <td class="paramname"><em>green_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pins_t&#160;</td>
+          <td class="paramname"><em>blue_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structled__t.html">led_t</a>&#160;</td>
+          <td class="paramname"><em>led_obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registeres a new RGB led inside of <a class="el" href="rgb__led_8h.html" title="A wrapper around the led.h that allows the definition and use of RGB leds.">rgb_led.h</a>, this in turn registeres 3 LEDS in <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a>,. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">red_pin</td><td>- the pwm pin connected to the red led </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">grren_pin</td><td>- the pwm pin connected to the green led </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">blue_pin</td><td>- the pwm pin connected to the blue led </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">led_obj</td><td>- a structure of type <a class="el" href="structled__t.html" title="Holds state information for an led&#39;s configuration.">led_t</a> that has the configurations that will be written to all leds, the pinout field can be ignored</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Error if failed to register, rgb led ID otherwise </dd></dl>
 
 </div>
 </div>

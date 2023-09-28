@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sequence_5ft_0',['sequence_t',['../structsequence__t.html',1,'']]]
+  ['rgb_5fled_5ft_0',['rgb_led_t',['../structrgb__led__t.html',1,'']]]
 ];

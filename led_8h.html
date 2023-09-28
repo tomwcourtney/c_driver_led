@@ -207,8 +207,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>Assigns a sequence to an LED. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>led_id - the id of the led to be assigned to </td></tr>
-    <tr><td class="paramname">[IN]</td><td>sequence_id - the id of the sequence to be assinged to the led</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">led_id</td><td>- the id of the led to be assigned to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sequence_id</td><td>- the id of the sequence to be assinged to the led</td></tr>
   </table>
   </dd>
 </dl>
@@ -235,7 +235,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>disable selected LED </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>id - ID of LED to be disabled </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>- ID of LED to be disabled </td></tr>
   </table>
   </dd>
 </dl>
@@ -261,7 +261,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>enable selected LED </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>id - ID of LED to be disabled </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>- ID of LED to be disabled </td></tr>
   </table>
   </dd>
 </dl>
@@ -355,7 +355,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>Returns the current sequence assinged to that led, returns -1 if there is no sequence assigned. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>led_id - the ID of the led to check</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">led_id</td><td>- the ID of the led to check</td></tr>
   </table>
   </dd>
 </dl>
@@ -382,7 +382,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>The inialisation for the led driver. Initialization the state of all of the LEDs in the LED array and creates some special sequences like on and off. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>callback_frequency - How often the led_update function will be called in milliseconds. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback_frequency</td><td>- How often the led_update function will be called in milliseconds. </td></tr>
   </table>
   </dd>
 </dl>
@@ -408,7 +408,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>turn off selected LED </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>id - ID of LED to be turned off </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>- ID of LED to be turned off </td></tr>
   </table>
   </dd>
 </dl>
@@ -471,7 +471,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>turn on selected LED </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>id - ID of LED to be turned on </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>- ID of LED to be turned on </td></tr>
   </table>
   </dd>
 </dl>
@@ -497,7 +497,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>Register an LED and its configurations with the LED module. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>led_obj - a structure of type <a class="el" href="structled__t.html" title="Holds state information for an led&#39;s configuration.">led_t</a> that has the configurations for the LED</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">led_obj</td><td>- a structure of type <a class="el" href="structled__t.html" title="Holds state information for an led&#39;s configuration.">led_t</a> that has the configurations for the LED</td></tr>
   </table>
   </dd>
 </dl>
@@ -613,8 +613,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>led_update_state</b> 
 <p>User defined function that turns led's on and off. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">[IN]</td><td>pins - The pin to be written to </td></tr>
-    <tr><td class="paramname">[IN]</td><td>state - The state to be written to the input pin </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pins</td><td>- The pin to be written to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>- The state to be written to the input pin </td></tr>
   </table>
   </dd>
 </dl>

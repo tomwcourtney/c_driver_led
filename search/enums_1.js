@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sequence_5fstatus_5ft_0',['sequence_status_t',['../sequence_8h.html#a4c5ca111d68d7b6b781788ba16ce1063',1,'sequence.h']]]
+  ['rgb_5fcolour_5ft_0',['rgb_colour_t',['../rgb__led_8h.html#aa911d6e38da21ffa8223c6a8675fdf9c',1,'rgb_led.h']]]
 ];
