@@ -1,6 +1,6 @@
 /**
  * @file rgb_led.h
- * @brief A wrapper around the led.h that allows the definition and use of RGB leds
+ * @brief A wrapper around the led.h and sequence.h that allows the definition and use of RGB leds as single units
  */
 
 
@@ -20,11 +20,26 @@
  } rgb_led_t;
 
 /**
- * @brief Predefined hexidecimal colour codes 
+ * @brief Predefined hexidecimal colour codes to be used for sequence creation 
  */
 typedef enum {
-    WHITE = 0xFFFFFF,
+    C_WHITE  = 0xFFFFFF,
+    C_RED    = 0xFF0000,
+    C_GRN    = 0x00FF00,
+    C_BLUE   = 0x0000FF,
 } rgb_colour_t;
+
+/** @brief On init defined RGB patterns to be used to turn LED solid colours  
+ * 
+*/
+typedef enum {
+    RGB_WHITE,
+    RGB_RED,
+    RGB_GREEN,
+    RGB_BLUE, 
+    RGB_OFF, 
+} rgb_state_t;
+
 
 /**
  * @brief The inialisation for the rgb led wrapper. Initialization the state of all of the LEDs in the LED array and creates
@@ -40,6 +55,13 @@ void rgb_led_init();
  * 
  */
 uint32_t rgb_led_get_count();
+/**
+ * @brief Return the number of registered RGB sequences
+ * 
+ * @returns uint16 - the number of registered LEDs.
+ * 
+ */
+uint32_t rgb_sequence_get_count();
 
 /**
  * @brief Changes the RGB led to the colour specified 
@@ -58,6 +80,26 @@ void rgb_led_on(int32_t id, int32_t colourCode);
  * @return Error if failed to register, rgb led ID otherwise
 */
 int32_t rgb_led_register(pins_t red_pin, pins_t green_pin, pins_t blue_pin, led_t led_obj);
+
+/**
+ * @brief Creates and registers an RGB sequence that can be assinged to RGB led's
+ * @param [in] length - Amount of elements in rgbSequence  
+ * @param [in] period - Length of time [ms] between the start and end of sequence 
+ * @param [in] rgbSequence - Array of bit hexidecimal colour codes
+ *
+ * @return int32_t - If successfully registered returns the ID of the sequence. If error returns -1
+*/
+int32_t rgb_sequence_register(uint8_t length,uint16_t period,uint32_t * rgbSequence);
+
+/**
+ * @brief Returns the id's for all associated sequence ids for a defined RGB sequence 
+ * @param [in] rgbSequenceId - RGB sequence id to fetch associated sequence id's for 
+ * @param [in] redSequenceId - red channel sequence id
+ * @param [in] greenSequenceId - green channel sequnce id
+ * @param [in] blueSequenceId - blue channel sequence id 
+ *
+*/
+void rgb_sequence_get_ids_from_id(uint32_t rgbSequenceId, uint32_t * redSequenceId, uint32_t * greenSequenceId, uint32_t * blueSequenceId);
 
 /**
  * Functions will be ported as nessessary from sequence and led

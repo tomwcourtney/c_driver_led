@@ -1,18 +1,23 @@
 #include "rgb_led.h"
 
 rgb_led_t rgbLed = {0};
-// This is the number of LEDs in the array.
-static uint32_t count = 0;
+
+static uint32_t rgb_led_count = 0; /** Number of registered RGB Leds*/
+static uint32_t rgb_seq_count = 0; /** Number of registered RGB sequences*/
+
 
 void rgb_led_init()
 {
-    count = 0;
+    rgb_led_count = 0;
+    rgb_seq_count = 0;
+
 }
 
 
 uint32_t rgb_led_get_count()
 {
-    return count;
+    return rgb_led_count;
+    
 }
 
 
@@ -34,5 +39,25 @@ int32_t rgb_led_register(pins_t red_pin, pins_t green_pin, pins_t blue_pin, led_
     led_obj.pinout = blue_pin;
     rgbLed.led_id_blue = led_register(led_obj);
 
-    return count++;
+    return rgb_led_count++;
+}
+
+void rgb_sequence_get_ids_from_id(uint32_t rgbSequenceId, uint32_t * redSequenceId, uint32_t * greenSequenceId, uint32_t * blueSequenceId)
+{
+
+}
+
+int32_t rgb_sequence_register(uint8_t length, uint16_t period, uint32_t * rgbSequence)
+{
+    // Turn RGB sequence into 3 seperate channels through byte manipulation 
+
+    // Register 3 Patterns 
+
+    // Return the rgb sequence ID 
+    return 0;
+}
+
+uint32_t rgb_sequence_get_count()
+{
+    return rgb_seq_count;
 }

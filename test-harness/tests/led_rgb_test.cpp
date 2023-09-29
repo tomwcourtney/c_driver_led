@@ -32,6 +32,10 @@ TEST_GROUP(LEDRGBTest)
     #define ARE_N_RGB_LEDS_REGISTERED(num)\
         LONGS_EQUAL(num, rgb_led_get_count());
 
+    #define ARE_N_SEQUENCES_REGISTERED(num)\
+            LONGS_EQUAL(num, sequence_get_count());
+    #define ARE_N_RGB_SEQUENCES_REGISTERED(num)\
+        LONGS_EQUAL(num, rgb_sequence_get_count());
 
     int32_t define_and_register_led_super(bool enabled, pins_t pinout)
     {
@@ -75,6 +79,18 @@ TEST_GROUP(LEDRGBTest)
         {
             led_update_state();
         }
+    }
+    int32_t register_rgb_led(pins_t redPin, pins_t greenPin , pins_t bluePin, bool enabled)
+    {
+        led_t new_led = {
+            .enabled = enabled,
+            .pinout = {.pin = 0},
+            .sequence_id = -1,
+            .sequence_idx = 0,
+            .timer_count = 0,
+            .sequence_initialized = false
+        };
+        return rgb_led_register(redPin, greenPin, bluePin, new_led);
     }
 };
 
@@ -166,7 +182,7 @@ TEST(LEDRGBTest, turning_on_an_rgb_led_that_isnt_registered_doesnt_turn_on_that_
 {
     // Turn led on white 
     int32_t id = 0;
-    rgb_led_on(id, WHITE);
+    rgb_led_on(id, RGB_WHITE);
     // Check Turned off still
     LONGS_EQUAL(LED_UNDEFINED, led_spy_get_state(id));
     
@@ -183,25 +199,53 @@ TEST(LEDRGBTest, turning_on_an_rgb_led_that_isnt_registered_doesnt_turn_on_that_
 TEST(LEDRGBTest, registering_an_rgb_led_registers_3_leds_and_1_rgb_led)
 {
     // Registering the RGB led 
-    led_t new_led = {
-            .enabled = true,
-            .pinout = {.pin = 0},
-            .sequence_id = -1,
-            .sequence_idx = 0,
-            .timer_count = 0,
-            .sequence_initialized = false
-        };
-    rgb_led_register({.pin = 0}, {.pin = 1}, {.pin = 2}, new_led);
+    register_rgb_led({.pin = 0}, {.pin = 1} ,  {.pin = 2}, true);
     // Checking that 3 Leds where registered 
     ARE_N_LEDS_REGISTERED(3);
     // Checking that 1 RGB led was registered 
     ARE_N_RGB_LEDS_REGISTERED(1);
 }
 
+// Registering an RGB sequence registers 3 sequences 
+TEST(LEDRGBTest, Registering_1_rgb_sequences_registers_3_sequences)
+{
+    // Register RGB sequence 
+    uint8_t length = 1;
+    uint16_t period = 1000;
+    uint32_t seq[1] = {C_WHITE};
+    int32_t seqId = rgb_sequence_register(length, period, seq);
+    // Check that 1 RGB sequences exits 
+    ARE_N_RGB_SEQUENCES_REGISTERED(1);
+    // Check that 3 LED Sequnces exits 
+    ARE_N_SEQUENCES_REGISTERED(3);
+    // Check that the 3 LED Sequences contain only 255
+    uint32_t seqRedId = {0}, seqGreenId = {0}, seqBlueId = {0};
+    rgb_sequence_get_ids_from_id(seqId,&seqRedId,&seqGreenId,&seqBlueId);
+    sequence_t * seq_obj_red   = sequence_get_from_id(seqRedId);
+    sequence_t * seq_obj_green = sequence_get_from_id(seqGreenId);
+    sequence_t * seq_obj_blue  = sequence_get_from_id(seqBlueId);
+    CHECK(255 == seq_obj_red->sequence[0]);
+    CHECK(255 == seq_obj_green->sequence[0]);
+    CHECK(255 == seq_obj_blue->sequence[0]);
 
+}
+
+
+// // Turn an RGB LED on WHITE turns all leds on to full 255
+// TEST(LEDRGBTest, turn_an_rgb_led_on_white_turns_leds_on_to_full_255)
+// {
+//     // Registering LED 
+//     uint32_t id = register_rgb_led({.pin = 0}, {.pin = 1} ,  {.pin = 2}, true);
+//     // Turning White 
+//     rgb_led_on(id, WHITE);
+//     // Checking LED's are all set to 255
+//     LONGS_EQUAL(255, led_spy_get_state(0));
+//     LONGS_EQUAL(255, led_spy_get_state(1));
+//     LONGS_EQUAL(255, led_spy_get_state(2));
+// }
 /* TODO
-* -
-* - Turn an RGB LED on WHITE turns all leds on to full 255
+* - 
+* - 
 * - Turn an RGB LED on BLUE turns only the blue led on to 255
 * - Turn an RGB LED on RED turns only the red led on to 255
 * - Turn an RGB LED on GREEN turns only the green led on to 255
