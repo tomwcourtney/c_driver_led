@@ -19,6 +19,15 @@
      int32_t led_id_blue;  /**Led ID for the blue led. */
  } rgb_led_t;
 
+ /**
+ * @brief Holds state information for an rgb sequence 
+ */
+ typedef struct {
+     int32_t seq_id_red;   /**Sequence ID for the red led. */
+     int32_t seq_id_green; /**Sequence ID for the green led. */
+     int32_t seq_id_blue;  /**Sequence ID for the blue led. */
+ } rgb_sequence_t;
+
 /**
  * @brief Predefined hexidecimal colour codes to be used for sequence creation 
  */

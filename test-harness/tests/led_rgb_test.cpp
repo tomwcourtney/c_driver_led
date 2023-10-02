@@ -1,4 +1,5 @@
 #include "CppUTest/TestHarness.h"
+#include <iostream>  
 
 extern "C" 
 {
@@ -231,18 +232,19 @@ TEST(LEDRGBTest, Registering_1_rgb_sequences_registers_3_sequences)
 }
 
 
-// // Turn an RGB LED on WHITE turns all leds on to full 255
-// TEST(LEDRGBTest, turn_an_rgb_led_on_white_turns_leds_on_to_full_255)
-// {
-//     // Registering LED 
-//     uint32_t id = register_rgb_led({.pin = 0}, {.pin = 1} ,  {.pin = 2}, true);
-//     // Turning White 
-//     rgb_led_on(id, WHITE);
-//     // Checking LED's are all set to 255
-//     LONGS_EQUAL(255, led_spy_get_state(0));
-//     LONGS_EQUAL(255, led_spy_get_state(1));
-//     LONGS_EQUAL(255, led_spy_get_state(2));
-// }
+// Turn an RGB LED on WHITE turns all leds on to full 255
+TEST(LEDRGBTest, turn_an_rgb_led_on_white_turns_leds_on_to_full_255)
+{
+    // Registering LED 
+    uint32_t id = register_rgb_led({.pin = 0}, {.pin = 1} ,  {.pin = 2}, true);
+    // Turning White 
+    rgb_led_on(id, WHITE);
+    // Checking LED's are all set to 255
+    LONGS_EQUAL(255, led_spy_get_state(0));
+    LONGS_EQUAL(255, led_spy_get_state(1));
+    LONGS_EQUAL(255, led_spy_get_state(2));
+}
+
 /* TODO
 * - 
 * - 
