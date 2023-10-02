@@ -12,6 +12,9 @@ void rgb_led_init()
     rgb_led_count = 0;
     rgb_seq_count = 0;
 
+    // Create RGB_WHITE Sequence 
+    uint32_t seq[1] = {C_WHITE};
+    rgb_sequence_register(1, 1, seq);
 }
 
 
@@ -24,7 +27,9 @@ uint32_t rgb_led_get_count()
 
 void rgb_led_on(int32_t id, int32_t colourCode)
 {
-
+    led_assign_sequence(rgbLed.led_id_red, rgbSeq.seq_id_red);
+    led_assign_sequence(rgbLed.led_id_green, rgbSeq.seq_id_green);
+    led_assign_sequence(rgbLed.led_id_blue, rgbSeq.seq_id_blue);
 }
 
 int32_t rgb_led_register(pins_t red_pin, pins_t green_pin, pins_t blue_pin, led_t led_obj)

@@ -210,15 +210,18 @@ TEST(LEDRGBTest, registering_an_rgb_led_registers_3_leds_and_1_rgb_led)
 // Registering an RGB sequence registers 3 sequences 
 TEST(LEDRGBTest, Registering_1_rgb_sequences_registers_3_sequences)
 {
+    // Stuff 
+    uint32_t preRgbSeqCount = rgb_sequence_get_count();
+    uint32_t preSeqCount = sequence_get_count();
     // Register RGB sequence 
     uint8_t length = 1;
     uint16_t period = 1000;
     uint32_t seq[1] = {C_WHITE};
     int32_t seqId = rgb_sequence_register(length, period, seq);
-    // Check that 1 RGB sequences exits 
-    ARE_N_RGB_SEQUENCES_REGISTERED(1);
-    // Check that 3 LED Sequnces exits 
-    ARE_N_SEQUENCES_REGISTERED(3);
+    // Check that 1 extra RGB sequences exits 
+    ARE_N_RGB_SEQUENCES_REGISTERED(preRgbSeqCount+1);
+    // Check that 3 extra LED Sequnces exits 
+    ARE_N_SEQUENCES_REGISTERED(preSeqCount+3);
     // Check that the 3 LED Sequences contain only 255
     uint32_t seqRedId = {0}, seqGreenId = {0}, seqBlueId = {0};
     rgb_sequence_get_ids_from_id(seqId,&seqRedId,&seqGreenId,&seqBlueId);
@@ -238,16 +241,14 @@ TEST(LEDRGBTest, turn_an_rgb_led_on_white_turns_leds_on_to_full_255)
     // Registering LED 
     uint32_t id = register_rgb_led({.pin = 0}, {.pin = 1} ,  {.pin = 2}, true);
     // Turning White 
-    rgb_led_on(id, WHITE);
+    rgb_led_on(id, RGB_WHITE);
     // Checking LED's are all set to 255
-    LONGS_EQUAL(255, led_spy_get_state(0));
-    LONGS_EQUAL(255, led_spy_get_state(1));
-    LONGS_EQUAL(255, led_spy_get_state(2));
+    LONGS_EQUAL_TEXT(255, led_spy_get_state(0), "RED LED WRONG");
+    LONGS_EQUAL_TEXT(255, led_spy_get_state(1), "GRM LED WRONG");
+    LONGS_EQUAL_TEXT(255, led_spy_get_state(2), "BLU LED WRONG");
 }
 
 /* TODO
-* - 
-* - 
 * - Turn an RGB LED on BLUE turns only the blue led on to 255
 * - Turn an RGB LED on RED turns only the red led on to 255
 * - Turn an RGB LED on GREEN turns only the green led on to 255
