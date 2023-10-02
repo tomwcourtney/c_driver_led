@@ -10,5 +10,6 @@ var searchData=
   ['rgb_5fsequence_5fget_5fcount_7',['rgb_sequence_get_count',['../rgb__led_8h.html#a06f4dc4b89ca7209b21cbe7499f9fcd7',1,'rgb_led.h']]],
   ['rgb_5fsequence_5fget_5fids_5ffrom_5fid_8',['rgb_sequence_get_ids_from_id',['../rgb__led_8h.html#a9893b7e46bbd666ed1adb653c72b690a',1,'rgb_led.h']]],
   ['rgb_5fsequence_5fregister_9',['rgb_sequence_register',['../rgb__led_8h.html#a92f4d622d7e99dbc8d9752b2161f098e',1,'rgb_led.h']]],
-  ['rgb_5fstate_5ft_10',['rgb_state_t',['../rgb__led_8h.html#a2699c1825cbd32e3a222dad003d674ac',1,'rgb_led.h']]]
+  ['rgb_5fsequence_5ft_10',['rgb_sequence_t',['../structrgb__sequence__t.html',1,'']]],
+  ['rgb_5fstate_5ft_11',['rgb_state_t',['../rgb__led_8h.html#a2699c1825cbd32e3a222dad003d674ac',1,'rgb_led.h']]]
 ];
