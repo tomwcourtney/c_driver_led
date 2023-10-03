@@ -139,13 +139,57 @@ Functions</h2></td></tr>
 <tr class="memitem:a92f4d622d7e99dbc8d9752b2161f098e" id="r_a92f4d622d7e99dbc8d9752b2161f098e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a92f4d622d7e99dbc8d9752b2161f098e">rgb_sequence_register</a> (uint8_t length, uint16_t period, uint32_t *rgbSequence)</td></tr>
 <tr class="memdesc:a92f4d622d7e99dbc8d9752b2161f098e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and registers an RGB sequence that can be assinged to RGB led's.  <br /></td></tr>
 <tr class="separator:a92f4d622d7e99dbc8d9752b2161f098e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9893b7e46bbd666ed1adb653c72b690a" id="r_a9893b7e46bbd666ed1adb653c72b690a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a9893b7e46bbd666ed1adb653c72b690a">rgb_sequence_get_ids_from_id</a> (uint32_t rgbSequenceId, uint32_t *redSequenceId, uint32_t *greenSequenceId, uint32_t *blueSequenceId)</td></tr>
-<tr class="memdesc:a9893b7e46bbd666ed1adb653c72b690a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the id's for all associated sequence ids for a defined RGB sequence.  <br /></td></tr>
-<tr class="separator:a9893b7e46bbd666ed1adb653c72b690a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41adde331af8ebbc8ceac5768a62f44e" id="r_a41adde331af8ebbc8ceac5768a62f44e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a41adde331af8ebbc8ceac5768a62f44e">rgb_sequence_get_ids_from_id</a> (int32_t rgbSequenceId, int32_t *redSequenceId, int32_t *greenSequenceId, int32_t *blueSequenceId)</td></tr>
+<tr class="memdesc:a41adde331af8ebbc8ceac5768a62f44e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the id's for all associated sequence ids for a defined RGB sequence.  <br /></td></tr>
+<tr class="separator:a41adde331af8ebbc8ceac5768a62f44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a553c03d0406b583317f6358f70445e02" id="r_a553c03d0406b583317f6358f70445e02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a553c03d0406b583317f6358f70445e02">rgb_assign_sequence</a> (int32_t rgb_led_id, int32_t rgb_sequence_id)</td></tr>
+<tr class="memdesc:a553c03d0406b583317f6358f70445e02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns an RGB sequence to an RGB led.  <br /></td></tr>
+<tr class="separator:a553c03d0406b583317f6358f70445e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1121b29d5683bdb5346ea24e6e3600b6" id="r_a1121b29d5683bdb5346ea24e6e3600b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a1121b29d5683bdb5346ea24e6e3600b6">rgb_led_get_ids_from_id</a> (int32_t rgbLedId, int32_t *redLedId, int32_t *greenLedId, int32_t *blueLedId)</td></tr>
+<tr class="memdesc:a1121b29d5683bdb5346ea24e6e3600b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the id's for all associated led ids for a defined RGB led.  <br /></td></tr>
+<tr class="separator:a1121b29d5683bdb5346ea24e6e3600b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A wrapper around the <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a> and <a class="el" href="sequence_8h.html" title="Module for storing sequence information for a flashing LED.">sequence.h</a> that allows the definition and use of RGB leds as single units. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a553c03d0406b583317f6358f70445e02" name="a553c03d0406b583317f6358f70445e02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a553c03d0406b583317f6358f70445e02">&#9670;&#160;</a></span>rgb_assign_sequence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> rgb_assign_sequence </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>rgb_led_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>rgb_sequence_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assigns an RGB sequence to an RGB led. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rgb_led_id</td><td>- the id of the RGB led to be assigned to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rgb_sequence_id</td><td>- the id of the rgb sequence to be assinged to the led</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>led_status_t - err if the led or sequence doesn't exist. </dd></dl>
+
+</div>
+</div>
 <a id="a33ca876e28ad2368303fb4ee0f3d2a17" name="a33ca876e28ad2368303fb4ee0f3d2a17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a33ca876e28ad2368303fb4ee0f3d2a17">&#9670;&#160;</a></span>rgb_led_get_count()</h2>
 
@@ -163,6 +207,57 @@ Functions</h2></td></tr>
 
 <p>Return the number of registered RGB LEDs in the rgb_led module. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint16 - the number of registered LEDs. </dd></dl>
+
+</div>
+</div>
+<a id="a1121b29d5683bdb5346ea24e6e3600b6" name="a1121b29d5683bdb5346ea24e6e3600b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1121b29d5683bdb5346ea24e6e3600b6">&#9670;&#160;</a></span>rgb_led_get_ids_from_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rgb_led_get_ids_from_id </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>rgbLedId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>redLedId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>greenLedId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>blueLedId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the id's for all associated led ids for a defined RGB led. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rgbLedId</td><td>- RGB led id to fetch associated led id's for </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">redLedId</td><td>- red channel led id </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">greenLedId</td><td>- green channel sequnce id </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">blueLedId</td><td>- blue channel led id </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -295,8 +390,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9893b7e46bbd666ed1adb653c72b690a" name="a9893b7e46bbd666ed1adb653c72b690a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9893b7e46bbd666ed1adb653c72b690a">&#9670;&#160;</a></span>rgb_sequence_get_ids_from_id()</h2>
+<a id="a41adde331af8ebbc8ceac5768a62f44e" name="a41adde331af8ebbc8ceac5768a62f44e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41adde331af8ebbc8ceac5768a62f44e">&#9670;&#160;</a></span>rgb_sequence_get_ids_from_id()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,25 +399,25 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void rgb_sequence_get_ids_from_id </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>rgbSequenceId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">int32_t *&#160;</td>
           <td class="paramname"><em>redSequenceId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">int32_t *&#160;</td>
           <td class="paramname"><em>greenSequenceId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">int32_t *&#160;</td>
           <td class="paramname"><em>blueSequenceId</em>&#160;</td>
         </tr>
         <tr>
