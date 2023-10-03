@@ -108,7 +108,27 @@ int32_t rgb_sequence_register(uint8_t length,uint16_t period,uint32_t * rgbSeque
  * @param [in] blueSequenceId - blue channel sequence id 
  *
 */
-void rgb_sequence_get_ids_from_id(uint32_t rgbSequenceId, uint32_t * redSequenceId, uint32_t * greenSequenceId, uint32_t * blueSequenceId);
+void rgb_sequence_get_ids_from_id(int32_t rgbSequenceId, int32_t * redSequenceId, int32_t * greenSequenceId, int32_t * blueSequenceId);
+
+/**
+ * @brief Assigns an RGB sequence to an RGB led 
+ *
+ * @param [in] rgb_led_id - the id of the RGB led to be assigned to 
+ * @param [in] rgb_sequence_id - the id of the rgb sequence to be assinged to the led 
+ * 
+ * @return led_status_t - err if the led or sequence doesn't exist.
+*/
+led_status_t rgb_assign_sequence(int32_t rgb_led_id,int32_t rgb_sequence_id);
+
+/**
+ * @brief Returns the id's for all associated led ids for a defined RGB led 
+ * @param [in] rgbLedId - RGB led id to fetch associated led id's for 
+ * @param [in] redLedId - red channel led id
+ * @param [in] greenLedId - green channel sequnce id
+ * @param [in] blueLedId - blue channel led id 
+ *
+*/
+void rgb_led_get_ids_from_id(int32_t rgbLedId, int32_t * redLedId, int32_t * greenLedId, int32_t * blueLedId);
 
 /**
  * Functions will be ported as nessessary from sequence and led

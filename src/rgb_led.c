@@ -1,5 +1,7 @@
 #include "rgb_led.h"
 #include <string.h>
+#include <stdio.h>
+
 rgb_led_t rgbLed = {0};
 rgb_sequence_t rgbSeq = {0};
 
@@ -11,10 +13,6 @@ void rgb_led_init()
 {
     rgb_led_count = 0;
     rgb_seq_count = 0;
-
-    // Create RGB_WHITE Sequence 
-    uint32_t seq[1] = {C_WHITE};
-    rgb_sequence_register(1, 1, seq);
 }
 
 
@@ -24,13 +22,13 @@ uint32_t rgb_led_get_count()
     
 }
 
-
 void rgb_led_on(int32_t id, int32_t colourCode)
 {
     led_assign_sequence(rgbLed.led_id_red, rgbSeq.seq_id_red);
     led_assign_sequence(rgbLed.led_id_green, rgbSeq.seq_id_green);
     led_assign_sequence(rgbLed.led_id_blue, rgbSeq.seq_id_blue);
 }
+
 
 int32_t rgb_led_register(pins_t red_pin, pins_t green_pin, pins_t blue_pin, led_t led_obj)
 {
@@ -44,17 +42,14 @@ int32_t rgb_led_register(pins_t red_pin, pins_t green_pin, pins_t blue_pin, led_
     // B
     led_obj.pinout = blue_pin;
     rgbLed.led_id_blue = led_register(led_obj);
-
     return rgb_led_count++;
 }
 
-void rgb_sequence_get_ids_from_id(uint32_t rgbSequenceId, uint32_t * redSequenceId, uint32_t * greenSequenceId, uint32_t * blueSequenceId)
+void rgb_sequence_get_ids_from_id(int32_t rgbSequenceId, int32_t * redSequenceId, int32_t * greenSequenceId, int32_t * blueSequenceId)
 {
-
     *redSequenceId   = rgbSeq.seq_id_red;
     *greenSequenceId = rgbSeq.seq_id_green;
     *blueSequenceId  = rgbSeq.seq_id_blue;
-
 }
 
 int32_t rgb_sequence_register(uint8_t length, uint16_t period, uint32_t * rgbSequence)
@@ -87,4 +82,24 @@ int32_t rgb_sequence_register(uint8_t length, uint16_t period, uint32_t * rgbSeq
 uint32_t rgb_sequence_get_count()
 {
     return rgb_seq_count;
+}
+
+
+led_status_t rgb_assign_sequence(int32_t rgb_led_id,int32_t rgb_sequence_id)
+{
+    led_status_t redStatus = led_assign_sequence(rgbLed.led_id_red, rgbSeq.seq_id_red);
+    led_status_t blueStatus = led_assign_sequence(rgbLed.led_id_green, rgbSeq.seq_id_green);
+    led_status_t greenStatus = led_assign_sequence(rgbLed.led_id_blue, rgbSeq.seq_id_blue);
+    if(!redStatus && !blueStatus && !greenStatus)
+    {
+        return LED_OK;
+    }
+    return LED_ERR;
+}
+
+void rgb_led_get_ids_from_id(int32_t rgbLedId, int32_t * redLedId, int32_t * greenLedId, int32_t * blueLedId)
+{
+    *redLedId   = rgbLed.led_id_red;
+    *greenLedId = rgbLed.led_id_green;
+    *blueLedId  = rgbLed.led_id_blue;
 }

@@ -216,7 +216,6 @@ void led_update_state()
 
 void led_turn_on(int32_t led_id)
 {
-    
     led_assign_sequence(led_id, 1); 
 }
 

@@ -37,6 +37,8 @@ TEST_GROUP(LEDRGBTest)
             LONGS_EQUAL(num, sequence_get_count());
     #define ARE_N_RGB_SEQUENCES_REGISTERED(num)\
         LONGS_EQUAL(num, rgb_sequence_get_count());
+    #define DOES_LED_HAVE_SEQUENCE(led_id, sequence_id)\
+    LONGS_EQUAL(led_get_sequence_id(led_id), sequence_id)
 
     int32_t define_and_register_led_super(bool enabled, pins_t pinout)
     {
@@ -223,7 +225,7 @@ TEST(LEDRGBTest, Registering_1_rgb_sequences_registers_3_sequences)
     // Check that 3 extra LED Sequnces exits 
     ARE_N_SEQUENCES_REGISTERED(preSeqCount+3);
     // Check that the 3 LED Sequences contain only 255
-    uint32_t seqRedId = {0}, seqGreenId = {0}, seqBlueId = {0};
+    int32_t seqRedId = {0}, seqGreenId = {0}, seqBlueId = {0};
     rgb_sequence_get_ids_from_id(seqId,&seqRedId,&seqGreenId,&seqBlueId);
     sequence_t * seq_obj_red   = sequence_get_from_id(seqRedId);
     sequence_t * seq_obj_green = sequence_get_from_id(seqGreenId);
@@ -231,24 +233,109 @@ TEST(LEDRGBTest, Registering_1_rgb_sequences_registers_3_sequences)
     CHECK(255 == seq_obj_red->sequence[0]);
     CHECK(255 == seq_obj_green->sequence[0]);
     CHECK(255 == seq_obj_blue->sequence[0]);
-
 }
 
-
-// Turn an RGB LED on WHITE turns all leds on to full 255
-TEST(LEDRGBTest, turn_an_rgb_led_on_white_turns_leds_on_to_full_255)
+TEST(LEDRGBTest, Registering_red_rgb_sequences_registers_3_sequences)
 {
-    // Registering LED 
-    uint32_t id = register_rgb_led({.pin = 0}, {.pin = 1} ,  {.pin = 2}, true);
-    // Turning White 
-    rgb_led_on(id, RGB_WHITE);
-    // Checking LED's are all set to 255
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(0), "RED LED WRONG");
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(1), "GRM LED WRONG");
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(2), "BLU LED WRONG");
+    // Stuff 
+    uint32_t preRgbSeqCount = rgb_sequence_get_count();
+    uint32_t preSeqCount = sequence_get_count();
+    // Register RGB sequence 
+    uint8_t length = 1;
+    uint16_t period = 1000;
+    uint32_t seq[1] = {C_RED};
+    int32_t seqId = rgb_sequence_register(length, period, seq);
+    // Check that 1 extra RGB sequences exits 
+    ARE_N_RGB_SEQUENCES_REGISTERED(preRgbSeqCount+1);
+    // Check that 3 extra LED Sequnces exits 
+    ARE_N_SEQUENCES_REGISTERED(preSeqCount+3);
+    // Check that the 3 LED Sequences contain only 255
+    int32_t seqRedId = {0}, seqGreenId = {0}, seqBlueId = {0};
+    rgb_sequence_get_ids_from_id(seqId,&seqRedId,&seqGreenId,&seqBlueId);
+    sequence_t * seq_obj_red   = sequence_get_from_id(seqRedId);
+    sequence_t * seq_obj_green = sequence_get_from_id(seqGreenId);
+    sequence_t * seq_obj_blue  = sequence_get_from_id(seqBlueId);
+    CHECK(255 == seq_obj_red->sequence[0]);
+    CHECK(0 == seq_obj_green->sequence[0]);
+    CHECK(0 == seq_obj_blue->sequence[0]);
 }
+
+TEST(LEDRGBTest, Registering_green_rgb_sequences_registers_3_sequences)
+{
+    // Stuff 
+    uint32_t preRgbSeqCount = rgb_sequence_get_count();
+    uint32_t preSeqCount = sequence_get_count();
+    // Register RGB sequence 
+    uint8_t length = 1;
+    uint16_t period = 1;
+    uint32_t seq[1] = {C_GRN};
+    int32_t seqId = rgb_sequence_register(length, period, seq);
+    // Check that 1 extra RGB sequences exits 
+    ARE_N_RGB_SEQUENCES_REGISTERED(preRgbSeqCount+1);
+    // Check that 3 extra LED Sequnces exits 
+    ARE_N_SEQUENCES_REGISTERED(preSeqCount+3);
+    // Check that the 3 LED Sequences contain only 255
+    int32_t seqRedId = {0}, seqGreenId = {0}, seqBlueId = {0};
+    rgb_sequence_get_ids_from_id(seqId,&seqRedId,&seqGreenId,&seqBlueId);
+    sequence_t * seq_obj_red   = sequence_get_from_id(seqRedId);
+    sequence_t * seq_obj_green = sequence_get_from_id(seqGreenId);
+    sequence_t * seq_obj_blue  = sequence_get_from_id(seqBlueId);
+    CHECK(0 == seq_obj_red->sequence[0]);
+    CHECK(255 == seq_obj_green->sequence[0]);
+    CHECK(0 == seq_obj_blue->sequence[0]);
+}
+
+TEST(LEDRGBTest, Registering_blue_rgb_sequences_registers_3_sequences)
+{
+    // Stuff 
+    uint32_t preRgbSeqCount = rgb_sequence_get_count();
+    uint32_t preSeqCount = sequence_get_count();
+    // Register RGB sequence 
+    uint8_t length = 1;
+    uint16_t period = 1;
+    uint32_t seq[1] = {C_BLUE};
+    int32_t seqId = rgb_sequence_register(length, period, seq);
+    // Check that 1 extra RGB sequences exits 
+    ARE_N_RGB_SEQUENCES_REGISTERED(preRgbSeqCount+1);
+    // Check that 3 extra LED Sequnces exits 
+    ARE_N_SEQUENCES_REGISTERED(preSeqCount+3);
+    // Check that the 3 LED Sequences contain only 255
+    int32_t seqRedId = {0}, seqGreenId = {0}, seqBlueId = {0};
+    rgb_sequence_get_ids_from_id(seqId,&seqRedId,&seqGreenId,&seqBlueId);
+    sequence_t * seq_obj_red   = sequence_get_from_id(seqRedId);
+    sequence_t * seq_obj_green = sequence_get_from_id(seqGreenId);
+    sequence_t * seq_obj_blue  = sequence_get_from_id(seqBlueId);
+    CHECK(0 == seq_obj_red->sequence[0]);
+    CHECK(0 == seq_obj_green->sequence[0]);
+    CHECK(255 == seq_obj_blue->sequence[0]);
+}
+
+// Sequence can be assigned to rgb led
+TEST(LEDRGBTest, sequencs_can_be_assigned_to_rgb_led)
+{
+    // Definine a sequence 
+    uint8_t length = 1;
+    uint16_t period = 1000;
+    uint32_t seq[1] = {C_WHITE};
+    int32_t seqId = rgb_sequence_register(length, period, seq);
+    // Define an RGB led 
+    int32_t ledId = register_rgb_led({.pin = 0}, {.pin = 1} ,  {.pin = 2}, true);
+    // Assign Sequence
+    led_status_t assignStatus = rgb_assign_sequence(ledId,seqId);
+    LONGS_EQUAL(LED_OK, assignStatus);
+    // Check each led has a sequence assigned 
+    int32_t ledRedId = {0}, ledGreenId = {0}, ledBlueId = {0};
+    rgb_led_get_ids_from_id(ledId, &ledRedId, &ledGreenId, &ledBlueId);
+    int32_t seqRedId = {0}, seqGreenId = {0}, seqBlueId = {0};
+    rgb_sequence_get_ids_from_id(seqId,&seqRedId,&seqGreenId,&seqBlueId);
+    DOES_LED_HAVE_SEQUENCE(ledRedId , seqRedId);
+    DOES_LED_HAVE_SEQUENCE(ledGreenId,seqGreenId);
+    DOES_LED_HAVE_SEQUENCE(ledBlueId,seqBlueId);
+}
+
 
 /* TODO
+* - Turn an RGB LED on WHITE turns all leds on to full 255
 * - Turn an RGB LED on BLUE turns only the blue led on to 255
 * - Turn an RGB LED on RED turns only the red led on to 255
 * - Turn an RGB LED on GREEN turns only the green led on to 255
