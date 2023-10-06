@@ -82,86 +82,90 @@ $(document).ready(function() { init_codefold(0); });
 </div><!--header-->
 <div class="contents">
 <a href="rgb__led_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef RGB_LED_H</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define RGB_LED_H</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="led_8h.html">led.h</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structrgb__led__t.html">   16</a></span> <span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>     int32_t led_id_red;   </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structrgb__led__t.html#a328b1d693ed8ec510d8901bff7f863d1">   18</a></span>     int32_t <a class="code hl_variable" href="structrgb__led__t.html#a328b1d693ed8ec510d8901bff7f863d1">led_id_green</a>; </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structrgb__led__t.html#a21191bdfcaa2e8df98f883f991620e42">   19</a></span>     int32_t <a class="code hl_variable" href="structrgb__led__t.html#a21191bdfcaa2e8df98f883f991620e42">led_id_blue</a>;  </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> } <a class="code hl_struct" href="structrgb__led__t.html">rgb_led_t</a>;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef RGB_LED_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define RGB_LED_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="led_8h.html">led.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structrgb__led__t.html">   15</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    int32_t led_id_red;   </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structrgb__led__t.html#a328b1d693ed8ec510d8901bff7f863d1">   18</a></span>    int32_t <a class="code hl_variable" href="structrgb__led__t.html#a328b1d693ed8ec510d8901bff7f863d1">led_id_green</a>; </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structrgb__led__t.html#a21191bdfcaa2e8df98f883f991620e42">   19</a></span>    int32_t <a class="code hl_variable" href="structrgb__led__t.html#a21191bdfcaa2e8df98f883f991620e42">led_id_blue</a>;  </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>} <a class="code hl_struct" href="structrgb__led__t.html">rgb_led_t</a>;</div>
 </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structrgb__sequence__t.html">   25</a></span> <span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>     int32_t seq_id_red;   </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structrgb__sequence__t.html#a93add7e2fcdb8fe4db4dedc4eab1ac6c">   27</a></span>     int32_t <a class="code hl_variable" href="structrgb__sequence__t.html#a93add7e2fcdb8fe4db4dedc4eab1ac6c">seq_id_green</a>; </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structrgb__sequence__t.html#a5efb2f32b565457a59748d76bfec0063">   28</a></span>     int32_t <a class="code hl_variable" href="structrgb__sequence__t.html#a5efb2f32b565457a59748d76bfec0063">seq_id_blue</a>;  </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> } <a class="code hl_struct" href="structrgb__sequence__t.html">rgb_sequence_t</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structrgb__sequence__t.html">   25</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    int32_t seq_id_red;   </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structrgb__sequence__t.html#a93add7e2fcdb8fe4db4dedc4eab1ac6c">   28</a></span>    int32_t <a class="code hl_variable" href="structrgb__sequence__t.html#a93add7e2fcdb8fe4db4dedc4eab1ac6c">seq_id_green</a>; </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structrgb__sequence__t.html#a5efb2f32b565457a59748d76bfec0063">   29</a></span>    int32_t <a class="code hl_variable" href="structrgb__sequence__t.html#a5efb2f32b565457a59748d76bfec0063">seq_id_blue</a>;  </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <a class="code hl_struct" href="structrgb__sequence__t.html">rgb_sequence_t</a>;</div>
 </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#aa911d6e38da21ffa8223c6a8675fdf9c">   34</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    C_WHITE  = 0xFFFFFF,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    C_RED    = 0xFF0000,</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    C_GRN    = 0x00FF00,</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    C_BLUE   = 0x0000FF,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>} <a class="code hl_enumeration" href="rgb__led_8h.html#aa911d6e38da21ffa8223c6a8675fdf9c">rgb_colour_t</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#aa911d6e38da21ffa8223c6a8675fdf9c">   35</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    C_WHITE = 0xFFFFFF,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    C_RED = 0xFF0000,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    C_GRN = 0x00FF00,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    C_BLUE = 0x0000FF,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    C_OFF = 0x000000,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} <a class="code hl_enumeration" href="rgb__led_8h.html#aa911d6e38da21ffa8223c6a8675fdf9c">rgb_colour_t</a>;</div>
 </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a2699c1825cbd32e3a222dad003d674ac">   44</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    RGB_WHITE,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    RGB_RED,</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    RGB_GREEN,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    RGB_BLUE, </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    RGB_OFF, </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>} <a class="code hl_enumeration" href="rgb__led_8h.html#a2699c1825cbd32e3a222dad003d674ac">rgb_state_t</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="};">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a2699c1825cbd32e3a222dad003d674ac">   47</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    RGB_WHITE,</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    RGB_RED,</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    RGB_GREEN,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    RGB_BLUE,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    RGB_OFF,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>} <a class="code hl_enumeration" href="rgb__led_8h.html#a2699c1825cbd32e3a222dad003d674ac">rgb_state_t</a>;</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a459915cec820b4de5e39f135cfff4ef9">   58</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="rgb__led_8h.html#a459915cec820b4de5e39f135cfff4ef9">rgb_led_init</a>();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a33ca876e28ad2368303fb4ee0f3d2a17">   66</a></span>uint32_t <a class="code hl_function" href="rgb__led_8h.html#a33ca876e28ad2368303fb4ee0f3d2a17">rgb_led_get_count</a>();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a06f4dc4b89ca7209b21cbe7499f9fcd7">   73</a></span>uint32_t <a class="code hl_function" href="rgb__led_8h.html#a06f4dc4b89ca7209b21cbe7499f9fcd7">rgb_sequence_get_count</a>();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#ab9b17473c4e6779069233ad154527c47">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="rgb__led_8h.html#ab9b17473c4e6779069233ad154527c47">rgb_led_on</a>(int32_t <span class="keywordtype">id</span>, int32_t colourCode);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a8041bd0f704a2e1c31c3ceaac021472c">   91</a></span>int32_t <a class="code hl_function" href="rgb__led_8h.html#a8041bd0f704a2e1c31c3ceaac021472c">rgb_led_register</a>(pins_t red_pin, pins_t green_pin, pins_t blue_pin, <a class="code hl_struct" href="structled__t.html">led_t</a> led_obj);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a92f4d622d7e99dbc8d9752b2161f098e">  101</a></span>int32_t <a class="code hl_function" href="rgb__led_8h.html#a92f4d622d7e99dbc8d9752b2161f098e">rgb_sequence_register</a>(uint8_t length,uint16_t period,uint32_t * rgbSequence);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a41adde331af8ebbc8ceac5768a62f44e">  111</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="rgb__led_8h.html#a41adde331af8ebbc8ceac5768a62f44e">rgb_sequence_get_ids_from_id</a>(int32_t rgbSequenceId, int32_t * redSequenceId, int32_t * greenSequenceId, int32_t * blueSequenceId);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a553c03d0406b583317f6358f70445e02">  121</a></span><a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> <a class="code hl_function" href="rgb__led_8h.html#a553c03d0406b583317f6358f70445e02">rgb_assign_sequence</a>(int32_t rgb_led_id,int32_t rgb_sequence_id);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a1121b29d5683bdb5346ea24e6e3600b6">  131</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="rgb__led_8h.html#a1121b29d5683bdb5346ea24e6e3600b6">rgb_led_get_ids_from_id</a>(int32_t rgbLedId, int32_t * redLedId, int32_t * greenLedId, int32_t * blueLedId);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a459915cec820b4de5e39f135cfff4ef9">   61</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="rgb__led_8h.html#a459915cec820b4de5e39f135cfff4ef9">rgb_led_init</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a33ca876e28ad2368303fb4ee0f3d2a17">   69</a></span>uint32_t <a class="code hl_function" href="rgb__led_8h.html#a33ca876e28ad2368303fb4ee0f3d2a17">rgb_led_get_count</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a06f4dc4b89ca7209b21cbe7499f9fcd7">   76</a></span>uint32_t <a class="code hl_function" href="rgb__led_8h.html#a06f4dc4b89ca7209b21cbe7499f9fcd7">rgb_sequence_get_count</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a9dddc016b70e3f9102ca2eb3d901dfe8">   83</a></span><a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> <a class="code hl_function" href="rgb__led_8h.html#a9dddc016b70e3f9102ca2eb3d901dfe8">rgb_led_on</a>(int32_t <span class="keywordtype">id</span>, int32_t colourCode);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a8041bd0f704a2e1c31c3ceaac021472c">   94</a></span>int32_t <a class="code hl_function" href="rgb__led_8h.html#a8041bd0f704a2e1c31c3ceaac021472c">rgb_led_register</a>(pins_t red_pin, pins_t green_pin, pins_t blue_pin, <a class="code hl_struct" href="structled__t.html">led_t</a> led_obj);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a92f4d622d7e99dbc8d9752b2161f098e">  104</a></span>int32_t <a class="code hl_function" href="rgb__led_8h.html#a92f4d622d7e99dbc8d9752b2161f098e">rgb_sequence_register</a>(uint8_t length, uint16_t period, uint32_t *rgbSequence);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a41adde331af8ebbc8ceac5768a62f44e">  114</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="rgb__led_8h.html#a41adde331af8ebbc8ceac5768a62f44e">rgb_sequence_get_ids_from_id</a>(int32_t rgbSequenceId, int32_t *redSequenceId, int32_t *greenSequenceId, int32_t *blueSequenceId);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a553c03d0406b583317f6358f70445e02">  124</a></span><a class="code hl_enumeration" href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a> <a class="code hl_function" href="rgb__led_8h.html#a553c03d0406b583317f6358f70445e02">rgb_assign_sequence</a>(int32_t rgb_led_id, int32_t rgb_sequence_id);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="rgb__led_8h.html#a1121b29d5683bdb5346ea24e6e3600b6">  134</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="rgb__led_8h.html#a1121b29d5683bdb5346ea24e6e3600b6">rgb_led_get_ids_from_id</a>(int32_t rgbLedId, int32_t *redLedId, int32_t *greenLedId, int32_t *blueLedId);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aled_8h_html"><div class="ttname"><a href="led_8h.html">led.h</a></div><div class="ttdoc">A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.</div></div>
 <div class="ttc" id="aled_8h_html_acefcb61df68bbf1e3b464156b1b8c333"><div class="ttname"><a href="led_8h.html#acefcb61df68bbf1e3b464156b1b8c333">led_status_t</a></div><div class="ttdeci">led_status_t</div><div class="ttdoc">For describing execution status of function.</div><div class="ttdef"><b>Definition</b> led.h:50</div></div>
 <div class="ttc" id="argb__led_8h_html_a06f4dc4b89ca7209b21cbe7499f9fcd7"><div class="ttname"><a href="rgb__led_8h.html#a06f4dc4b89ca7209b21cbe7499f9fcd7">rgb_sequence_get_count</a></div><div class="ttdeci">uint32_t rgb_sequence_get_count()</div><div class="ttdoc">Return the number of registered RGB sequences.</div></div>
 <div class="ttc" id="argb__led_8h_html_a1121b29d5683bdb5346ea24e6e3600b6"><div class="ttname"><a href="rgb__led_8h.html#a1121b29d5683bdb5346ea24e6e3600b6">rgb_led_get_ids_from_id</a></div><div class="ttdeci">void rgb_led_get_ids_from_id(int32_t rgbLedId, int32_t *redLedId, int32_t *greenLedId, int32_t *blueLedId)</div><div class="ttdoc">Returns the id's for all associated led ids for a defined RGB led.</div></div>
-<div class="ttc" id="argb__led_8h_html_a2699c1825cbd32e3a222dad003d674ac"><div class="ttname"><a href="rgb__led_8h.html#a2699c1825cbd32e3a222dad003d674ac">rgb_state_t</a></div><div class="ttdeci">rgb_state_t</div><div class="ttdoc">On init defined RGB patterns to be used to turn LED solid colours</div><div class="ttdef"><b>Definition</b> rgb_led.h:44</div></div>
+<div class="ttc" id="argb__led_8h_html_a2699c1825cbd32e3a222dad003d674ac"><div class="ttname"><a href="rgb__led_8h.html#a2699c1825cbd32e3a222dad003d674ac">rgb_state_t</a></div><div class="ttdeci">rgb_state_t</div><div class="ttdoc">On init defined RGB patterns to be used to turn LED solid colours.</div><div class="ttdef"><b>Definition</b> rgb_led.h:48</div></div>
 <div class="ttc" id="argb__led_8h_html_a33ca876e28ad2368303fb4ee0f3d2a17"><div class="ttname"><a href="rgb__led_8h.html#a33ca876e28ad2368303fb4ee0f3d2a17">rgb_led_get_count</a></div><div class="ttdeci">uint32_t rgb_led_get_count()</div><div class="ttdoc">Return the number of registered RGB LEDs in the rgb_led module.</div></div>
 <div class="ttc" id="argb__led_8h_html_a41adde331af8ebbc8ceac5768a62f44e"><div class="ttname"><a href="rgb__led_8h.html#a41adde331af8ebbc8ceac5768a62f44e">rgb_sequence_get_ids_from_id</a></div><div class="ttdeci">void rgb_sequence_get_ids_from_id(int32_t rgbSequenceId, int32_t *redSequenceId, int32_t *greenSequenceId, int32_t *blueSequenceId)</div><div class="ttdoc">Returns the id's for all associated sequence ids for a defined RGB sequence.</div></div>
 <div class="ttc" id="argb__led_8h_html_a459915cec820b4de5e39f135cfff4ef9"><div class="ttname"><a href="rgb__led_8h.html#a459915cec820b4de5e39f135cfff4ef9">rgb_led_init</a></div><div class="ttdeci">void rgb_led_init()</div><div class="ttdoc">The inialisation for the rgb led wrapper. Initialization the state of all of the LEDs in the LED arra...</div></div>
 <div class="ttc" id="argb__led_8h_html_a553c03d0406b583317f6358f70445e02"><div class="ttname"><a href="rgb__led_8h.html#a553c03d0406b583317f6358f70445e02">rgb_assign_sequence</a></div><div class="ttdeci">led_status_t rgb_assign_sequence(int32_t rgb_led_id, int32_t rgb_sequence_id)</div><div class="ttdoc">Assigns an RGB sequence to an RGB led.</div></div>
 <div class="ttc" id="argb__led_8h_html_a8041bd0f704a2e1c31c3ceaac021472c"><div class="ttname"><a href="rgb__led_8h.html#a8041bd0f704a2e1c31c3ceaac021472c">rgb_led_register</a></div><div class="ttdeci">int32_t rgb_led_register(pins_t red_pin, pins_t green_pin, pins_t blue_pin, led_t led_obj)</div><div class="ttdoc">Registeres a new RGB led inside of rgb_led.h, this in turn registeres 3 LEDS in led....</div></div>
 <div class="ttc" id="argb__led_8h_html_a92f4d622d7e99dbc8d9752b2161f098e"><div class="ttname"><a href="rgb__led_8h.html#a92f4d622d7e99dbc8d9752b2161f098e">rgb_sequence_register</a></div><div class="ttdeci">int32_t rgb_sequence_register(uint8_t length, uint16_t period, uint32_t *rgbSequence)</div><div class="ttdoc">Creates and registers an RGB sequence that can be assinged to RGB led's.</div></div>
-<div class="ttc" id="argb__led_8h_html_aa911d6e38da21ffa8223c6a8675fdf9c"><div class="ttname"><a href="rgb__led_8h.html#aa911d6e38da21ffa8223c6a8675fdf9c">rgb_colour_t</a></div><div class="ttdeci">rgb_colour_t</div><div class="ttdoc">Predefined hexidecimal colour codes to be used for sequence creation.</div><div class="ttdef"><b>Definition</b> rgb_led.h:34</div></div>
-<div class="ttc" id="argb__led_8h_html_ab9b17473c4e6779069233ad154527c47"><div class="ttname"><a href="rgb__led_8h.html#ab9b17473c4e6779069233ad154527c47">rgb_led_on</a></div><div class="ttdeci">void rgb_led_on(int32_t id, int32_t colourCode)</div><div class="ttdoc">Changes the RGB led to the colour specified.</div></div>
+<div class="ttc" id="argb__led_8h_html_a9dddc016b70e3f9102ca2eb3d901dfe8"><div class="ttname"><a href="rgb__led_8h.html#a9dddc016b70e3f9102ca2eb3d901dfe8">rgb_led_on</a></div><div class="ttdeci">led_status_t rgb_led_on(int32_t id, int32_t colourCode)</div><div class="ttdoc">Changes the RGB led to the colour specified.</div></div>
+<div class="ttc" id="argb__led_8h_html_aa911d6e38da21ffa8223c6a8675fdf9c"><div class="ttname"><a href="rgb__led_8h.html#aa911d6e38da21ffa8223c6a8675fdf9c">rgb_colour_t</a></div><div class="ttdeci">rgb_colour_t</div><div class="ttdoc">Predefined hexidecimal colour codes to be used for sequence creation.</div><div class="ttdef"><b>Definition</b> rgb_led.h:36</div></div>
 <div class="ttc" id="astructled__t_html"><div class="ttname"><a href="structled__t.html">led_t</a></div><div class="ttdoc">Holds state information for an led's configuration.</div><div class="ttdef"><b>Definition</b> led.h:29</div></div>
 <div class="ttc" id="astructrgb__led__t_html"><div class="ttname"><a href="structrgb__led__t.html">rgb_led_t</a></div><div class="ttdoc">Holds state information for an rgb led's configuration.</div><div class="ttdef"><b>Definition</b> rgb_led.h:16</div></div>
 <div class="ttc" id="astructrgb__led__t_html_a21191bdfcaa2e8df98f883f991620e42"><div class="ttname"><a href="structrgb__led__t.html#a21191bdfcaa2e8df98f883f991620e42">rgb_led_t::led_id_blue</a></div><div class="ttdeci">int32_t led_id_blue</div><div class="ttdef"><b>Definition</b> rgb_led.h:19</div></div>
 <div class="ttc" id="astructrgb__led__t_html_a328b1d693ed8ec510d8901bff7f863d1"><div class="ttname"><a href="structrgb__led__t.html#a328b1d693ed8ec510d8901bff7f863d1">rgb_led_t::led_id_green</a></div><div class="ttdeci">int32_t led_id_green</div><div class="ttdef"><b>Definition</b> rgb_led.h:18</div></div>
-<div class="ttc" id="astructrgb__sequence__t_html"><div class="ttname"><a href="structrgb__sequence__t.html">rgb_sequence_t</a></div><div class="ttdoc">Holds state information for an rgb sequence.</div><div class="ttdef"><b>Definition</b> rgb_led.h:25</div></div>
-<div class="ttc" id="astructrgb__sequence__t_html_a5efb2f32b565457a59748d76bfec0063"><div class="ttname"><a href="structrgb__sequence__t.html#a5efb2f32b565457a59748d76bfec0063">rgb_sequence_t::seq_id_blue</a></div><div class="ttdeci">int32_t seq_id_blue</div><div class="ttdef"><b>Definition</b> rgb_led.h:28</div></div>
-<div class="ttc" id="astructrgb__sequence__t_html_a93add7e2fcdb8fe4db4dedc4eab1ac6c"><div class="ttname"><a href="structrgb__sequence__t.html#a93add7e2fcdb8fe4db4dedc4eab1ac6c">rgb_sequence_t::seq_id_green</a></div><div class="ttdeci">int32_t seq_id_green</div><div class="ttdef"><b>Definition</b> rgb_led.h:27</div></div>
+<div class="ttc" id="astructrgb__sequence__t_html"><div class="ttname"><a href="structrgb__sequence__t.html">rgb_sequence_t</a></div><div class="ttdoc">Holds state information for an rgb sequence.</div><div class="ttdef"><b>Definition</b> rgb_led.h:26</div></div>
+<div class="ttc" id="astructrgb__sequence__t_html_a5efb2f32b565457a59748d76bfec0063"><div class="ttname"><a href="structrgb__sequence__t.html#a5efb2f32b565457a59748d76bfec0063">rgb_sequence_t::seq_id_blue</a></div><div class="ttdeci">int32_t seq_id_blue</div><div class="ttdef"><b>Definition</b> rgb_led.h:29</div></div>
+<div class="ttc" id="astructrgb__sequence__t_html_a93add7e2fcdb8fe4db4dedc4eab1ac6c"><div class="ttname"><a href="structrgb__sequence__t.html#a93add7e2fcdb8fe4db4dedc4eab1ac6c">rgb_sequence_t::seq_id_green</a></div><div class="ttdeci">int32_t seq_id_green</div><div class="ttdef"><b>Definition</b> rgb_led.h:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
