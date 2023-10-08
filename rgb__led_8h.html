@@ -81,7 +81,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A wrapper around the <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a> and <a class="el" href="sequence_8h.html" title="Module for storing sequence information for a flashing LED.">sequence.h</a> that allows the definition and use of RGB leds as single units.  
+<p>A wrapper around the <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a> and <a class="el" href="sequence_8h.html" title="Module for storing sequence information for a flashing LED.">sequence.h</a> that allows the definition and use of RGB leds as single units, when using RGB Led wrapper call the init for the sequence and led first.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="led_8h_source.html">led.h</a>&quot;</code><br />
@@ -151,9 +151,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a1121b29d5683bdb5346ea24e6e3600b6" id="r_a1121b29d5683bdb5346ea24e6e3600b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a1121b29d5683bdb5346ea24e6e3600b6">rgb_led_get_ids_from_id</a> (int32_t rgbLedId, int32_t *redLedId, int32_t *greenLedId, int32_t *blueLedId)</td></tr>
 <tr class="memdesc:a1121b29d5683bdb5346ea24e6e3600b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the id's for all associated led ids for a defined RGB led.  <br /></td></tr>
 <tr class="separator:a1121b29d5683bdb5346ea24e6e3600b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b02ba5d76f5ebe0e46e238392f1d6de" id="r_a1b02ba5d76f5ebe0e46e238392f1d6de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a1b02ba5d76f5ebe0e46e238392f1d6de">rgb_sequence_exists</a> (int32_t rgb_sequence_id)</td></tr>
+<tr class="memdesc:a1b02ba5d76f5ebe0e46e238392f1d6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a rgb sequence is registered.  <br /></td></tr>
+<tr class="separator:a1b02ba5d76f5ebe0e46e238392f1d6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72902c71b2be68289fe1cd6b726cfd96" id="r_a72902c71b2be68289fe1cd6b726cfd96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rgb__led_8h.html#a72902c71b2be68289fe1cd6b726cfd96">rgb_led_exists</a> (int32_t rgbLedId)</td></tr>
+<tr class="memdesc:a72902c71b2be68289fe1cd6b726cfd96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a rgb led is registered.  <br /></td></tr>
+<tr class="separator:a72902c71b2be68289fe1cd6b726cfd96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A wrapper around the <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a> and <a class="el" href="sequence_8h.html" title="Module for storing sequence information for a flashing LED.">sequence.h</a> that allows the definition and use of RGB leds as single units. </p>
+<div class="textblock"><p>A wrapper around the <a class="el" href="led_8h.html" title="A driver for LEDs. They can be RGB or not and there can be 1 or many LEDs.">led.h</a> and <a class="el" href="sequence_8h.html" title="Module for storing sequence information for a flashing LED.">sequence.h</a> that allows the definition and use of RGB leds as single units, when using RGB Led wrapper call the init for the sequence and led first. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a553c03d0406b583317f6358f70445e02" name="a553c03d0406b583317f6358f70445e02"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a553c03d0406b583317f6358f70445e02">&#9670;&#160;</a></span>rgb_assign_sequence()</h2>
@@ -190,6 +196,27 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>led_status_t - err if the led or sequence doesn't exist. </dd></dl>
+
+</div>
+</div>
+<a id="a72902c71b2be68289fe1cd6b726cfd96" name="a72902c71b2be68289fe1cd6b726cfd96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72902c71b2be68289fe1cd6b726cfd96">&#9670;&#160;</a></span>rgb_led_exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool rgb_led_exists </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>rgbLedId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a rgb led is registered. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool - Returns true if led exists. </dd></dl>
 
 </div>
 </div>
@@ -370,6 +397,27 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Error if failed to register, rgb led ID otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a1b02ba5d76f5ebe0e46e238392f1d6de" name="a1b02ba5d76f5ebe0e46e238392f1d6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b02ba5d76f5ebe0e46e238392f1d6de">&#9670;&#160;</a></span>rgb_sequence_exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool rgb_sequence_exists </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>rgb_sequence_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a rgb sequence is registered. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool - Returns true if sequence exists. </dd></dl>
 
 </div>
 </div>
