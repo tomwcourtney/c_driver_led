@@ -94,6 +94,19 @@ void check_sequence_matches_colour(int32_t seqId, uint32_t colour)
     CHECK_TEXT(((colour >> 8) & 0xFF) == seq_obj_green->sequence[0], "GREEN CHANNEL MISMATCH");
     CHECK_TEXT((colour & 0xFF) == seq_obj_blue->sequence[0], "BLUE CHANNEL MISMATCH");
 }
+
+void check_led_ids(int32_t rgbLedId, int32_t redId, int32_t greenId, int32_t blueId, int16_t redVal, int16_t greenVal, int16_t blueVal, int8_t steps)
+{
+    int32_t ledRedId = {0}, ledGreenId = {0}, ledBlueId = {0};
+    rgb_led_get_ids_from_id(rgbLedId, &ledRedId, &ledGreenId, &ledBlueId);
+    CHECK_TEXT(ledRedId == redId, "red Id Wrong");
+    CHECK_TEXT(ledGreenId == greenId, "grn Id Wrong");
+    CHECK_TEXT(ledBlueId == blueId, "blu Id Wrong");
+    step_n_times(steps);
+    LONGS_EQUAL_TEXT(redVal, led_spy_get_state(ledRedId), "GREEN LED ERR");
+    LONGS_EQUAL_TEXT(greenVal, led_spy_get_state(ledGreenId), "BLUE LED ERR");
+    LONGS_EQUAL_TEXT(blueVal, led_spy_get_state(ledBlueId), "RED LED ERR");
+}
 }
 ;
 
@@ -342,15 +355,7 @@ TEST(LEDRGBTest, led_on_function_can_turn_led_white)
     led_status_t onStatus = rgb_led_on(ledId, RGB_WHITE);
     LONGS_EQUAL_TEXT(LED_OK, onStatus, "COMMANND FAiILED");
     // Check state of LED
-    int32_t ledRedId = {0}, ledGreenId = {0}, ledBlueId = {0};
-    rgb_led_get_ids_from_id(ledId, &ledRedId, &ledGreenId, &ledBlueId);
-    CHECK_TEXT(ledRedId == 0, "red Id Wrong");
-    CHECK_TEXT(ledGreenId == 1, "grn Id Wrong");
-    CHECK_TEXT(ledBlueId == 2, "blu Id Wrong");
-    step_n_times(2);
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(ledGreenId), "GREEN LED ERR");
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(ledBlueId), "BLUE LED ERR");
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(ledRedId), "RED LED ERR");
+    check_led_ids(ledId, 0, 1, 2, 255, 255, 255, 1);
 }
 
 TEST(LEDRGBTest, led_on_function_can_turn_led_red)
@@ -362,15 +367,7 @@ TEST(LEDRGBTest, led_on_function_can_turn_led_red)
     led_status_t onStatus = rgb_led_on(ledId, RGB_RED);
     LONGS_EQUAL_TEXT(LED_OK, onStatus, "COMMANND FAiILED");
     // Check state of LED
-    int32_t ledRedId = {0}, ledGreenId = {0}, ledBlueId = {0};
-    rgb_led_get_ids_from_id(ledId, &ledRedId, &ledGreenId, &ledBlueId);
-    CHECK_TEXT(ledRedId == 0, "red Id Wrong");
-    CHECK_TEXT(ledGreenId == 1, "grn Id Wrong");
-    CHECK_TEXT(ledBlueId == 2, "blu Id Wrong");
-    step_n_times(2);
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(ledRedId), "RED LED ERR");
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledGreenId), "GREEN LED ERR");
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledBlueId), "BLUE LED ERR");
+    check_led_ids(ledId, 0, 1, 2, 255, 0, 0, 1);
 }
 
 TEST(LEDRGBTest, led_on_function_can_turn_led_green)
@@ -382,15 +379,7 @@ TEST(LEDRGBTest, led_on_function_can_turn_led_green)
     led_status_t onStatus = rgb_led_on(ledId, RGB_GREEN);
     LONGS_EQUAL_TEXT(LED_OK, onStatus, "COMMANND FAiILED");
     // Check state of LED
-    int32_t ledRedId = {0}, ledGreenId = {0}, ledBlueId = {0};
-    rgb_led_get_ids_from_id(ledId, &ledRedId, &ledGreenId, &ledBlueId);
-    CHECK_TEXT(ledRedId == 0, "red Id Wrong");
-    CHECK_TEXT(ledGreenId == 1, "grn Id Wrong");
-    CHECK_TEXT(ledBlueId == 2, "blu Id Wrong");
-    step_n_times(2);
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledRedId), "RED LED ERR");
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(ledGreenId), "GREEN LED ERR");
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledBlueId), "BLUE LED ERR");
+    check_led_ids(ledId, 0, 1, 2, 0, 255, 0, 1);
 }
 
 TEST(LEDRGBTest, led_on_function_can_turn_led_blue)
@@ -402,15 +391,7 @@ TEST(LEDRGBTest, led_on_function_can_turn_led_blue)
     led_status_t onStatus = rgb_led_on(ledId, RGB_BLUE);
     LONGS_EQUAL_TEXT(LED_OK, onStatus, "COMMANND FAiILED");
     // Check state of LED
-    int32_t ledRedId = {0}, ledGreenId = {0}, ledBlueId = {0};
-    rgb_led_get_ids_from_id(ledId, &ledRedId, &ledGreenId, &ledBlueId);
-    CHECK_TEXT(ledRedId == 0, "red Id Wrong");
-    CHECK_TEXT(ledGreenId == 1, "grn Id Wrong");
-    CHECK_TEXT(ledBlueId == 2, "blu Id Wrong");
-    step_n_times(2);
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledRedId), "RED LED ERR");
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledGreenId), "GREEN LED ERR");
-    LONGS_EQUAL_TEXT(255, led_spy_get_state(ledBlueId), "BLUE LED ERR");
+    check_led_ids(ledId, 0, 1, 2, 0, 0, 255, 1);
 }
 
 TEST(LEDRGBTest, led_on_function_can_turn_led_off)
@@ -422,22 +403,88 @@ TEST(LEDRGBTest, led_on_function_can_turn_led_off)
     led_status_t onStatus = rgb_led_on(ledId, RGB_OFF);
     LONGS_EQUAL_TEXT(LED_OK, onStatus, "COMMANND FAiILED");
     // Check state of LED
-    int32_t ledRedId = {0}, ledGreenId = {0}, ledBlueId = {0};
-    rgb_led_get_ids_from_id(ledId, &ledRedId, &ledGreenId, &ledBlueId);
-    CHECK_TEXT(ledRedId == 0, "red Id Wrong");
-    CHECK_TEXT(ledGreenId == 1, "grn Id Wrong");
-    CHECK_TEXT(ledBlueId == 2, "blu Id Wrong");
-    step_n_times(2);
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledRedId), "RED LED ERR");
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledGreenId), "GREEN LED ERR");
-    LONGS_EQUAL_TEXT(0, led_spy_get_state(ledBlueId), "BLUE LED ERR");
+    check_led_ids(ledId, 0, 1, 2, 0, 0, 0, 1);
 }
 
-/** TODO
- * - More then One RGB led can be registered
- * - Registering an RGB sequence when there is MAX_SEQUENCE - 2 returns error
- * - Trying to assign RGB sequence that does not exist returns error
- * -
- * - Resitering an RGB led when ther is MAX_LEDS -2 already registed returns error and does not register led's
- *
- */
+// More then one RGB led can be registered
+TEST(LEDRGBTest, more_then_one_rgb_led_can_be_registered)
+{
+    // Define an RGB led
+    int32_t ledId_1 = register_rgb_led({.pin = 0}, {.pin = 1}, {.pin = 2}, true);
+    int32_t ledId_2 = register_rgb_led({.pin = 3}, {.pin = 4}, {.pin = 5}, true);
+    // Check number of leds registered
+    ARE_N_LEDS_REGISTERED(6);
+    // Check number of RGB leds registered
+    ARE_N_RGB_LEDS_REGISTERED(2);
+
+    // Check refistered led pins
+    check_led_ids(ledId_1, 0, 1, 2, 0, 0, 0, 1);
+    check_led_ids(ledId_2, 3, 4, 5, 0, 0, 0, 1);
+}
+
+// Trying to assign RGB sequence that does not exist returns error
+TEST(LEDRGBTest, assiginging_an_rgb_led_a_sequence_that_does_not_exisist_returns_error)
+{
+    // Define an RGB led
+    int32_t ledId_1 = register_rgb_led({.pin = 0}, {.pin = 1}, {.pin = 2}, true);
+    // Check number of leds registered
+    led_status_t assignStatus = rgb_assign_sequence(ledId_1, 20);
+    LONGS_EQUAL(LED_ERR, assignStatus);
+}
+
+// Trying to assign RGB sequence to an led that does not exist returns error
+TEST(LEDRGBTest, assiginging_an_unexistant_rgb_led_a_sequencereturns_error)
+{
+    // Assign sequence and check fails
+    led_status_t assignStatus = rgb_assign_sequence(5, RGB_BLUE);
+    LONGS_EQUAL(LED_ERR, assignStatus);
+}
+
+// Resitering an RGB led when ther is MAX_LEDS -2 already registed returns error and does not register led's
+TEST(LEDRGBTest, cannot_register_rgb_led_whhen_there_is_already_max_led_m2_registed)
+{
+    // Register max led's -2
+    for (int i = 0; i < (LEDS_MAX - 2); i++)
+    {
+        define_and_register_led_super(true, {.pin = 0});
+    }
+    // Try to register RGB led
+    int32_t ledId_1 = register_rgb_led({.pin = 0}, {.pin = 1}, {.pin = 2}, true);
+    LONGS_EQUAL(-1, ledId_1);
+    ARE_N_LEDS_REGISTERED((LEDS_MAX - 2));
+}
+
+// RGB sequce Follows pattern
+TEST(LEDRGBTest, rgb_sequence_can_follow_long_pattern)
+{
+    // Register RGB sequence
+    uint32_t seq_1[4] = {C_WHITE, C_GRN, C_BLUE, C_OFF};
+    int32_t seqId_1 = rgb_sequence_register(4, 8, seq_1);
+    // Define an RGB led
+    int32_t ledId_1 = register_rgb_led({.pin = 0}, {.pin = 1}, {.pin = 2}, true);
+    // Assgin sequence to led
+    rgb_assign_sequence(ledId_1, seqId_1);
+    // Step and check colour
+    check_led_ids(ledId_1, 0, 1, 2, 255, 255, 255, 1);
+    check_led_ids(ledId_1, 0, 1, 2, 0, 255, 0, 2);
+    check_led_ids(ledId_1, 0, 1, 2, 0, 0, 255, 2);
+    check_led_ids(ledId_1, 0, 1, 2, 0, 0, 0, 2);
+}
+
+//  Registering an RGB sequence when there is MAX_SEQUENclearCE - 2 returns error
+TEST(LEDRGBTest, cannot_register_rgb_seq_when_there_is_already_max_seq_m2_registed)
+{
+    // Register max led's -2
+    uint8_t sequence[5] = {50, 255, 10, 33};
+    int preSeq = sequence_get_count();
+    for (int i = 0; i < ((MAX_SEQUENCES - preSeq) - 2); i++)
+    {
+        define_and_register_sequence_super(4, 8, &sequence[0]);
+    }
+    ARE_N_SEQUENCES_REGISTERED(MAX_SEQUENCES - 2);
+    // Try to register RGB seq
+    uint32_t seq[1] = {C_RED};
+    int32_t seqId = rgb_sequence_register(1, 1, seq);
+    LONGS_EQUAL(-1, seqId);
+    ARE_N_SEQUENCES_REGISTERED(MAX_SEQUENCES - 2);
+}

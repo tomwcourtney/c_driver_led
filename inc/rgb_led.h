@@ -1,6 +1,7 @@
 /**
  * @file rgb_led.h
- * @brief A wrapper around the led.h and sequence.h that allows the definition and use of RGB leds as single units
+ * @brief A wrapper around the led.h and sequence.h that allows the definition and use of RGB leds as single units, when using
+ * RGB Led wrapper call the init for the sequence and led first.
  */
 
 #ifndef RGB_LED_H
@@ -134,32 +135,17 @@ led_status_t rgb_assign_sequence(int32_t rgb_led_id, int32_t rgb_sequence_id);
 void rgb_led_get_ids_from_id(int32_t rgbLedId, int32_t *redLedId, int32_t *greenLedId, int32_t *blueLedId);
 
 /**
- * Functions will be ported as nessessary from sequence and led
+ * @brief Checks if a rgb sequence is registered.
  *
- * Interface rgb_led
- *
- *  rgb_led_off(void)
+ * @return bool - Returns true if sequence exists.
+ */
+bool rgb_sequence_exists(int32_t rgb_sequence_id);
 
-
-
- *  typedef struct {
- *      int32_t led_id_red
- *      int32_t led_id_blue
- *      int32_t led_id_green
- *  } rgb_led_t
+/**
+ * @brief Checks if a rgb led is registered.
  *
- * Interface rgb_sequence
- * uint32_t rgb_sequence_get_count()
- * rgb_sequence_register(sequence_t _sequence)
- * bool rgb_sequence_exists(uint32_t rgb_sequence_id)
- *
- * uint32_t colourSequence[] = {WHITE, GREEN, 0x002B9B64, 0x009B2B2B}; // Uses hexi colour codes but since we have 32 bits the first byte is 00, we can use the spare byte for brightness scaling in future
- * typedef struct{
- *     uint32_t colourSequence[MAX_SEQUENCE];
- *     uint8_t length;
- *     uint32_t period;
- * }rgb_sequence_t;
- *
-*/
+ * @return bool - Returns true if led exists.
+ */
+bool rgb_led_exists(int32_t rgbLedId);
 
 #endif

@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-rgb_led_t rgbLed = {0};
+rgb_led_t rgbLeds[LEDS_MAX] = {0};
 rgb_sequence_t rgbSequences[MAX_SEQUENCES] = {0};
 
 static uint32_t rgb_led_count = 0; /** Number of registered RGB Leds*/
@@ -40,16 +40,22 @@ led_status_t rgb_led_on(int32_t id, int32_t colourCode)
 
 int32_t rgb_led_register(pins_t red_pin, pins_t green_pin, pins_t blue_pin, led_t led_obj)
 {
+    // Check there is enough led space to register rgb led
+    if((LEDS_MAX-led_get_count()) < 3)
+    {
+        return -1;
+    }
     // Register LEDS with led Module 
     // R
     led_obj.pinout = red_pin;
-    rgbLed.led_id_red = led_register(led_obj);
+    rgbLeds[rgb_led_count].led_id_red = led_register(led_obj);
     // G
     led_obj.pinout = green_pin;
-    rgbLed.led_id_green = led_register(led_obj);
+    rgbLeds[rgb_led_count].led_id_green = led_register(led_obj);
     // B
     led_obj.pinout = blue_pin;
-    rgbLed.led_id_blue = led_register(led_obj);
+    rgbLeds[rgb_led_count].led_id_blue = led_register(led_obj);
+
     return rgb_led_count++;
 }
 
@@ -62,20 +68,30 @@ void rgb_sequence_get_ids_from_id(int32_t rgbSequenceId, int32_t * redSequenceId
 
 int32_t rgb_sequence_register(uint8_t length, uint16_t period, uint32_t * rgbSequence)
 {
+    // Check there is enough space for RGB sequence 
+    if((MAX_SEQUENCES-sequence_get_count()) < 3)
+    {
+        return -1;
+    }
+    
     // Turn RGB sequence into 3 seperate channels through byte manipulation 
     sequence_t sequenceTemp = {
         .length = length,
         .period = period,
         };
 
-    // Seperating Sequences 
+    // Creating colour channels 
     uint8_t redSequence[MAX_SEQUENCE] = {0};
     uint8_t grnSequence[MAX_SEQUENCE] = {0};
     uint8_t bluSequence[MAX_SEQUENCE] = {0};
     // Adding in Colours 
-    redSequence[0] = (rgbSequence[0] >> 16) & 0xFF;
-    grnSequence[0] = (rgbSequence[0] >> 8) & 0xFF;
-    bluSequence[0] = rgbSequence[0] & 0xFF;
+    for(int _iter = 0; _iter <length; _iter ++)
+    {
+        redSequence[_iter] = (rgbSequence[_iter] >> 16) & 0xFF;
+        grnSequence[_iter] = (rgbSequence[_iter] >> 8) & 0xFF;
+        bluSequence[_iter] = rgbSequence[_iter] & 0xFF;
+    }
+    
     // Register 3 Patterns 
     memcpy(sequenceTemp.sequence, redSequence, length);
     rgbSequences[rgb_seq_count].seq_id_red   = sequence_register(sequenceTemp);
@@ -95,9 +111,22 @@ uint32_t rgb_sequence_get_count()
 
 led_status_t rgb_assign_sequence(int32_t rgb_led_id,int32_t rgb_sequence_id)
 {
-    led_status_t redStatus = led_assign_sequence(rgbLed.led_id_red, rgbSequences[rgb_sequence_id].seq_id_red);
-    led_status_t blueStatus = led_assign_sequence(rgbLed.led_id_green, rgbSequences[rgb_sequence_id].seq_id_green);
-    led_status_t greenStatus = led_assign_sequence(rgbLed.led_id_blue, rgbSequences[rgb_sequence_id].seq_id_blue);
+    // Check sequence exists 
+    if(!rgb_sequence_exists(rgb_sequence_id))
+    {
+        return LED_ERR; 
+    }
+
+    // Check led exists 
+    if(!rgb_led_exists(rgb_led_id))
+    {
+        return LED_ERR; 
+    }
+
+    led_status_t redStatus   = led_assign_sequence(rgbLeds[rgb_led_id].led_id_red, rgbSequences[rgb_sequence_id].seq_id_red);
+    led_status_t blueStatus  = led_assign_sequence(rgbLeds[rgb_led_id].led_id_green, rgbSequences[rgb_sequence_id].seq_id_green);
+    led_status_t greenStatus = led_assign_sequence(rgbLeds[rgb_led_id].led_id_blue, rgbSequences[rgb_sequence_id].seq_id_blue);
+    // Check status variables 
     if(!redStatus && !blueStatus && !greenStatus)
     {
         return LED_OK;
@@ -107,8 +136,17 @@ led_status_t rgb_assign_sequence(int32_t rgb_led_id,int32_t rgb_sequence_id)
 
 void rgb_led_get_ids_from_id(int32_t rgbLedId, int32_t * redLedId, int32_t * greenLedId, int32_t * blueLedId)
 {
-    *redLedId   = rgbLed.led_id_red;
-    *greenLedId = rgbLed.led_id_green;
-    *blueLedId  = rgbLed.led_id_blue;
-    
+    *redLedId   = rgbLeds[rgbLedId].led_id_red;
+    *greenLedId = rgbLeds[rgbLedId].led_id_green;
+    *blueLedId  = rgbLeds[rgbLedId].led_id_blue;
+}
+
+bool rgb_sequence_exists(int32_t rgb_sequence_id)
+{
+    return rgb_sequence_id < rgb_seq_count;
+}
+
+bool rgb_led_exists(int32_t rgb_led_id)
+{
+    return rgb_led_id < rgb_led_count;
 }
