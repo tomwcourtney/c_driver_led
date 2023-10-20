@@ -30,18 +30,6 @@ typedef struct
     int32_t seq_id_blue;  /**Sequence ID for the blue led. */
 } rgb_sequence_t;
 
-/**
- * @brief Predefined hexidecimal colour codes to be used for sequence creation
- */
-typedef enum
-{
-    C_WHITE = 0xFFFFFF,
-    C_RED = 0xFF0000,
-    C_GRN = 0x00FF00,
-    C_BLUE = 0x0000FF,
-    C_OFF = 0x000000,
-} rgb_colour_t;
-
 /** @brief On init defined RGB patterns to be used to turn LED solid colours
  *
  */
@@ -78,10 +66,10 @@ uint32_t rgb_sequence_get_count();
 
 /**
  * @brief Changes the RGB led to the colour specified
- * @param [in] id - the rgb led id
- * @param [in] colourCode - Hexidecimal colour code or a predefined code defined in rgb_colour_t
+ * @param [in] id The rgb led id
+ * @param [in] colourCode A predefined code defined in rgb_colour_t
  */
-led_status_t rgb_led_on(int32_t id, int32_t colourCode);
+led_status_t rgb_led_on(int32_t id, rgb_state_t colourCode);
 
 /**
  * @brief Registeres a new RGB led inside of rgb_led.h, this in turn registeres 3 LEDS in led.h,

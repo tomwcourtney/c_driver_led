@@ -253,14 +253,14 @@ TEST(LEDRGBTest, Registering_green_rgb_sequences_registers_3_sequences)
     uint32_t preRgbSeqCount = rgb_sequence_get_count();
     uint32_t preSeqCount = sequence_get_count();
     // Register RGB sequence
-    uint32_t seq[1] = {C_GRN};
+    uint32_t seq[1] = {C_GREEN};
     int32_t seqId = rgb_sequence_register(1, 1, seq);
     // Check that 1 extra RGB sequences exits
     ARE_N_RGB_SEQUENCES_REGISTERED(preRgbSeqCount + 1);
     // Check that 3 extra LED Sequnces exits
     ARE_N_SEQUENCES_REGISTERED(preSeqCount + 3);
     // Check that the 3 LED Sequences contain only 255
-    check_sequence_matches_colour(seqId, C_GRN);
+    check_sequence_matches_colour(seqId, C_GREEN);
 }
 
 TEST(LEDRGBTest, Registering_blue_rgb_sequences_registers_3_sequences)
@@ -458,7 +458,7 @@ TEST(LEDRGBTest, cannot_register_rgb_led_whhen_there_is_already_max_led_m2_regis
 TEST(LEDRGBTest, rgb_sequence_can_follow_long_pattern)
 {
     // Register RGB sequence
-    uint32_t seq_1[4] = {C_WHITE, C_GRN, C_BLUE, C_OFF};
+    uint32_t seq_1[4] = {C_WHITE, C_GREEN, C_BLUE, C_OFF};
     int32_t seqId_1 = rgb_sequence_register(4, 8, seq_1);
     // Define an RGB led
     int32_t ledId_1 = register_rgb_led({.pin = 0}, {.pin = 1}, {.pin = 2}, true);

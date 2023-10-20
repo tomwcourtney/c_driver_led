@@ -8,6 +8,17 @@ rgb_sequence_t rgbSequences[MAX_SEQUENCES] = {0};
 static uint32_t rgb_led_count = 0; /** Number of registered RGB Leds*/
 static uint32_t rgb_seq_count = 0; /** Number of registered RGB sequences*/
 
+/**
+ * @brief Predefined hexidecimal colour codes to be used for sequence creation
+ */
+typedef enum
+{
+    C_WHITE = 0xFFFFFF,
+    C_RED = 0xFF0000,
+    C_GREEN = 0x00FF00,
+    C_BLUE = 0x0000FF,
+    C_OFF = 0x000000,
+} rgb_colour_t;
 
 void rgb_led_init()
 {
@@ -18,7 +29,7 @@ void rgb_led_init()
     rgb_sequence_register(1, 1, seq);
     seq[0] = C_RED;
     rgb_sequence_register(1, 1, seq);
-    seq[0] = C_GRN;
+    seq[0] = C_GREEN;
     rgb_sequence_register(1, 1, seq);
     seq[0] = C_BLUE;
     rgb_sequence_register(1, 1, seq);
@@ -32,9 +43,9 @@ uint32_t rgb_led_get_count()
     return rgb_led_count;  
 }
 
-led_status_t rgb_led_on(int32_t id, int32_t colourCode)
+led_status_t rgb_led_on(int32_t id, rgb_state_t existing_sequence)
 {
-    return rgb_assign_sequence(id,colourCode);
+    return rgb_assign_sequence(id,existing_sequence);
 }
 
 
@@ -109,7 +120,7 @@ uint32_t rgb_sequence_get_count()
 }
 
 
-led_status_t rgb_assign_sequence(int32_t rgb_led_id,int32_t rgb_sequence_id)
+led_status_t rgb_assign_sequence(int32_t rgb_led_id, int32_t rgb_sequence_id)
 {
     // Check sequence exists 
     if(!rgb_sequence_exists(rgb_sequence_id))
@@ -126,6 +137,7 @@ led_status_t rgb_assign_sequence(int32_t rgb_led_id,int32_t rgb_sequence_id)
     led_status_t redStatus   = led_assign_sequence(rgbLeds[rgb_led_id].led_id_red, rgbSequences[rgb_sequence_id].seq_id_red);
     led_status_t blueStatus  = led_assign_sequence(rgbLeds[rgb_led_id].led_id_green, rgbSequences[rgb_sequence_id].seq_id_green);
     led_status_t greenStatus = led_assign_sequence(rgbLeds[rgb_led_id].led_id_blue, rgbSequences[rgb_sequence_id].seq_id_blue);
+
     // Check status variables 
     if(!redStatus && !blueStatus && !greenStatus)
     {
