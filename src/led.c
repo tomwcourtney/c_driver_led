@@ -2,12 +2,19 @@
 #include <string.h>
 #include <stdio.h>
 
-led_t led = {-1};
+led_t led = {
+    .enabled = -1,
+    .pinout = {0},
+    .sequence_id = -1,
+    .sequence_idx = -1,
+    .timer_count = -1,
+    .sequence_initialized = -1
+};
 
-led_t leds[LEDS_MAX] = {{-1}};
+led_t leds[LEDS_MAX] = {{0}};
 
 // This is the number of LEDs in the array.
-static uint32_t count = 0;
+static int32_t count = 0;
 // This is the period in ms that the LEDs' state will be refreshed.
 static uint32_t timer_period = 0;
 

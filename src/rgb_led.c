@@ -5,8 +5,8 @@
 rgb_led_t rgbLeds[LEDS_MAX] = {0};
 rgb_sequence_t rgbSequences[MAX_SEQUENCES] = {0};
 
-static uint32_t rgb_led_count = 0; /** Number of registered RGB Leds*/
-static uint32_t rgb_seq_count = 0; /** Number of registered RGB sequences*/
+static int32_t rgb_led_count = 0; /** Number of registered RGB Leds*/
+static int32_t rgb_seq_count = 0; /** Number of registered RGB sequences*/
 
 /**
  * @brief Predefined hexidecimal colour codes to be used for sequence creation
